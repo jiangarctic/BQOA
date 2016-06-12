@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserXMapper">
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+	<select id="getUserInfo" parameterType="pd" resultType="pd" useCache="false">
+		select * from SYS_USER where 1=1 
+		<if test="USERNAME!=null and  PASSWORD!=null">
+			and (
+				(USERNAME=#{USERNAME} and PASSWORD=#{PASSWORD})
+				or (EMAIL=#{UESRNAME} and PASSWORD=#{PASSWORD}) 
+				or (PHONE=#{USERNAME} and PASSWORD=#{PASSWORD})
+			)
+		</if>
+		<if test="USER_ID!=null">
+			and USER_ID=#{USER_ID}
+		</if>
+	</select>
+	
+	<select id="findByUsername" parameterType="pd" resultType="pd" useCache="false">
+		select * from SYS_USER where USERNAME=#{USERNAME}
+	</select>
+</mapper>
