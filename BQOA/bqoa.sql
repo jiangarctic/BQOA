@@ -10,10 +10,31 @@ Target Server Type    : MYSQL
 Target Server Version : 50535
 File Encoding         : 65001
 
-Date: 2016-06-12 23:46:47
+Date: 2016-06-14 00:32:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for sys_client
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_client`;
+CREATE TABLE `sys_client` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `clientName` varchar(255) DEFAULT NULL,
+  `clientAddress` varchar(255) DEFAULT NULL,
+  `clientType` varchar(255) DEFAULT NULL,
+  `clientContactor` varchar(255) DEFAULT NULL,
+  `clientPhone` varchar(255) DEFAULT NULL,
+  `commissionStart` varchar(255) DEFAULT NULL,
+  `commissionEnd` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_client
+-- ----------------------------
+INSERT INTO `sys_client` VALUES ('1', '江万东', '前卫西路', 'com', '养眼', '18314496694', '2016-06-15', '2016-06-18');
 
 -- ----------------------------
 -- Table structure for sys_gl_qx
