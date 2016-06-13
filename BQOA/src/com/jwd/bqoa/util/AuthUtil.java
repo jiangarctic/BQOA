@@ -37,10 +37,10 @@ public class AuthUtil {
 						String MENU_ID = menuList.get(i).getSubMenu().get(j).getMENU_ID();
 						String USERNAME = (String) session.getAttribute(Const.SESSION_USERNAME);
 						Boolean isAdmin = USERNAME.equals("admin");
-						map.put("create", (RightsUtil.testRights(map.get("creates"), MENU_ID)) || isAdmin ? "1" : "0");
-						map.put("delete", (RightsUtil.testRights(map.get("deletes"), MENU_ID)) || isAdmin ? "1" : "0");
-						map.put("update", (RightsUtil.testRights(map.get("updates"), MENU_ID)) || isAdmin ? "1" : "0");
-						map.put("retrive", (RightsUtil.testRights(map.get("retrives"), MENU_ID)) || isAdmin ? "1" : "0");
+						map.put("C_AUTH", (RightsUtil.testRights(map.get("C_AUTHs"), MENU_ID)) ? "1" : "0");
+						map.put("R_AUTH", (RightsUtil.testRights(map.get("R_AUTHs"), MENU_ID))? "1" : "0");
+						map.put("U_AUTH", (RightsUtil.testRights(map.get("U_AUTHs"), MENU_ID)) ? "1" : "0");
+						map.put("D_AUTH", (RightsUtil.testRights(map.get("D_AUTHs"), MENU_ID))  ? "1" : "0");
 						session.removeAttribute(Const.SESSION_QX);
 						session.setAttribute(Const.SESSION_QX, map);
 					}

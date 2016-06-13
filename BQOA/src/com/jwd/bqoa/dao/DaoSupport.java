@@ -19,5 +19,4 @@ public class DaoSupport implements  Dao{
 	public Object findForList(String str, Object obj) throws Exception {
 		return sqlSessionTemplate.selectList(str, obj);
 	}
-
 }
