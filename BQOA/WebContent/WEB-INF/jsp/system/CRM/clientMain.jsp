@@ -19,7 +19,7 @@
 
 <link href="static/bootStrapFiles/css/new.css" rel="stylesheet">
 <!-- Important. For Theming change primary-color variable in main.css  -->
-
+<link href="static/bootStrapFiles/css/alertify.core.css" rel="stylesheet" id="toggleCSS">
 <link href="static/bootStrapFiles/fonts/font-awesome.min.css"
 	rel="stylesheet">
 
@@ -31,6 +31,7 @@
 <link
 	href="static/commonJS/datePicker/css/bootstrap-datetimepicker.min.css"
 	rel="stylesheet" media="screen">
+	
 <!--  <link href="static/commonJS/datePicker/css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">-->
 
 </head>
@@ -44,7 +45,6 @@
 
 	<!-- Main Container start -->
 	<div class="dashboard-container">
-
 		<div class="container">
 			<!-- Top Nav Start -->
 			<%@ include file="/WEB-INF/jsp/system/admin/Menus.jsp"%>
@@ -367,8 +367,11 @@
 
 	<script src="static/bootStrapFiles/js/jquery.js"></script>
 	<script src="static/bootStrapFiles/js/bootstrap.min.js"></script>
+	<script  src="static/bootStrapFiles/js/alertify.min.js" ></script>
 	<script src="static/bootStrapFiles/js/jquery.scrollUp.js"></script>
 	<script src="static/bootStrapFiles/js/jquery.dataTables.js"></script>
+	
+
 
 	<script type="text/javascript"
 		src="static/commonJS/datePicker/jquery/jquery-1.8.3.min.js"
@@ -398,8 +401,6 @@
 			});
 		});
 
-		//Tooltip
-		$('a').tooltip('hide');
 
 		//Popover
 		$('.popover-pop').popover('hide');
@@ -414,24 +415,33 @@
 			});
 		});
 
+
+
+		
+		function aaa(){
+
+		}
+		
+		function closeModal(){
+			$("#modal_close").click();
+		}
+	</script>
+	<script type="text/javascript">     
 		function checkAndSubmitForm() {
 			var formData = $("#ClientInfoForm").serialize();
-			$.ajax({
+				$.ajax({
 				data : formData,
 				type : "POST",
 				dataType : 'json',
 				url : 'saveClient',
 				success : function(data) {
-					alert(data.msg);
+					alertify.success(data.msg);
 				},
 				error : function(data) {
 
 				}
 			});
-		}
-		
-		function closeModal(){
-			$("#modal_close").click();
+	        
 		}
 	</script>
 	
