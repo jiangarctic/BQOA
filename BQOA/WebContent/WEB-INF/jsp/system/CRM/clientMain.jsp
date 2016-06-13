@@ -24,9 +24,9 @@
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
-    
-   <link href="static/commonJS/datePicker/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/commonJS/datePicker/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="static/commonJS/datePicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <!--  <link href="static/commonJS/datePicker/css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">-->
+
   </head>
 
   <body>
@@ -401,14 +401,6 @@
                           </select>
                         </div>
                       </div>
-                      
-                <div class="form-group">
-                        <label for="emailId" class="col-sm-2 control-label">开始时间</label>
-                    <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" type="text" value="" readonly>
-					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                </div>
-                      </div>
                        <div class="form-group">
                         <label for="emailId" class="col-sm-2 control-label">联系人</label>
                         <div class="col-sm-10">
@@ -419,6 +411,17 @@
                         <label for="emailId" class="col-sm-2 control-label">联系电话</label>
                         <div class="col-sm-10">
                           <input type="email" class="form-control" id="emailId" placeholder="电话" name="clientPhone">
+                        </div>
+                      </div>
+                         <div class="form-group">
+                        <label for="emailId" class="col-sm-2 control-label">开始时间</label>
+                        <div class="col-sm-10">
+					<div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input2" value="" /><br/>
                         </div>
                       </div>
                       <div class="form-group">
@@ -517,10 +520,10 @@
                                 <option value="2016">
                                   2016
                                 </option>
-                                <option value="2015">
+                                <option value="2006">
                                   2015
                                 </option>
-                                <option value="2014">
+                                <option value="2005">
                                   2014
                                 </option>
                               </select>
@@ -561,6 +564,10 @@
     <script src="static/bootStrapFiles/js/bootstrap.min.js"></script>
     <script src="static/bootStrapFiles/js/jquery.scrollUp.js"></script>
     <script src="static/bootStrapFiles/js/jquery.dataTables.js"></script>
+    
+   <script type="text/javascript" src="static/commonJS/datePicker/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+   <script type="text/javascript" src="static/commonJS/datePicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>    
+<script type="text/javascript" src="static/commonJS/datePicker/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 
     <!-- Custom JS -->
     <script src="static/bootStrapFiles/js/menu.js"></script>
@@ -613,8 +620,8 @@
       }
 
     </script>
-<script type="text/javascript" src="static/commonJS/datePicker/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-<script type="text/javascript" src="static/commonJS/datePicker/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    
+
 <script type="text/javascript">
     $('.form_datetime').datetimepicker({
         //language:  'fr',
@@ -648,5 +655,6 @@
 		forceParse: 0
     });
 </script>
+
   </body>
 </html>
