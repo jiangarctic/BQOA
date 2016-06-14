@@ -19,7 +19,8 @@
 
 <link href="static/bootStrapFiles/css/new.css" rel="stylesheet">
 <!-- Important. For Theming change primary-color variable in main.css  -->
-<link href="static/bootStrapFiles/css/alertify.core.css" rel="stylesheet" id="toggleCSS">
+<link href="static/bootStrapFiles/css/alertify.core.css"
+	rel="stylesheet" id="toggleCSS">
 <link href="static/bootStrapFiles/fonts/font-awesome.min.css"
 	rel="stylesheet">
 
@@ -31,7 +32,7 @@
 <link
 	href="static/commonJS/datePicker/css/bootstrap-datetimepicker.min.css"
 	rel="stylesheet" media="screen">
-	
+
 <!--  <link href="static/commonJS/datePicker/css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">-->
 
 </head>
@@ -73,114 +74,50 @@
 										class="table table-responsive table-striped table-bordered table-hover no-margin">
 										<thead>
 											<tr>
-												<th style="width: 5%"><input type="checkbox"
-													class="no-margin" /></th>
 												<th style="width: 20%">客户名称</th>
 												<th style="width: 20%" class="hidden-xs">客户地址</th>
-												<th style="width: 10%" class="hidden-xs">客户地址1</th>
-												<th style="width: 10%" class="hidden-xs">客户地址2</th>
+												<th style="width: 10%" class="hidden-xs">客户类型</th>
+												<th style="width: 10%" class="hidden-xs">联系人</th>
 
-												<th style="width: 10%" class="hidden-xs">状态</th>
-												<th style="width: 15%" class="hidden-xs">Date</th>
-												<th style="width: 15%" class="hidden-xs">Actions</th>
+												<th style="width: 10%" class="hidden-xs">联系电话</th>
+												<th style="width: 25%" class="hidden-xs">委托起止</th>
+												<th style="width: 10%" class="hidden-xs">操作</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td><input type="checkbox" class="no-margin" /></td>
-												<td><span class="name"> Mahendra Singh Dhoni </span></td>
-												<td>Baswa #567</td>
-												<td><span class="label label-info"> New </span></td>
-												<td>15 - 02 - 2013</td>
-												<td class="hidden-xs">
-													<div class="btn-group">
-														<button data-toggle="dropdown"
-															class="btn btn-default btn-xs dropdown-toggle">
-															Action <span class="caret"></span>
-														</button>
-														<ul class="dropdown-menu pull-right">
-															<li><a href="#">Edit</a></li>
-															<li><a href="#">Delete</a></li>
-														</ul>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" class="no-margin" /></td>
-												<td><span class="name"> Michel Clark </span></td>
-												<td>Baswa #224</td>
-												<td><span class="label label-success"> New </span></td>
-												<td>10 - 02 - 2013</td>
-												<td class="hidden-xs">
-													<div class="btn-group ">
-														<button data-toggle="dropdown"
-															class="btn btn-default btn-xs dropdown-toggle">
-															Action <span class="caret"></span>
-														</button>
-														<ul class="dropdown-menu pull-right">
-															<li><a href="#">Edit</a></li>
-															<li><a href="#">Delete</a></li>
-														</ul>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" class="no-margin" /></td>
-												<td><span class="name"> Rahul Dravid </span></td>
-												<td>Baswa #342</td>
-												<td><span class="label label-danger"> New </span></td>
-												<td>14 - 02 - 2013</td>
-												<td class="hidden-xs">
-													<div class="btn-group ">
-														<button data-toggle="dropdown"
-															class="btn btn-default btn-xs dropdown-toggle">
-															Action <span class="caret"> </span>
-														</button>
-														<ul class="dropdown-menu pull-right">
-															<li><a href="#"> Edit </a></li>
-															<li><a href="#"> Delete </a></li>
-														</ul>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" class="no-margin" /></td>
-												<td><span class="name"> Anthony Michell </span></td>
-												<td>Baswa #3021</td>
-												<td><span class="label label-info"> New </span></td>
-												<td>19 - 02 - 2013</td>
-												<td class="hidden-xs">
-													<div class="btn-group ">
-														<button data-toggle="dropdown"
-															class="btn btn-default btn-xs dropdown-toggle">
-															Action <span class="caret"> </span>
-														</button>
-														<ul class="dropdown-menu pull-right">
-															<li><a href="#"> Edit </a></li>
-															<li><a href="#"> Delete </a></li>
-														</ul>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td><input type="checkbox" class="no-margin" /></td>
-												<td><span class="name"> Srinu Baswa </span></td>
-												<td>Baswa #771</td>
-												<td><span class="label label-success"> New </span></td>
-												<td>12 - 02 - 2013</td>
-												<td class="hidden-xs">
-													<div class="btn-group ">
-														<button data-toggle="dropdown"
-															class="btn btn-default btn-xs dropdown-toggle">
-															Action <span class="caret"> </span>
-														</button>
-														<ul class="dropdown-menu pull-right">
-															<li><a href="#">Edit</a></li>
-															<li><a href="#">Delete</a></li>
-														</ul>
-													</div>
-												</td>
-											</tr>
+
+											<c:choose>
+												<c:when test="${QX.R_AUTH==1 }">
+													<c:forEach var="client" items="${clients }">
+													<tr>
+														<td><span class="name">${client.clientName }</span></td>
+														<td><span class="name">${client.clientAddress }</span></td>
+														<td><span class="name">${client.clientType }</span></td>
+														<td><span class="name">${client.clientContactor }</span></td>
+														<td><span class="name">${client.clientPhone }</span></td>
+														<td><span class="name">${client.commissionStart } 至 ${client.commissionEnd }</span></td>
+														<td class="hidden-xs">
+															<div class="btn-group">
+																<button data-toggle="dropdown"
+																	class="btn btn-default btn-xs dropdown-toggle">
+																	操作 <span class="caret"></span>
+																</button>
+																<ul class="dropdown-menu pull-right">
+																	<li><a href="javascript:alert('待开发')">编辑</a></li>
+																	<li><a href="javascript:alert('待开发')">删除</a></li>
+																</ul>
+															</div>
+														</td>
+														</tr>
+													</c:forEach>
+												</c:when>
+												<c:otherwise>
+													<tr>
+														<td colspan="7">您无权查看</td>
+													</tr>
+												</c:otherwise>
+											</c:choose>
+
 										</tbody>
 									</table>
 									<div class="widget-body clearfix" align="right">
@@ -242,10 +179,11 @@
 						role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
-							                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" id="modal_close" aria-hidden="true">&times;</button>
-                    
-                  </div>
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										id="modal_close" aria-hidden="true">&times;</button>
+
+								</div>
 								<div class="modal-body">
 									<div class="row">
 										<div class="col-lg-12 col-md-12">
@@ -269,7 +207,7 @@
 														<div class="form-group">
 															<label for="emailId" class="col-sm-2 control-label">客户地址</label>
 															<div class="col-sm-10">
-																<input type="text" class="form-control" 
+																<input type="text" class="form-control"
 																	placeholder="客户地址" name="clientAddress">
 															</div>
 														</div>
@@ -288,15 +226,15 @@
 														<div class="form-group">
 															<label for="emailId" class="col-sm-2 control-label">联系人</label>
 															<div class="col-sm-10">
-																<input type="text" class="form-control" 
+																<input type="text" class="form-control"
 																	placeholder="联系人" name="clientContactor">
 															</div>
 														</div>
 														<div class="form-group">
 															<label for="emailId" class="col-sm-2 control-label">联系电话</label>
 															<div class="col-sm-10">
-																<input type="text" class="form-control" 
-																	placeholder="电话" name="clientPhone">
+																<input type="text" class="form-control" placeholder="电话"
+																	name="clientPhone">
 															</div>
 														</div>
 														<div class="form-group">
@@ -331,12 +269,13 @@
 														</div>
 														<div class="form-group">
 															<div class="col-sm-offset-2 col-sm-10">
-																<button type="submit" class="btn btn-info" onclick="javascript:checkAndSubmitForm();">
-																	保存</button>&nbsp;&nbsp;
-																	<button type="submit" onclick="javascript:closeModal();" class="btn btn-info">
-																	关闭</button>
+																<button type="submit" class="btn btn-info"
+																	onclick="javascript:checkAndSubmitForm();">保存</button>
+																&nbsp;&nbsp;
+																<button type="submit" onclick="javascript:closeModal();"
+																	class="btn btn-info">关闭</button>
 															</div>
-														
+
 														</div>
 
 
@@ -367,10 +306,10 @@
 
 	<script src="static/bootStrapFiles/js/jquery.js"></script>
 	<script src="static/bootStrapFiles/js/bootstrap.min.js"></script>
-	<script  src="static/bootStrapFiles/js/alertify.min.js" ></script>
+	<script src="static/bootStrapFiles/js/alertify.min.js"></script>
 	<script src="static/bootStrapFiles/js/jquery.scrollUp.js"></script>
 	<script src="static/bootStrapFiles/js/jquery.dataTables.js"></script>
-	
+
 
 
 	<script type="text/javascript"
@@ -401,7 +340,6 @@
 			});
 		});
 
-
 		//Popover
 		$('.popover-pop').popover('hide');
 
@@ -415,37 +353,30 @@
 			});
 		});
 
-
-
-		
-		function aaa(){
-
-		}
-		
-		function closeModal(){
+		function closeModal() {
 			$("#modal_close").click();
 		}
 	</script>
-	<script type="text/javascript">     
+	<script type="text/javascript">
 		function checkAndSubmitForm() {
 			var formData = $("#ClientInfoForm").serialize();
-				$.ajax({
+			$.ajax({
 				data : formData,
 				type : "POST",
 				dataType : 'json',
 				url : 'saveClient',
 				success : function(data) {
-					alertify.success(data.msg);
+					location.href = "CRM_ClientList.do";
 				},
 				error : function(data) {
-
+					alert(data.msg);
 				}
 			});
-	        
+
 		}
 	</script>
-	
-	
+
+
 
 
 	<script type="text/javascript">

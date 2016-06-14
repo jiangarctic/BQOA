@@ -11,6 +11,8 @@ public class Client implements Serializable{
 	private String clientPhone;
 	private String commissionStart;
 	private String commissionEnd;
+	private String shortName;
+	private int status;
 	public int getClientId() {
 		return ClientId;
 	}
@@ -58,6 +60,20 @@ public class Client implements Serializable{
 	}
 	public void setCommissionEnd(String commissionEnd) {
 		this.commissionEnd = commissionEnd;
+	}
+	
+	
+	public String getShortName() {
+		return shortName;
+	}
+	public void setShortName(String shortName) {
+		this.shortName = shortName;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	@Override
 	public String toString() {

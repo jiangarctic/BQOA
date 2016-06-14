@@ -7,6 +7,7 @@ public class PageInfo implements Serializable{
 	private int rows;        //每页条数
 	private int totalPages;  //总页数
 	private int isLastPage;  //是否是最后一页
+	private int startIndex;  //查询参数 ， 当前是第几条
 	public int getCurrentPage() {
 		return currentPage;
 	}
@@ -30,6 +31,21 @@ public class PageInfo implements Serializable{
 	}
 	public void setIsLastPage(int isLastPage) {
 		this.isLastPage = isLastPage;
+	}
+	
+	
+	public int getStartIndex() {
+		return startIndex;
+	}
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+	public PageInfo(){}
+	
+	public PageInfo(int currentPage , int rows){
+		this.rows = rows;
+		this.currentPage = currentPage;
+		this.startIndex = (currentPage-1)*rows;
 	}
 	
 	

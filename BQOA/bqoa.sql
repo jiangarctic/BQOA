@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : root
 Source Server Version : 50535
-Source Host           : 127.0.0.1:3306
+Source Host           : localhost:3306
 Source Database       : bqoa
 
 Target Server Type    : MYSQL
 Target Server Version : 50535
 File Encoding         : 65001
 
-Date: 2016-06-14 00:32:51
+Date: 2016-06-14 18:37:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,13 +28,15 @@ CREATE TABLE `sys_client` (
   `clientPhone` varchar(255) DEFAULT NULL,
   `commissionStart` varchar(255) DEFAULT NULL,
   `commissionEnd` varchar(255) DEFAULT NULL,
+  `shortName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_client
 -- ----------------------------
-INSERT INTO `sys_client` VALUES ('1', '江万东', '前卫西路', 'com', '养眼', '18314496694', '2016-06-15', '2016-06-18');
+INSERT INTO `sys_client` VALUES ('1', '江万东', '前卫西路', 'com', '养眼', '18314496694', '2016-06-15', '2016-06-18', '万东');
+INSERT INTO `sys_client` VALUES ('2', '杨燕', '云南昆明打算看见！！克里斯丁', 'other', '啊', '18469144019', '2016-06-01', '2018-07-12', '燕');
 
 -- ----------------------------
 -- Table structure for sys_gl_qx
@@ -75,14 +77,14 @@ CREATE TABLE `sys_menu` (
 -- Records of sys_menu
 -- ----------------------------
 INSERT INTO `sys_menu` VALUES ('1', '首页', 'to_home.do', '0', '1', 'sidebar.nav.element.ELEMENTS');
-INSERT INTO `sys_menu` VALUES ('2', '工作台', '111', '1', '1', 'sidebar.nav.element.BUTTON');
-INSERT INTO `sys_menu` VALUES ('3', '日程', '222', '1', '2', 'sidebar.nav.element.NOTIFICATION');
-INSERT INTO `sys_menu` VALUES ('4', '办公', '111', '0', '2', null);
-INSERT INTO `sys_menu` VALUES ('5', '生成报告', '222', '4', '1', null);
-INSERT INTO `sys_menu` VALUES ('6', '通讯录', null, '1', '3', null);
+INSERT INTO `sys_menu` VALUES ('2', '工作台', '#', '1', '1', 'sidebar.nav.element.BUTTON');
+INSERT INTO `sys_menu` VALUES ('3', '日程', 'reportSelectionList.do', '1', '2', 'sidebar.nav.element.NOTIFICATION');
+INSERT INTO `sys_menu` VALUES ('4', '办公', 'reportSelectionList.do', '0', '2', null);
+INSERT INTO `sys_menu` VALUES ('5', '生成报告', 'reportSelectionList.do', '4', '1', null);
+INSERT INTO `sys_menu` VALUES ('6', '通讯录', '#', '1', '3', null);
 INSERT INTO `sys_menu` VALUES ('7', '客户关系', 'CRM_ClientList.do', '0', '3', null);
 INSERT INTO `sys_menu` VALUES ('8', '客户列表', 'CRM_ClientList.do', '7', '1', null);
-INSERT INTO `sys_menu` VALUES ('9', '个人事项', null, '1', '4', null);
+INSERT INTO `sys_menu` VALUES ('9', '个人事项', '#', '1', '4', null);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -104,7 +106,7 @@ CREATE TABLE `sys_role` (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1', '管理员', '1023', '0', '1', '1', '1', '1', '1');
+INSERT INTO `sys_role` VALUES ('1', '管理员', '1023', '0', '1', '1023', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -128,7 +130,7 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', 'd10baec1db2eb3e55bffc491b2933f003f719d8d', '江万东111', '1', null, null, '0', null, '373701119@qq.com', null, '18314496694');
+INSERT INTO `sys_user` VALUES ('1', 'admin', 'd10baec1db2eb3e55bffc491b2933f003f719d8d', '江万东', '1', null, null, '0', null, '373701119@qq.com', null, '18314496694');
 
 -- ----------------------------
 -- Table structure for sys_user_qx

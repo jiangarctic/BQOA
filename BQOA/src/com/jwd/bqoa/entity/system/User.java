@@ -19,7 +19,8 @@ public class User implements Serializable{
 	private String IP; // 用户登录ip地址
 	private String STATUS; // 状态
 	private Role role; // 角色对象
-	private Page page; // 分页对象
+	private String PHONE ;
+	private String EMAIL;
 
 
 	public String getUSER_ID() {
@@ -102,21 +103,31 @@ public class User implements Serializable{
 		this.role = role;
 	}
 
-	public Page getPage() {
-		if (page == null)
-			page = new Page();
-		return page;
+
+
+	public String getPHONE() {
+		return PHONE;
 	}
 
-	public void setPage(Page page) {
-		this.page = page;
+	public void setPHONE(String pHONE) {
+		PHONE = pHONE;
+	}
+
+	public String getEMAIL() {
+		return EMAIL;
+	}
+
+	public void setEMAIL(String eMAIL) {
+		EMAIL = eMAIL;
 	}
 
 	@Override
 	public String toString() {
 		return "User [USER_ID=" + USER_ID + ", USERNAME=" + USERNAME + ", PASSWORD=" + PASSWORD + ", NAME=" + NAME
 				+ ", RIGHTS=" + RIGHTS + ", ROLE_ID=" + ROLE_ID + ", LAST_LOGIN=" + LAST_LOGIN + ", IP=" + IP
-				+ ", STATUS=" + STATUS + ", role=" + role + ", page=" + page + "]";
+				+ ", STATUS=" + STATUS + ", role=" + role + ", PHONE=" + PHONE + ", EMAIL=" + EMAIL + "]";
 	}
+
+
 
 }

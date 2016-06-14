@@ -19,9 +19,17 @@ public class DaoSupport implements  Dao{
 	public Object findForList(String str, Object obj) throws Exception {
 		return sqlSessionTemplate.selectList(str, obj);
 	}
+	
+	
 
 	@Override
 	public Object save(String str, Object obj) throws Exception {
 		return sqlSessionTemplate.insert(str, obj);
 	}
+
+	@Override
+	public Object findForObject(String str) throws Exception {
+		return sqlSessionTemplate.selectOne(str);
+	}
+
 }

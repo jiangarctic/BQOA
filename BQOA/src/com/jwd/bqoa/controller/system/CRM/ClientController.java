@@ -1,6 +1,7 @@
 package com.jwd.bqoa.controller.system.CRM;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jwd.bqoa.controller.base.BaseController;
+import com.jwd.bqoa.entity.system.Client;
+import com.jwd.bqoa.entity.system.PageInfo;
 import com.jwd.bqoa.service.system.client.ClientService;
 import com.jwd.bqoa.util.Const;
 import com.jwd.bqoa.util.PageData;
+import com.jwd.bqoa.util.PageUtil;
 
 @Controller
 public class ClientController extends BaseController{
@@ -28,14 +32,24 @@ public class ClientController extends BaseController{
 	private ClientService clientService;
 	
 	@RequestMapping(value="/CRM_ClientList")
-	public ModelAndView listClients(@RequestParam(value="pageIndex", defaultValue="1" , required=false) int pageIndex){
+	public ModelAndView listClients(@RequestParam(value="pageIndex", defaultValue="1" , required=false) int pageIndex) throws Exception{
 		ModelAndView mv = this.getModelAndView();
-		
-		
+		List<Client> clients = clientService.queryClients(new PageInfo(pageIndex , Const.ROWSPERPAGE));
+		PageInfo pageInfo = PageUtil.geneTotalPages(clientService.getCountOfClient(), pageIndex);
+		mv.addObject("clients" , clients);
+		mv.addObject("pageInfo" , pageInfo);
 		mv.setViewName("system/CRM/clientMain");
 		mv.addObject(Const.SESSION_QX , this.getCRUDAuth());
 		return mv;
 	}
+	
+	@RequestMapping(value="/clientListData")
+	@ResponseBody
+	public List<Client> getClientListData() throws Exception{
+		List<Client> list = clientService.queryClients();
+		System.out.println(list);
+		return list;
+	} 
 	
 	@RequestMapping(value="/saveClient")
 	@ResponseBody
