@@ -25,6 +25,9 @@
 
 <link href="static/bootStrapFiles/fonts/font-awesome.min.css"
 	rel="stylesheet">
+<link
+	href="static/commonJS/datePicker/css/bootstrap-datetimepicker.min.css"
+	rel="stylesheet" media="screen">
 
 <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -70,10 +73,10 @@
 								<div class="panel-body">
 									<button type="button" class="btn btn-success"
 										onclick="javascript:loadmodal1();">法律事务处理记录</button>
-									<button type="button" id="modaltoggle1" 
-										data-toggle="modal" data-target="#myModal" style="display:none"></button>
-									<button type="button" id="modaltoggle2"
-										data-toggle="modal" data-target="#myModal2" style="display:none"></button>
+									<button type="button" id="modaltoggle1" data-toggle="modal"
+										data-target="#myModal" style="display: none"></button>
+									<button type="button" id="modaltoggle2" data-toggle="modal"
+										data-target="#myModal2" style="display: none"></button>
 								</div>
 							</div>
 						</div>
@@ -92,10 +95,9 @@
 						</div>
 					</div>
 					<!-- Row ends -->
-					<div class="modal fade" id="myModal"
-						tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog" style="width:45%">
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog" style="width: 45%">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"
@@ -114,7 +116,8 @@
 													</div>
 												</div>
 												<div class="widget-body">
-													<form class="form-horizontal no-margin" id="ClientInfoForm" action="">
+													<form class="form-horizontal no-margin" id="ClientInfoForm"
+														action="">
 														<div class="form-group">
 															<label for="waitClient" class="col-sm-2 control-label">客户名称：</label>
 															<div class="col-sm-10">
@@ -126,8 +129,12 @@
 														<div class="form-group">
 															<label for="emailId" class="col-sm-2 control-label">咨询方式</label>
 															<div class="col-sm-10">
-																<input type="text" class="form-control"
-																	placeholder="咨询方式" id="inquireType">
+																<div class="col-sm-10">
+																	<select id="inquireType" class="form-control">
+																		<option value="面谈">面谈</option>
+																		<option value="面谈">电话</option>
+																	</select>
+																</div>
 															</div>
 														</div>
 														<div class="form-group">
@@ -135,7 +142,8 @@
 																<button type="button" class="btn btn-info"
 																	onclick="javascript:loadmodal2();">下一步</button>
 																&nbsp;&nbsp;
-																<button type="button" id="close_Modal1" class="btn btn-default" data-dismiss="modal">关闭</button>
+																<button type="button" id="close_Modal1"
+																	class="btn btn-default" data-dismiss="modal">关闭</button>
 															</div>
 
 														</div>
@@ -155,7 +163,8 @@
 					<!-- MOdql fade 2 Start -->
 					<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
 						aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog" style="width:75%;height:90%;overflow-y:auto;">
+						<div class="modal-dialog"
+							style="width: 75%; height: 90%; overflow-y: auto;">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"
@@ -199,9 +208,19 @@
 														</div>
 														<div class="form-group">
 															<label class="col-md-2 control-label">咨询日期</label>
-															<div class="col-md-10">
-																<input type="text" name="inquireTime"
-																	class="form-control">
+															<div class="col-sm-10">
+																<div class="input-group date form_datetime col-md-5"
+																	
+																	data-date-format="yyyy年mm月dd日  p HH:ii"
+																	data-link-field="dtp_input1">
+																	<input class="form-control" size="16" type="text"
+																		value="" readonly> <span
+																		class="input-group-addon"><span
+																		class="glyphicon glyphicon-remove"></span></span> <span
+																		class="input-group-addon"><span
+																		class="glyphicon glyphicon-th"></span></span>
+																</div>
+																<input type="hidden" id="dtp_input1" value="" /><br />
 															</div>
 														</div>
 														<div class="form-group">
@@ -215,7 +234,7 @@
 															<label class="col-md-2 control-label">咨询人及所属部门、职务</label>
 															<div class="col-md-10">
 																<input class="form-control" type="text" name="inquireer"
-																	value="${user.NAME }">
+																	value="">
 															</div>
 														</div>
 														<div class="form-group">
@@ -257,7 +276,7 @@
 																			<th style="width: 50%" rowspan="4"><textarea
 																					cols="50" rows="10" placeholder="请填写处理意见"></textarea>
 																			</th>
-																			<th style="width: 50%" class="hidden-xs">工作人员：</th>
+																			<th style="width: 50%" class="hidden-xs">工作人员： ${user.NAME }</th>
 																		</tr>
 																		<tr>
 																			<th style="width: 50%">工作时间：</th>
@@ -373,6 +392,12 @@
 	<script src="static/bootStrapFiles/js/jquery.js"></script>
 	<script src="static/bootStrapFiles/js/bootstrap.min.js"></script>
 	<script src="static/bootStrapFiles/js/jquery.scrollUp.js"></script>
+	<script type="text/javascript"
+		src="static/commonJS/datePicker/js/bootstrap-datetimepicker.js"
+		charset="UTF-8"></script>
+	<script type="text/javascript"
+		src="static/commonJS/datePicker/js/locales/bootstrap-datetimepicker.fr.js"
+		charset="UTF-8"></script>
 
 	<!-- Custom JS -->
 	<script src="static/bootStrapFiles/js/menu.js"></script>
@@ -391,7 +416,7 @@
 				activeOverlay : false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
 			});
 		});
-var map = {};
+		var map = {};
 		function loadmodal1() {
 			$("#modaltoggle1").click();
 			$("#waitClient").empty();
@@ -401,10 +426,10 @@ var map = {};
 				dataType : 'json',
 				success : function(data) {
 					for (var i = 0; i < data.length; i++) {
-						var opt = '<option value="'+data[i].clientName+'">' + data[i].clientName
-								+ '</option>';
+						var opt = '<option value="'+data[i].clientName+'">'
+								+ data[i].clientName + '</option>';
 						$("#waitClient").append(opt);
-						map[data[i].clientName]=data[i].shortName;
+						map[data[i].clientName] = data[i].shortName;
 					}
 				},
 				error : function(data) {
@@ -418,17 +443,37 @@ var map = {};
 			var shortName = map[clientName];
 			var date = new Date();
 			var time = date.toLocaleString();
-			var fullyear = date.getFullYear()+"";
-			var year = fullyear.substring(2,4);
-			var mon = date.getMonth()+1;
+			var fullyear = date.getFullYear() + "";
+			var year = fullyear.substring(2, 4);
+			var mon = date.getMonth() + 1;
 			var day = date.getDate();
-			alert(shortName +","+time+","+year+","+mon+","+day);
+			if (day < 10) {
+				 day = "0" + day;
+			}
+			if(mon<10){
+				mon ="0"+mon;
+			}
+			var reportNum = shortName + year + mon + day+"H";
 			$("#close_Modal1").trigger("click");
 			$("#modaltoggle2").click();
-			
+			$("#clientName").val(clientName);
+			$("#reportNum").val(reportNum);
 		}
-
 	</script>
+
+	<script type="text/javascript">
+		$('.form_datetime').datetimepicker({
+			language : 'fr',
+			weekStart : 1,
+			todayBtn : 1,
+			autoclose : 1,
+			todayHighlight : 1,
+			startView : 2,
+			forceParse : 0,
+			showMeridian : 1
+		});
+	</script>
+
 
 </body>
 </html>
