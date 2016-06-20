@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ClientMapper">
+	<insert id="saveClient" parameterType="pd" flushCache="false">
+		insert into sys_client (clientName,clientAddress,clientType,clientContactor,clientPhone,commissionStart,commissionEnd , shortName) 
+		values (#{clientName} ,#{clientAddress},#{clientType},#{clientContactor},#{clientPhone},#{commissionStart},#{commissionEnd},#{shortName})
+	</insert>
+	
+	<select id="queryClientsByPage" parameterType="pi" resultType="pd">
+		select * from sys_client limit #{startIndex} , #{rows}
+	</select>
+	
+	<select id="queryClientCount" resultType="int">
+		select count(*) from sys_client
+	</select>
+	
+	<select id="queryClients" resultType="pd">
+		select clientName , shortName from sys_client
+	</select>
+
+</mapper>

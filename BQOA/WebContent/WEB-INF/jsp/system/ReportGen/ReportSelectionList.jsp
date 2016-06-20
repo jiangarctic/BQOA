@@ -210,7 +210,6 @@
 															<label class="col-md-2 control-label">咨询日期</label>
 															<div class="col-sm-10">
 																<div class="input-group date form_datetime col-md-5"
-																	
 																	data-date-format="yyyy年mm月dd日  p HH:ii"
 																	data-link-field="dtp_input1">
 																	<input class="form-control" size="16" type="text"
@@ -274,20 +273,49 @@
 																	<thead>
 																		<tr>
 																			<th style="width: 50%" rowspan="4"><textarea
-																					cols="50" rows="10" placeholder="请填写处理意见"></textarea>
+																					cols="70" rows="9" placeholder="请填写处理意见"></textarea>
 																			</th>
-																			<th style="width: 50%" class="hidden-xs">工作人员： ${user.NAME }</th>
+																			<th style="width: 50%" class="hidden-xs"><div>
+																					<label class="col-md-4 control-label">工作人员：</label>
+																					<div class="col-xs-6">
+																						<input type="text" class="form-control"
+																							name="workTime" value="江万东" readonly="readonly">
+																					</div>
+																				</div></th>
 																		</tr>
 																		<tr>
-																			<th style="width: 50%">工作时间：</th>
+																			<th style="width: 50%">
+																				<div>
+																					<label class="col-md-4 control-label">工作时间：</label>
+																					<div class="col-xs-6">
+																						<input type="text" class="form-control"
+																							name="workTime" placeholder="">
+																					</div>
+																				</div>小时
+																			</th>
+																		</tr>
+																		<tr>
+																			<th style="width: 50%"><div>
+																					<label class="col-md-4 control-label">联系电话：</label>
+																					<div class="col-xs-6">
+																						<input type="text" class="form-control"
+																							name="workTime" value="123457"
+																							readonly="readonly">
+																					</div>
+																				</div></th>
 
 																		</tr>
 																		<tr>
-																			<th style="width: 50%">联系电话：</th>
+																			<th style="width: 50%">
+																				<div>
+																					<label class="col-md-4 control-label">审核人员：</label>
+																					<div class="col-sm-6">
+																						<select id="approver" class="form-control">
 
-																		</tr>
-																		<tr>
-																			<th style="width: 50%">审核人员：</th>
+																						</select>
+																					</div>
+																				</div>
+																			</th>
 
 																		</tr>
 																	</thead>
@@ -302,7 +330,7 @@
 																	<thead>
 																		<tr>
 																			<th style="width: 50%" rowspan="4"><textarea
-																					cols="50" rows="10" placeholder=""></textarea></th>
+																					cols="70" rows="9" placeholder=""></textarea></th>
 																			<th style="width: 50%" class="hidden-xs">回复时间：</th>
 																		</tr>
 																		<tr>
@@ -312,7 +340,36 @@
 																</table>
 															</div>
 														</div>
+														<div class="form-group">
+															<label class="col-md-2 control-label">上传附件</label>
+															<div class="col-md-10">
+																<table
+																	class="table table-responsive table-striped  table-hover no-margin">
+																	<thead>
+																		<tr>
+																			<td width="30%"><input type="file" name="file"
+																				id="upload" /></td>
+																			<td><div class="details">
+																					<span>上传进度</span> <span class="pull-right" id="uploadProcessing"></span>
+																				</div>
+																				<div class="progress progress-sm">
+																					<div class="progress-bar" role="progressbar"
+																						 aria-valuemin="0"
+																						aria-valuemax="100" id="uploadProcessBar"></div>
+																				</div></td>
+																		</tr>
+																		<tr>
+																			<td colspan="2" id="uploadedFileName"></td>
+																		</tr>
+																	</thead>
+																</table>
+															</div>
+														</div>
 													</form>
+												</div>
+												<div class="container">
+													<button type="button" class="btn btn-success">提交</button>
+													<button type="button" class="btn btn-info">退出</button>
 												</div>
 											</div>
 										</div>
@@ -398,6 +455,8 @@
 	<script type="text/javascript"
 		src="static/commonJS/datePicker/js/locales/bootstrap-datetimepicker.fr.js"
 		charset="UTF-8"></script>
+		<script type="text/javascript"
+		src="static/commonJS/ajaxupload.js"></script>
 
 	<!-- Custom JS -->
 	<script src="static/bootStrapFiles/js/menu.js"></script>
@@ -448,17 +507,19 @@
 			var mon = date.getMonth() + 1;
 			var day = date.getDate();
 			if (day < 10) {
-				 day = "0" + day;
+				day = "0" + day;
 			}
-			if(mon<10){
-				mon ="0"+mon;
+			if (mon < 10) {
+				mon = "0" + mon;
 			}
-			var reportNum = shortName + year + mon + day+"H";
+			var reportNum = shortName + year + mon + day + "H";
 			$("#close_Modal1").trigger("click");
 			$("#modaltoggle2").click();
 			$("#clientName").val(clientName);
 			$("#reportNum").val(reportNum);
 		}
+		
+		
 	</script>
 
 	<script type="text/javascript">
@@ -472,6 +533,40 @@
 			forceParse : 0,
 			showMeridian : 1
 		});
+	</script>
+	
+	<script>
+	var processInterval=null;
+	var process = 0;
+	function process(){
+		$.ajax({
+			url : "uploadProcess",
+			type : 'GET',
+			dataType : 'html',
+			success : function(html) {
+				document.getElementById("uploadProcessing").innerHTML=html+"%";
+				$("#uploadProcessBar").attr("style","width:"+html+''+"%");
+				process = html;
+			}
+		});
+	}
+	$(function() {
+		new AjaxUpload($('#upload'),{
+			action : 'uploadFile',
+			name : 'file',
+			onSubmit : function(file, ext) {
+				processInterval=setInterval(process, 100);
+			},
+			onComplete : function(file, response) {
+				//$("#upload-text").text(response);
+			//	alert("success");
+				//clearInterval(processInterval);
+				if(process=='100'){
+					clearInterval(processInterval);
+				}
+			}
+		});
+	});
 	</script>
 
 

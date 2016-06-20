@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="RoleMapper">
+
+	<select id="findManageAuthByRoleId" parameterType="pd" resultType="pd">
+		select b.GL_ID  , b.ROLE_ID , b.FX_QX , b.FW_QX , b.QX1 , b.QX2 , b.QX3 , b.QX4 from  
+		sys_gl_qx b , sys_role a , sys_user c 
+		where a.AUTH_ID = b.GL_ID and a.ROLE_ID = c.ROLE_ID and c.ROLE_ID = #{ROLE_ID} limit 0,1
+	</select>
+	
+	<select id="findRoleById" parameterType="pd" resultType="pd">
+		select * from sys_role where ROLE_ID = #{ROLE_ID}
+	</select>
+	
+	<select id="findUserAuthByRoleId" parameterType="pd" resultType="pd">
+		select b.U_ID , b.C1 , b.C2 , b.C3 , b.C4,b.Q1 , b.Q2 , b.Q3 , b.Q4 from
+		sys_role a , sys_user_qx b , sys_user c where a.AUTH_ID = b.U_ID and a.ROLE_ID = c.ROLE_ID and c.ROLE_ID = #{ROLE_ID} limit 0,1
+	</select>
+</mapper>

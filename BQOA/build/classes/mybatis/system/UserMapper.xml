@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+	<resultMap type="User" id="userAndRoleResultMap">
+		<id column="USER_ID" property="USER_ID" />
+		<result column="USERNAME" property="USERNAME" />
+		<result column="PASSWORD" property="PASSWORD" />
+		<result column="NAME" property="NAME" />
+		<result column="LAST_LOGIN" property="LAST_LOGIN" />
+		<result column="IP" property="IP" />
+		<result column="STATUS" property="STATUS" />
+		<association property="role" column="ROLE_ID" javaType="role">
+			<id column="ROLE_ID" property="ROLE_ID" />
+			<result column="ROLE_NAME" property="ROLE_NAME" />
+			<result column="ROLE_RIGHTS" property="RIGHTS"/>
+		</association>
+	</resultMap>
+	
+	<select id="getUserAndRoleById" parameterType="String" resultMap="userAndRoleResultMap">
+		select u.USER_ID , u.USERNAME , u.PASSWORD , u.NAME , r.ROLE_ID , r.ROLE_NAME , r.RIGHTS as ROLE_RIGHTS 
+		from SYS_USER u left join SYS_ROLE r on u.ROLE_ID = r.ROLE_ID where u.STATUS=0 and u.USER_ID = #{USER_ID}
+	</select>
+</mapper>

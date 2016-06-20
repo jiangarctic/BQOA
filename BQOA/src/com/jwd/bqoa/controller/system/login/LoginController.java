@@ -89,6 +89,7 @@ public class LoginController extends BaseController{
 						user.setSTATUS(pd.getString("STATUS"));
 						user.setPHONE(pd.getString("PHONE"));
 						user.setEMAIL(pd.getString("EMAIL"));
+						
 						session.setAttribute(Const.SESSION_USER, user);
 						session.removeAttribute(Const.SESSION_SECURITY_CODE);
 						//加入Shiro身份验证
