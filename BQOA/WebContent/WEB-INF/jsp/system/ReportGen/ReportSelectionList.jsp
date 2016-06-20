@@ -360,6 +360,7 @@
 																		</tr>
 																		<tr>
 																			<td colspan="2" id="uploadedFileName"></td>
+																			<input id="fileNameStore" style="display:none" />
 																		</tr>
 																	</thead>
 																</table>
@@ -544,6 +545,7 @@
 			type : 'GET',
 			dataType : 'html',
 			success : function(html) {
+				alert(html);
 				document.getElementById("uploadProcessing").innerHTML=html+"%";
 				$("#uploadProcessBar").attr("style","width:"+html+''+"%");
 				process = html;
@@ -551,22 +553,35 @@
 		});
 	}
 	$(function() {
+		document.getElementById("uploadProcessing").innerHTML="";
+		$("#uploadProcessBar").attr("style","width:0%");
 		new AjaxUpload($('#upload'),{
+			
 			action : 'uploadFile',
 			name : 'file',
 			onSubmit : function(file, ext) {
 				processInterval=setInterval(process, 100);
+				document.getElementById("uploadProcessing").innerHTML="正在上传...";
+				
 			},
 			onComplete : function(file, response) {
-				//$("#upload-text").text(response);
-			//	alert("success");
-				//clearInterval(processInterval);
-				if(process=='100'){
-					clearInterval(processInterval);
-				}
+				document.getElementById("uploadProcessing").innerHTML="上传成功";
+				clearInterval(processInterval);
+				$("#uploadProcessBar").attr("style","width:100%");
+				var result = response.split(",");
+				var oriName = result[0];
+				var fileName = result[1];
+				$("#fileNameStore").val(fileName);
+				document.getElementById("uploadedFileName").innerHTML=oriName+'   &nbsp;<span class="fa fa-times" onclick="javascript:cancelFile()"></span>';			
 			}
 		});
 	});
+	
+	function cancelFile(){
+		alert("calce");
+		var fileName= $("#fileNameStore").val();
+		alert(fileName);
+	}
 	</script>
 
 
