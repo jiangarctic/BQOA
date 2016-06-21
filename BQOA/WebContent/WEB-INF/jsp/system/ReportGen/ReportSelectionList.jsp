@@ -131,7 +131,7 @@
 															<div class="col-sm-10">
 																<div class="col-sm-10">
 																	<select id="inquireType" class="form-control">
-																		<option value="面谈">面谈</option>
+																		<option value="面谈">现场</option>
 																		<option value="面谈">电话</option>
 																	</select>
 																</div>
@@ -161,241 +161,7 @@
 					</div>
 
 					<!-- MOdql fade 2 Start -->
-					<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog"
-							style="width: 75%; height: 90%; overflow-y: auto;">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										id="modal_close2" aria-hidden="true">&times;</button>
-
-								</div>
-								<div class="modal-body">
-									<div class="row">
-										<div class="col-lg-12 col-md-12">
-											<div class="widget">
-												<div class="widget-header">
-													<div class="title">
-														法律事务处理记录-详情<span class="mini-title"> <a
-															id="create-account"></a>
-														</span>
-													</div>
-												</div>
-												<div class="widget-body">
-													<form class="form-horizontal row-border" id="flswclForm">
-														<div class="form-group">
-
-															<div class="col-md-15">
-
-																<div>
-																	<label class="col-md-2 control-label">公司名称：</label>
-																	<div class="col-xs-5">
-																		<input type="text" class="form-control" name="clientName"
-																			id="clientName">
-																	</div>
-																</div>
-																<div>
-																	<label class="col-md-2 control-label">编号：</label>
-																	<div class="col-xs-3">
-																		<input type="text" class="form-control" placeholder="" name="reportNum"
-																			id="reportNum">
-																	</div>
-																</div>
-
-
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">咨询日期</label>
-															<div class="col-sm-10">
-																<div class="input-group date form_datetime col-md-5"
-																	data-date-format="yyyy年mm月dd日  p HH:ii"
-																	data-link-field="dtp_input1">
-																	<input class="form-control" size="16" type="text"
-																		 name="inquireTime"> <span
-																		class="input-group-addon"><span
-																		class="glyphicon glyphicon-remove"></span></span> <span
-																		class="input-group-addon"><span
-																		class="glyphicon glyphicon-th"></span></span>
-																</div>
-																<input type="hidden" id="dtp_input1" value="" /><br />
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">咨询方式</label>
-															<div class="col-md-10">
-																<input class="form-control" type="text" name="inquireType"
-																	id="inquireType">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">咨询人及所属部门、职务</label>
-															<div class="col-md-10">
-																<input class="form-control" type="text" name="inquireer"
-																	value="">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">联系方式</label>
-															<div class="col-md-10">
-																<input type="text" name="inquireerPhone" class="form-control"
-																	value="">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">电子邮箱</label>
-															<div class="col-md-10">
-																<input class="form-control" type="text" name="inquireerEmail"
-																	value="">
-															</div>
-														</div>
-
-														<div class="form-group">
-															<label class="col-md-2 control-label">法律事务内容概述：</label>
-															<div class="col-md-9">
-																<textarea class="textarea form-control" placeholder="" name="reportBrief"></textarea>
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">公司提供的文件材料</label>
-															<div class="col-md-10">
-																<input class="form-control" type="text" name="givenFiles">
-															</div>
-														</div>
-
-
-														<div class="form-group">
-															<label class="col-md-2 control-label">处理意见</label>
-															<div class="col-md-10">
-																<table
-																	class="table table-responsive table-striped table-bordered table-hover no-margin">
-																	<thead>
-																		<tr>
-																			<th style="width: 50%" rowspan="4"><textarea
-																					cols="70" rows="9" placeholder="请填写处理意见" name="suggestions"></textarea>
-																			</th>
-																			<th style="width: 50%" class="hidden-xs"><div>
-																					<label class="col-md-4 control-label">工作人员：</label>
-																					<div class="col-xs-6">
-																						<input type="text" class="form-control"
-																							name="worker" value="江万东" readonly="readonly">
-																					</div>
-																				</div></th>
-																		</tr>
-																		<tr>
-																			<th style="width: 50%">
-																				<div>
-																					<label class="col-md-4 control-label">工作时间：</label>
-																					<div class="col-xs-6">
-																						<input type="text" class="form-control"
-																							name="workTime" placeholder="">
-																					</div>
-																				</div>小时
-																			</th>
-																		</tr>
-																		<tr>
-																			<th style="width: 50%"><div>
-																					<label class="col-md-4 control-label">联系电话：</label>
-																					<div class="col-xs-6">
-																						<input type="text" class="form-control"
-																							name="workerPhone" 
-																							readonly="readonly" value="${sessionUser.PHONE }">
-																					</div>
-																				</div></th>
-
-																		</tr>
-																		<tr>
-																			<th style="width: 50%">
-																				<div>
-																					<label class="col-md-4 control-label">审核人员：</label>
-																					<div class="col-sm-6">
-																						<select id="approver" class="form-control" name="approver">
-
-																						</select>
-																					</div>
-																				</div>
-																			</th>
-
-																		</tr>
-																	</thead>
-																</table>
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">结果性文件材料名称</label>
-															<div class="col-md-10">
-																<table
-																	class="table table-responsive table-striped table-bordered table-hover no-margin">
-																	<thead>
-																		<tr>
-																			<th style="width: 50%" rowspan="4"><textarea
-																					cols="70" rows="9" placeholder="" name="resultFileName"></textarea></th>
-																			<th style="width: 50%" class="hidden-xs"><div>
-																					<label class="col-md-4 control-label">回复时间</label>
-																					<div class="col-xs-6">
-																						<input type="text" class="form-control"
-																							name="replyTime" 
-																							readonly="readonly" value="">
-																					</div>
-																				</div></th>
-																		</tr>
-																		<tr>
-																			<th style="width: 50%"><div>
-																					<label class="col-md-4 control-label">回复方式：</label>
-																					<div class="col-xs-6">
-																						<input type="text" class="form-control"
-																							name="replyType" 
-																							readonly="readonly" value="">
-																							<input id="fileNameStore" style="display:none" name="suffixFileUrl"/>
-																					</div>
-																				</div></th>
-																		</tr>
-																	</thead>
-																</table>
-																</form>
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">上传附件</label>
-															<div class="col-md-10">
-																<table
-																	class="table table-responsive table-striped  table-hover no-margin">
-																	<thead>
-																		<tr>
-																			<td width="30%"><input type="file" name="file"
-																				id="upload" /></td>
-																			<td><div class="details">
-																					<span>上传进度</span> <span class="pull-right" id="uploadProcessing"></span>
-																				</div>
-																				<div class="progress progress-sm">
-																					<div class="progress-bar" role="progressbar"
-																						 aria-valuemin="0"
-																						aria-valuemax="100" id="uploadProcessBar"></div>
-																				</div></td>
-																		</tr>
-																		<tr>
-																			<td colspan="2" id="uploadedFileName"></td>
-																			
-																		</tr>
-																	</thead>
-																</table>
-															</div>
-														</div>
-													
-												</div>
-												<div class="container">
-													<button type="button" id="submitButton" class="btn btn-success" onclick="checkAndSubmitForm()">提交并生成文件</button>
-													<button type="button" class="btn btn-info">退出</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
+					
 					<!-- MOdal fade 2 End -->
 					<!-- Row starts -->
 					<div class="row"></div>
@@ -531,9 +297,7 @@
 			}
 			var reportNum = shortName + year + mon + day + "H";
 			$("#close_Modal1").trigger("click");
-			$("#modaltoggle2").click();
-			$("#clientName").val(clientName);
-			$("#reportNum").val(reportNum);
+			location.href="newFlswclPage.do?clientName="+clientName+"&reportNum="+reportNum+"&inquireType="+type;
 		}
 		
 		
@@ -621,7 +385,7 @@
 	
 	function checkAndSubmitForm(){
 		$("#submitButton").attr("disabled","true");
-		$("#submitButton").innerHTML="正在提交...";
+		document.getElementById("submitButton").innerHTML="正在提交...";
 		var tableData = $("#flswclForm").serialize();
 		$.ajax({
 			data:tableData,
@@ -630,9 +394,9 @@
 			type:'post',
 			success:function(data){
 				if(data.msg=='success'){
-					location.href="flswclReportList";
+					location.href="flswclReportList.do";
 				}else{
-					alert(data.msg);
+					alert('发生未知错误，请联系管理员');
 				}
 			}
 		});

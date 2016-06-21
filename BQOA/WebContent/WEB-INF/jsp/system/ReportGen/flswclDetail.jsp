@@ -15,16 +15,20 @@
 <meta name="author" content="Bootstrap Gallery" />
 <link rel="shortcut icon" href="img/favicon.ico">
 
-<link href="static/bootStrapFiles/css/bootstrap.min.css" rel="stylesheet">
-<link href="static/bootStrapFiles/css/wysi/bootstrap-wysihtml5.css" rel="stylesheet">
+<link href="static/bootStrapFiles/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="static/bootStrapFiles/css/wysi/bootstrap-wysihtml5.css"
+	rel="stylesheet">
 
 <link href="static/bootStrapFiles/css/new.css" rel="stylesheet">
 <!-- Important. For Theming change primary-color variable in main.css  -->
 
 <!-- Color Picker -->
-<link rel="stylesheet" href="static/bootStrapFiles/css/color-picker/jquery.minicolors.css">
+<link rel="stylesheet"
+	href="static/bootStrapFiles/css/color-picker/jquery.minicolors.css">
 
-<link href="static/bootStrapFiles/fonts/font-awesome.min.css" rel="stylesheet">
+<link href="static/bootStrapFiles/fonts/font-awesome.min.css"
+	rel="stylesheet">
 
 <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -35,7 +39,7 @@
 
 <body>
 	<c:set var="currentMain_Menu" value="办公" />
-	<c:set var="currentSub_Menu" value="生成报告" />
+	<c:set var="currentSub_Menu" value="" />
 	<!-- Header Start -->
 	<%@ include file="/WEB-INF/jsp/system/admin/homeHeader.jsp"%>
 
@@ -87,14 +91,16 @@
 												<div>
 													<label class="col-md-2 control-label">公司名称：</label>
 													<div class="col-xs-5">
-														<input type="text" class="form-control" id="clientName">
+														<input type="text" class="form-control" id="clientName"
+															value="${flswcl.clientName }" readonly="readonly">
 													</div>
 												</div>
 												<div>
 													<label class="col-md-2 control-label">编号：</label>
 													<div class="col-xs-3">
-														<input type="text" class="form-control" placeholder=""
-															id="reportNum">
+														<input type="text" class="form-control"
+															value="${flswcl.reportNum }" id="reportNum"
+															readonly="readonly">
 													</div>
 												</div>
 
@@ -107,8 +113,9 @@
 												<div class="input-group date form_datetime col-md-5"
 													data-date-format="yyyy年mm月dd日  p HH:ii"
 													data-link-field="dtp_input1">
-													<input class="form-control" size="16" type="text" value=""
-														readonly> <span class="input-group-addon"><span
+													<input class="form-control" size="16" type="text"
+														value="${flswcl.inquireTime }" readonly> <span
+														class="input-group-addon"><span
 														class="glyphicon glyphicon-remove"></span></span> <span
 														class="input-group-addon"><span
 														class="glyphicon glyphicon-th"></span></span>
@@ -119,42 +126,44 @@
 										<div class="form-group">
 											<label class="col-md-2 control-label">咨询方式</label>
 											<div class="col-md-10">
-												<input class="form-control" type="text" name="pass"
-													id="inquireType">
+												<input class="form-control" type="text" name="inquireType"
+													id="inquireType" value="${flswcl.inquireType }">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-md-2 control-label">咨询人及所属部门、职务</label>
 											<div class="col-md-10">
 												<input class="form-control" type="text" name="inquireer"
-													value="">
+													value="${flswcl.inquireer }">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-md-2 control-label">联系方式</label>
 											<div class="col-md-10">
-												<input type="text" name="regular" class="form-control"
-													value="${user.PHONE }">
+												<input type="text" name="inquireerPhone "
+													class="form-control" value="${flswcl.inquireerPhone }">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-md-2 control-label">电子邮箱</label>
 											<div class="col-md-10">
-												<input class="form-control" type="text" name="pass"
-													value="${user.EMAIL }">
+												<input class="form-control" type="text"
+													name="inquireerEmail" value="${flswcl.inquireerEmail }">
 											</div>
 										</div>
 
 										<div class="form-group">
 											<label class="col-md-2 control-label">法律事务内容概述：</label>
 											<div class="col-md-9">
-												<textarea class="textarea form-control" placeholder=""></textarea>
+												<textarea class="textarea form-control" placeholder="" width="100%"
+													name="reportBrief">${flswcl.reportBrief }</textarea>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-md-2 control-label">公司提供的文件材料</label>
 											<div class="col-md-10">
-												<input class="form-control" type="text" name="pass">
+												<input class="form-control" type="text" name="givenFiles"
+													value="${flswcl.givenFiles }">
 											</div>
 										</div>
 
@@ -167,12 +176,14 @@
 													<thead>
 														<tr>
 															<th style="width: 50%" rowspan="4"><textarea
-																	cols="70" rows="9" placeholder="请填写处理意见"></textarea></th>
+																	cols="70" rows="9" name="suggestions"
+																	>${flswcl.suggestions }</textarea></th>
 															<th style="width: 50%" class="hidden-xs"><div>
 																	<label class="col-md-5 control-label">工作人员：</label>
 																	<div class="col-xs-6">
-																		<input type="text" class="form-control"
-																			name="workTime" value="江万东" readonly="readonly">
+																		<input type="text" class="form-control" name="worker"
+																			value="江万东" readonly="readonly"
+																			value="${flswcl.work }">
 																	</div>
 																</div></th>
 														</tr>
@@ -182,7 +193,8 @@
 																	<label class="col-md-5 control-label">工作时间：</label>
 																	<div class="col-xs-6">
 																		<input type="text" class="form-control"
-																			name="workTime" placeholder="">
+																			name="workTime" placeholder=""
+																			value="${flswcl.workTime }">
 																	</div>
 																</div>小时
 															</th>
@@ -192,7 +204,8 @@
 																	<label class="col-md-5 control-label">联系电话：</label>
 																	<div class="col-xs-6">
 																		<input type="text" class="form-control"
-																			name="workTime" value="123457" readonly="readonly">
+																			name="workerPhone" value="${flswcl.workerPhone }"
+																			readonly="readonly">
 																	</div>
 																</div></th>
 
@@ -202,9 +215,9 @@
 																<div>
 																	<label class="col-md-5 control-label">审核人员：</label>
 																	<div class="col-sm-6">
-																		<select id="approver" class="form-control">
-
-																		</select>
+																		<input type="text" class="form-control"
+																			name="approver" value="${flswcl.approver }"
+																			readonly="readonly">
 																	</div>
 																</div>
 															</th>
@@ -222,11 +235,29 @@
 													<thead>
 														<tr>
 															<th style="width: 50%" rowspan="4"><textarea
-																	cols="70" rows="9" placeholder=""></textarea></th>
-															<th style="width: 50%" class="hidden-xs">回复时间：</th>
+																	cols="70" rows="9" placeholder="" name="resultFileName">${flswcl.resultFileName }</textarea></th>
+															<th style="width: 50%" class="hidden-xs">
+																<div>
+																	<label class="col-md-5 control-label">回复时间：</label>
+																	<div class="col-sm-6">
+																		<input type="text" class="form-control"
+																			name="replyTime" value="${flswcl.replyTime }"
+																			readonly="readonly">
+																	</div>
+																</div>
+															</th>
 														</tr>
 														<tr>
-															<th style="width: 50%">回复方式：</th>
+															<th style="width: 50%">
+																<div>
+																	<label class="col-md-5 control-label">回复方式：</label>
+																	<div class="col-sm-6">
+																		<input type="text" class="form-control"
+																			name="replyType" value="${flswcl.replyType }"
+																			readonly="readonly">
+																	</div>
+																</div>
+															</th>
 														</tr>
 													</thead>
 												</table>
@@ -356,7 +387,8 @@
 	<script src="static/bootStrapFiles/js/jquery.scrollUp.js"></script>
 
 	<!-- Color Picker -->
-	<script src="static/bootStrapFiles/js/color-picker/jquery.minicolors.js"></script>
+	<script
+		src="static/bootStrapFiles/js/color-picker/jquery.minicolors.js"></script>
 
 	<!-- Custom JS -->
 	<script src="static/bootStrapFiles/js/menu.js"></script>

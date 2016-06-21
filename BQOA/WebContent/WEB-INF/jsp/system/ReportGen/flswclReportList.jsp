@@ -80,6 +80,7 @@
                           <th>生成时间</th>
                           <th>状态</th>
                           <th>生成文件</th>
+                          <th>操作</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -97,6 +98,7 @@
                               ${flsw.status}
                             </span></c:if></td>
 								<td><a href="downloadFile.do?url=${flsw.genFileUrl }&oriName=${flsw.genFileName }">${flsw.genFileName }</a></td>
+								<td><a href="showOneFlswclDetail.do?id=${flsw.id }"><span class="fa fa-pencil-square">&nbsp;详情</span></a>&nbsp;&nbsp;<a href="#"><span class="fa fa-times">&nbsp;删除</span></a></td>
 							</tr>
 						</c:forEach>
                       </tbody>

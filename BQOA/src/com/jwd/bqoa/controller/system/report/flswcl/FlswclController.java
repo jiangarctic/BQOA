@@ -45,7 +45,6 @@ public class FlswclController extends BaseController{
 			fileGenInfo = generateFlswclWordService.genFlswclWord(genFileInfo);
 		}catch(Exception e){
 			result.put("msg", "文件生成时产生错误，请联系管理员");
-			return result;
 		}
 		try{
 			pd.put("genFileUrl", fileGenInfo.get(0));
@@ -55,11 +54,9 @@ public class FlswclController extends BaseController{
 			flswclService.insertNewFlswReport(pd);
 			result.put("msg", "success");
 		}catch(Exception e){
-			e.printStackTrace();
-			result.put("msg", "发生未知错误，请联系管理员");
-			return result;
+			e.printStackTrace();			
 		}
-		return null;
+		return result;
 	}
 	
 	@RequestMapping(value="/flswclReportList")
@@ -71,9 +68,22 @@ public class FlswclController extends BaseController{
 		return mv;
 	}
 	@RequestMapping(value="/showOneFlswclDetail")
-	public ModelAndView showOneFlswclDetail(){
+	public ModelAndView showOneFlswclDetail() throws Exception{
 		ModelAndView mv = this.getModelAndView();
+		PageData pd = this.getPageData();
+		
 		mv.setViewName("system/ReportGen/flswclDetail");
+		PageData pd2 = flswclService.queryOneFlswcl(pd);
+		mv.addObject("flswcl"  , pd2);
+		return mv;
+	}
+	
+	@RequestMapping(value="/newFlswclPage")
+	public ModelAndView newFlswclPage(){
+		ModelAndView mv = this.getModelAndView();
+		PageData pd = this.getPageData();
+		System.out.println(pd);
+		mv.setViewName("system/ReportGen/newFlswcl");
 		return mv;
 	}
 }

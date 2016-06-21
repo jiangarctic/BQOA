@@ -23,4 +23,8 @@ public class FlswclService {
 	public List<PageData> queryFlswcl() throws Exception{
 		return (List<PageData>) dao.findForList("FlswclMapper.queryAllflswcl", null);
 	}
+	
+	public PageData queryOneFlswcl(PageData pd) throws Exception{
+		return (PageData) dao.findForObject("FlswclMapper.queryOneFlswcl", pd);
+	}
 }
