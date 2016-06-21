@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FlswclMapper">
+	<insert id="insertNewFlswcl" parameterType="pd" flushCache="false">
+		insert into sys_flswcl (clientName,reportNum,inquireTime,inquireType,inquireer,
+		inquireerPhone,inquireerEmail,reportBrief,givenFiles,suggestions,worker,workTime,
+		workerPhone,approver,resultFileName,replyTime,replyType,genFileUrl , genFileName , genTime, status)
+		 values(#{clientName},#{reportNum},#{inquireTime},#{inquireType},#{inquireer},
+		#{inquireerPhone},#{inquireerEmail},#{reportBrief},#{givenFiles},#{suggestions},#{worker},#{workTime},
+		#{workerPhone},#{approver},#{resultFileName},#{replyTime},#{replyType},#{genFileUrl} , #{genFileName} , #{genTime},#{status});
+	</insert>
+	
+	<select id="queryAllflswcl" resultType="pd">
+		select * from sys_flswcl where 1=1
+	</select>
+</mapper>

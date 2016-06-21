@@ -29,14 +29,9 @@ public TestWord(){
 	configuration.setDefaultEncoding("UTF-8");
 }
 
-public static void main(String[] args) throws DocumentException{
-	TestWord tw = new TestWord();
-	//word2xml();
-	tw.createWord();
-	 System.out.println("---------------------word文件已生成!");
-}
 
-public void createWord() throws DocumentException{
+
+private void createWord() throws DocumentException{
 	Map<String , Object> dataMap  = new HashMap<String , Object>();
 	getData(dataMap);
 	configuration .setClassForTemplateLoading(this.getClass(), "/wordTemplate");

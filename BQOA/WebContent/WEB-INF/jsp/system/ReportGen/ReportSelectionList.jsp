@@ -183,7 +183,7 @@
 													</div>
 												</div>
 												<div class="widget-body">
-													<form class="form-horizontal row-border" action="">
+													<form class="form-horizontal row-border" id="flswclForm">
 														<div class="form-group">
 
 															<div class="col-md-15">
@@ -191,14 +191,14 @@
 																<div>
 																	<label class="col-md-2 control-label">公司名称：</label>
 																	<div class="col-xs-5">
-																		<input type="text" class="form-control"
+																		<input type="text" class="form-control" name="clientName"
 																			id="clientName">
 																	</div>
 																</div>
 																<div>
 																	<label class="col-md-2 control-label">编号：</label>
 																	<div class="col-xs-3">
-																		<input type="text" class="form-control" placeholder=""
+																		<input type="text" class="form-control" placeholder="" name="reportNum"
 																			id="reportNum">
 																	</div>
 																</div>
@@ -213,7 +213,7 @@
 																	data-date-format="yyyy年mm月dd日  p HH:ii"
 																	data-link-field="dtp_input1">
 																	<input class="form-control" size="16" type="text"
-																		value="" readonly> <span
+																		 name="inquireTime"> <span
 																		class="input-group-addon"><span
 																		class="glyphicon glyphicon-remove"></span></span> <span
 																		class="input-group-addon"><span
@@ -225,7 +225,7 @@
 														<div class="form-group">
 															<label class="col-md-2 control-label">咨询方式</label>
 															<div class="col-md-10">
-																<input class="form-control" type="text" name="pass"
+																<input class="form-control" type="text" name="inquireType"
 																	id="inquireType">
 															</div>
 														</div>
@@ -239,28 +239,28 @@
 														<div class="form-group">
 															<label class="col-md-2 control-label">联系方式</label>
 															<div class="col-md-10">
-																<input type="text" name="regular" class="form-control"
-																	value="${user.PHONE }">
+																<input type="text" name="inquireerPhone" class="form-control"
+																	value="">
 															</div>
 														</div>
 														<div class="form-group">
 															<label class="col-md-2 control-label">电子邮箱</label>
 															<div class="col-md-10">
-																<input class="form-control" type="text" name="pass"
-																	value="${user.EMAIL }">
+																<input class="form-control" type="text" name="inquireerEmail"
+																	value="">
 															</div>
 														</div>
 
 														<div class="form-group">
 															<label class="col-md-2 control-label">法律事务内容概述：</label>
 															<div class="col-md-9">
-																<textarea class="textarea form-control" placeholder=""></textarea>
+																<textarea class="textarea form-control" placeholder="" name="reportBrief"></textarea>
 															</div>
 														</div>
 														<div class="form-group">
 															<label class="col-md-2 control-label">公司提供的文件材料</label>
 															<div class="col-md-10">
-																<input class="form-control" type="text" name="pass">
+																<input class="form-control" type="text" name="givenFiles">
 															</div>
 														</div>
 
@@ -273,13 +273,13 @@
 																	<thead>
 																		<tr>
 																			<th style="width: 50%" rowspan="4"><textarea
-																					cols="70" rows="9" placeholder="请填写处理意见"></textarea>
+																					cols="70" rows="9" placeholder="请填写处理意见" name="suggestions"></textarea>
 																			</th>
 																			<th style="width: 50%" class="hidden-xs"><div>
 																					<label class="col-md-4 control-label">工作人员：</label>
 																					<div class="col-xs-6">
 																						<input type="text" class="form-control"
-																							name="workTime" value="江万东" readonly="readonly">
+																							name="worker" value="江万东" readonly="readonly">
 																					</div>
 																				</div></th>
 																		</tr>
@@ -299,8 +299,8 @@
 																					<label class="col-md-4 control-label">联系电话：</label>
 																					<div class="col-xs-6">
 																						<input type="text" class="form-control"
-																							name="workTime" value="123457"
-																							readonly="readonly">
+																							name="workerPhone" 
+																							readonly="readonly" value="${sessionUser.PHONE }">
 																					</div>
 																				</div></th>
 
@@ -310,7 +310,7 @@
 																				<div>
 																					<label class="col-md-4 control-label">审核人员：</label>
 																					<div class="col-sm-6">
-																						<select id="approver" class="form-control">
+																						<select id="approver" class="form-control" name="approver">
 
 																						</select>
 																					</div>
@@ -330,14 +330,30 @@
 																	<thead>
 																		<tr>
 																			<th style="width: 50%" rowspan="4"><textarea
-																					cols="70" rows="9" placeholder=""></textarea></th>
-																			<th style="width: 50%" class="hidden-xs">回复时间：</th>
+																					cols="70" rows="9" placeholder="" name="resultFileName"></textarea></th>
+																			<th style="width: 50%" class="hidden-xs"><div>
+																					<label class="col-md-4 control-label">回复时间</label>
+																					<div class="col-xs-6">
+																						<input type="text" class="form-control"
+																							name="replyTime" 
+																							readonly="readonly" value="">
+																					</div>
+																				</div></th>
 																		</tr>
 																		<tr>
-																			<th style="width: 50%">回复方式：</th>
+																			<th style="width: 50%"><div>
+																					<label class="col-md-4 control-label">回复方式：</label>
+																					<div class="col-xs-6">
+																						<input type="text" class="form-control"
+																							name="replyType" 
+																							readonly="readonly" value="">
+																							<input id="fileNameStore" style="display:none" name="suffixFileUrl"/>
+																					</div>
+																				</div></th>
 																		</tr>
 																	</thead>
 																</table>
+																</form>
 															</div>
 														</div>
 														<div class="form-group">
@@ -360,16 +376,16 @@
 																		</tr>
 																		<tr>
 																			<td colspan="2" id="uploadedFileName"></td>
-																			<input id="fileNameStore" style="display:none" />
+																			
 																		</tr>
 																	</thead>
 																</table>
 															</div>
 														</div>
-													</form>
+													
 												</div>
 												<div class="container">
-													<button type="button" class="btn btn-success">提交</button>
+													<button type="button" id="submitButton" class="btn btn-success" onclick="checkAndSubmitForm()">提交并生成文件</button>
 													<button type="button" class="btn btn-info">退出</button>
 												</div>
 											</div>
@@ -565,22 +581,61 @@
 				
 			},
 			onComplete : function(file, response) {
-				document.getElementById("uploadProcessing").innerHTML="上传成功";
-				clearInterval(processInterval);
-				$("#uploadProcessBar").attr("style","width:100%");
-				var result = response.split(",");
-				var oriName = result[0];
-				var fileName = result[1];
-				$("#fileNameStore").val(fileName);
-				document.getElementById("uploadedFileName").innerHTML=oriName+'   &nbsp;<span class="fa fa-times" onclick="javascript:cancelFile()"></span>';			
+				if(response=='typeerror'){
+					alert("只能上传word格式的文件");
+					document.getElementById("uploadProcessing").innerHTML="";
+				}else{
+					document.getElementById("uploadProcessing").innerHTML="上传成功";
+					clearInterval(processInterval);
+					$("#uploadProcessBar").attr("style","width:100%");
+					var result = response.split(",");
+					var oriName = result[0];
+					var fileName = result[1];
+					$("#fileNameStore").val(fileName);
+					document.getElementById("uploadedFileName").innerHTML=oriName+'   &nbsp;<span class="fa fa-times" onclick="javascript:cancelFile()"></span>';
+				}
+				
 			}
 		});
 	});
 	
 	function cancelFile(){
-		alert("calce");
 		var fileName= $("#fileNameStore").val();
-		alert(fileName);
+		$.ajax({
+			data:'fileUrl='+fileName,
+			url:'deleteUploadedFile',
+			dataType:'json',
+			type:'post',
+			success:function(data){
+				if(data.msg=='success'){
+					document.getElementById("uploadedFileName").innerHTML="";
+					$("#fileNameStore").val("");
+					document.getElementById("uploadProcessing").innerHTML="";
+					$("#uploadProcessBar").attr("style","width:0%");
+				}else{
+					alert("删除文件失败");
+				}
+			}
+		});
+	}
+	
+	function checkAndSubmitForm(){
+		$("#submitButton").attr("disabled","true");
+		$("#submitButton").innerHTML="正在提交...";
+		var tableData = $("#flswclForm").serialize();
+		$.ajax({
+			data:tableData,
+			url:'generateFlswclReport',
+			dataType:'json',
+			type:'post',
+			success:function(data){
+				if(data.msg=='success'){
+					location.href="flswclReportList";
+				}else{
+					alert(data.msg);
+				}
+			}
+		});
 	}
 	</script>
 

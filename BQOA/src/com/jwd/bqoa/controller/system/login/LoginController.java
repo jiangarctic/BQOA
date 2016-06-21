@@ -145,7 +145,6 @@ public class LoginController extends BaseController{
 				
 				List<Menu> allmenuList = new ArrayList<Menu>();
 				if(null == session.getAttribute(Const.SESSION_allmenuList)){
-					System.out.println("allmenulist null");
 					allmenuList = menuService.listAllMenu();
 					if(Tools.notEmpty(roleRights)){
 						for(Menu menu : allmenuList){

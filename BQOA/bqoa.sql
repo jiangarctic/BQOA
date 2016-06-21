@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50535
 File Encoding         : 65001
 
-Date: 2016-06-14 18:37:40
+Date: 2016-06-21 18:01:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,13 +30,50 @@ CREATE TABLE `sys_client` (
   `commissionEnd` varchar(255) DEFAULT NULL,
   `shortName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_client
 -- ----------------------------
 INSERT INTO `sys_client` VALUES ('1', '江万东', '前卫西路', 'com', '养眼', '18314496694', '2016-06-15', '2016-06-18', '万东');
 INSERT INTO `sys_client` VALUES ('2', '杨燕', '云南昆明打算看见！！克里斯丁', 'other', '啊', '18469144019', '2016-06-01', '2018-07-12', '燕');
+INSERT INTO `sys_client` VALUES ('3', 'rg', 'sgd', 'person', 'dfg', 'dfg', '2016-06-17', '2016-06-22', null);
+INSERT INTO `sys_client` VALUES ('4', '万东', '22', 'person', '呃呃呃', '是是是', '2016-06-08', '2016-06-18', null);
+
+-- ----------------------------
+-- Table structure for sys_flswcl
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_flswcl`;
+CREATE TABLE `sys_flswcl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `clientName` varchar(255) DEFAULT NULL,
+  `reportNum` varchar(255) DEFAULT NULL,
+  `inquireTime` varchar(50) DEFAULT NULL,
+  `inquireType` varchar(100) DEFAULT NULL,
+  `inquireer` varchar(100) DEFAULT NULL,
+  `inquireerPhone` varchar(100) DEFAULT NULL,
+  `inquireerEmail` varchar(100) DEFAULT NULL,
+  `reportBrief` varchar(2000) DEFAULT NULL,
+  `givenFiles` varchar(1000) DEFAULT NULL,
+  `suggestions` varchar(1000) DEFAULT NULL,
+  `worker` varchar(50) DEFAULT NULL,
+  `workTime` varchar(20) DEFAULT NULL,
+  `workerPhone` varchar(20) DEFAULT NULL,
+  `approver` varchar(50) DEFAULT NULL,
+  `resultFileName` varchar(500) DEFAULT NULL,
+  `replyTime` varchar(20) DEFAULT NULL,
+  `replyType` varchar(100) DEFAULT NULL,
+  `genFileUrl` varchar(255) DEFAULT NULL,
+  `genFileName` varchar(255) DEFAULT NULL,
+  `genTime` varchar(20) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_flswcl
+-- ----------------------------
+INSERT INTO `sys_flswcl` VALUES ('1', '江万东', '万东160621H', '2016年06月21日  下午 02:07', 'fewwe', 'fwf', 'wfw', 'fwfwe', 'fwf', 'wfwf', 'wefewfwef', '江万东', '22', '18314496694', null, 'dwadwa', '', '', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/flsw/江万东/万东160621H_江万东.doc', '万东160621H_江万东.doc', '2016-06-21 14:08:00', '新建');
 
 -- ----------------------------
 -- Table structure for sys_gl_qx
@@ -78,13 +115,14 @@ CREATE TABLE `sys_menu` (
 -- ----------------------------
 INSERT INTO `sys_menu` VALUES ('1', '首页', 'to_home.do', '0', '1', 'sidebar.nav.element.ELEMENTS');
 INSERT INTO `sys_menu` VALUES ('2', '工作台', '#', '1', '1', 'sidebar.nav.element.BUTTON');
-INSERT INTO `sys_menu` VALUES ('3', '日程', 'reportSelectionList.do', '1', '2', 'sidebar.nav.element.NOTIFICATION');
+INSERT INTO `sys_menu` VALUES ('3', '日程', '#', '1', '2', 'sidebar.nav.element.NOTIFICATION');
 INSERT INTO `sys_menu` VALUES ('4', '办公', 'reportSelectionList.do', '0', '2', null);
 INSERT INTO `sys_menu` VALUES ('5', '生成报告', 'reportSelectionList.do', '4', '1', null);
 INSERT INTO `sys_menu` VALUES ('6', '通讯录', '#', '1', '3', null);
 INSERT INTO `sys_menu` VALUES ('7', '客户关系', 'CRM_ClientList.do', '0', '3', null);
 INSERT INTO `sys_menu` VALUES ('8', '客户列表', 'CRM_ClientList.do', '7', '1', null);
 INSERT INTO `sys_menu` VALUES ('9', '个人事项', '#', '1', '4', null);
+INSERT INTO `sys_menu` VALUES ('10', '法律事务报表', 'flswclReportList.do', '4', '2', null);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -106,7 +144,7 @@ CREATE TABLE `sys_role` (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1', '管理员', '1023', '0', '1', '1023', '1', '1', '1');
+INSERT INTO `sys_role` VALUES ('1', '管理员', '2047', '0', '1', '2047', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for sys_user
