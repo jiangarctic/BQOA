@@ -75,223 +75,165 @@
 					<!-- Row End -->
 
 					<!-- Row Start -->
-					<div class="row">
-										<div class="col-lg-12 col-md-12">
-											<div class="widget">
-												<div class="widget-header">
-													<div class="title">
-														法律事务处理记录-详情<span class="mini-title"> <a
-															id="create-account"></a>
-														</span>
-													</div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12">
+                <div class="widget">
+                  <div class="widget-header">
+                    <div class="title">
+                     法律事务处理-新建
+                    </div>
+                    <span class="tools">
+                      <i class="fa fa-cogs"></i>
+                    </span>
+                  </div>
+                  <div class="widget-body">
+                    <form class="form-horizontal row-border" action="generateFlswclReport.do" id="flswclForm" onsubmit="return checkSubmit();">
+                      <div class="form-group">
+                        <label class="col-md-2 control-label">公司名称</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="clientName" readonly value="${pd.clientName }" id="clientName">
+                        </div>
+						<label class="col-md-2 control-label">编号</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="reportNum" id="reportNum"  value="${pd.reportNum }">
+                        </div>
+                      </div>
+
+
+	                      <div class="form-group">
+                        <label class="col-md-2 control-label">咨询日期</label>
+											<div class="col-xs-10">
+												<div class="input-group date form_datetime col-md-15"
+													data-date-format="yyyy年mm月dd日  p HH:ii"
+													data-link-field="dtp_input1">
+													<input class="form-control" size="16" type="text" name="inquireTime"
+														value="${flswcl.inquireTime }" required="required"> <span
+														class="input-group-addon"><span
+														class="glyphicon glyphicon-remove"></span></span> <span
+														class="input-group-addon"><span
+														class="glyphicon glyphicon-th"></span></span>
 												</div>
-												<div class="widget-body">
-													<form class="form-horizontal row-border" id="flswclForm">
-														<div class="form-group">
-
-															<div class="col-md-15">
-
-																<div>
-																	<label class="col-md-2 control-label">公司名称：</label>
-																	<div class="col-xs-5">
-																		<input type="text" class="form-control" name="clientName"
-																			id="clientName">
-																	</div>
-																</div>
-																<div>
-																	<label class="col-md-2 control-label">编号：</label>
-																	<div class="col-xs-3">
-																		<input type="text" class="form-control" placeholder="" name="reportNum"
-																			id="reportNum">
-																	</div>
-																</div>
-
-
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">咨询日期</label>
-															<div class="col-sm-10">
-																<div class="input-group date form_datetime col-md-5"
-																	data-date-format="yyyy年mm月dd日  p HH:ii"
-																	data-link-field="dtp_input1">
-																	<input class="form-control" size="16" type="text"
-																		 name="inquireTime"> <span
-																		class="input-group-addon"><span
-																		class="glyphicon glyphicon-remove"></span></span> <span
-																		class="input-group-addon"><span
-																		class="glyphicon glyphicon-th"></span></span>
-																</div>
-																<input type="hidden" id="dtp_input1" value="" /><br />
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">咨询方式</label>
-															<div class="col-md-10">
-																<input class="form-control" type="text" name="inquireType"
-																	id="inquireType">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">咨询人及所属部门、职务</label>
-															<div class="col-md-10">
-																<input class="form-control" type="text" name="inquireer"
-																	value="">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">联系方式</label>
-															<div class="col-md-10">
-																<input type="text" name="inquireerPhone" class="form-control"
-																	value="">
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">电子邮箱</label>
-															<div class="col-md-10">
-																<input class="form-control" type="text" name="inquireerEmail"
-																	value="">
-															</div>
-														</div>
-
-														<div class="form-group">
-															<label class="col-md-2 control-label">法律事务内容概述：</label>
-															<div class="col-md-9">
-																<textarea class="textarea form-control" placeholder="" name="reportBrief"></textarea>
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">公司提供的文件材料</label>
-															<div class="col-md-10">
-																<input class="form-control" type="text" name="givenFiles">
-															</div>
-														</div>
-
-
-														<div class="form-group">
-															<label class="col-md-2 control-label">处理意见</label>
-															<div class="col-md-10">
-																<table
-																	class="table table-responsive table-striped table-bordered table-hover no-margin">
-																	<thead>
-																		<tr>
-																			<th style="width: 50%" rowspan="4"><textarea
-																					cols="70" rows="9" placeholder="请填写处理意见" name="suggestions"></textarea>
-																			</th>
-																			<th style="width: 50%" class="hidden-xs"><div>
-																					<label class="col-md-4 control-label">工作人员：</label>
-																					<div class="col-xs-6">
-																						<input type="text" class="form-control"
-																							name="worker" value="江万东" readonly="readonly">
-																					</div>
-																				</div></th>
-																		</tr>
-																		<tr>
-																			<th style="width: 50%">
-																				<div>
-																					<label class="col-md-4 control-label">工作时间：</label>
-																					<div class="col-xs-6">
-																						<input type="text" class="form-control"
-																							name="workTime" placeholder="">
-																					</div>
-																				</div>小时
-																			</th>
-																		</tr>
-																		<tr>
-																			<th style="width: 50%"><div>
-																					<label class="col-md-4 control-label">联系电话：</label>
-																					<div class="col-xs-6">
-																						<input type="text" class="form-control"
-																							name="workerPhone" 
-																							readonly="readonly" value="${sessionUser.PHONE }">
-																					</div>
-																				</div></th>
-
-																		</tr>
-																		<tr>
-																			<th style="width: 50%">
-																				<div>
-																					<label class="col-md-4 control-label">审核人员：</label>
-																					<div class="col-sm-6">
-																						<select id="approver" class="form-control" name="approver">
-
-																						</select>
-																					</div>
-																				</div>
-																			</th>
-
-																		</tr>
-																	</thead>
-																</table>
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">结果性文件材料名称</label>
-															<div class="col-md-10">
-																<table
-																	class="table table-responsive table-striped table-bordered table-hover no-margin">
-																	<thead>
-																		<tr>
-																			<th style="width: 50%" rowspan="4"><textarea
-																					cols="70" rows="9" placeholder="" name="resultFileName"></textarea></th>
-																			<th style="width: 50%" class="hidden-xs"><div>
-																					<label class="col-md-4 control-label">回复时间</label>
-																					<div class="col-xs-6">
-																						<input type="text" class="form-control"
-																							name="replyTime" 
-																							readonly="readonly" value="">
-																					</div>
-																				</div></th>
-																		</tr>
-																		<tr>
-																			<th style="width: 50%"><div>
-																					<label class="col-md-4 control-label">回复方式：</label>
-																					<div class="col-xs-6">
-																						<input type="text" class="form-control"
-																							name="replyType" 
-																							readonly="readonly" value="">
-																							<input id="fileNameStore" style="display:none" name="suffixFileUrl"/>
-																					</div>
-																				</div></th>
-																		</tr>
-																	</thead>
-																</table>
-																</form>
-															</div>
-														</div>
-														<div class="form-group">
-															<label class="col-md-2 control-label">上传附件</label>
-															<div class="col-md-10">
-																<table
-																	class="table table-responsive table-striped  table-hover no-margin">
-																	<thead>
-																		<tr>
-																			<td width="30%"><input type="file" name="file"
-																				id="upload" /></td>
-																			<td><div class="details">
-																					<span>上传进度</span> <span class="pull-right" id="uploadProcessing"></span>
-																				</div>
-																				<div class="progress progress-sm">
-																					<div class="progress-bar" role="progressbar"
-																						 aria-valuemin="0"
-																						aria-valuemax="100" id="uploadProcessBar"></div>
-																				</div></td>
-																		</tr>
-																		<tr>
-																			<td colspan="2" id="uploadedFileName"></td>
-																			
-																		</tr>
-																	</thead>
-																</table>
-															</div>
-														</div>
-													
-												</div>
-												<div class="container">
-													<button type="button" id="submitButton" class="btn btn-success" onclick="checkAndSubmitForm()">提交并生成文件</button>
-													<button type="button" class="btn btn-info">退出</button>
-												</div>
+												<input type="hidden" id="dtp_input1" value="" /><br />
 											</div>
+                      </div>
+
+					    <div class="form-group">
+                        <label class="col-md-2 control-label">咨询方式</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="inquireType" id="inquireType" value="${pd.inquireType }">
+                        </div>
+						<label class="col-md-2 control-label">咨询人及所属部门、职务</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text"  name="inquireer" required="required">
+                        </div>
+                      </div>
+
+					  <div class="form-group">					  
+                        <label class="col-md-2 control-label">联系方式</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="inquireerPhone" required="required">
+                        </div>
+						<label class="col-md-2 control-label">邮箱</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="email" name="inquireerEmail" >
+                        </div>
+                      </div>
+
+
+                      <div class="form-group">
+                        <label class="col-md-2 control-label">法律事务内容概述</label>
+                        <div class="col-md-10">
+                          <textarea placeholder="" name="reportBrief" style="width:100%;border:2px solid #d5d3e0" rows=3 required="required"></textarea>
+                        </div>
+                      </div>
+
+					  
+                      <div class="form-group">
+                        <label class="col-md-2 control-label">公司提供的文件材料：</label>
+                        <div class="col-md-10">
+                          <textarea placeholder="" name="givenFiles" style="width:100%;border:2px solid #d5d3e0" rows=4 ></textarea>
+                        </div>
+                      </div>
+		
+		                 <div class="form-group">
+                        <label class="col-md-2 control-label">处理意见（或结果）：</label>
+                        <div class="col-md-10" >
+                          <textarea placeholder="" name="suggestions" style="width:100%;border:2px solid #d5d3e0" rows=4 required="required"></textarea>
+                        </div>	
+                      </div>
+
+					  	<div class="form-group">					  
+                        <label class="col-md-2 control-label">工作人员</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="worker" value="${sessionUser.NAME}" readonly>
+                        </div>
+						<label class="col-md-2 control-label">工作时间</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="workTime" placeholder="单位：小时" required="required">
+                        </div>
+						 <label class="col-md-2 control-label">联系电话</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="workerPhone" value="${sessionUser.PHONE}">
+                        </div>
+						<label class="col-md-2 control-label">审核人员</label>
+                        <div class="col-xs-4">
+                          <select id="approver" class="form-control" name="approver">
+								<option value="邵钧">邵钧</option>
+								<option value="徐博">徐博</option>
+						</select>
+                        </div>
+                      </div>
+
+					  	<div class="form-group">
+                        <label class="col-md-2 control-label">结果性文件材料名称：</label>
+                        <div class="col-md-10" >
+                          <textarea placeholder="" name="resultFileName" style="width:100%;border:2px solid #d5d3e0" rows=4 required="required"></textarea>
+                        </div>	
+                      </div>
+
+					  	<div class="form-group">					  
+                        <label class="col-md-2 control-label">回复时间</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="replyTime">
+                        </div>
+						<label class="col-md-2 control-label">回复方式</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="replyType">
+                        </div>
+						<input id="fileNameStore" style="display:none" name="suffixFileUrl"/>
+                      </div>
+
+					  <div class="form-group">					  
+                        <label class="col-md-2 control-label">附加文件</label>
+                        <div class="col-xs-4" >
+                          <input type="file" name="file" id="upload"  />
+						  <span id="uploadedFileName"></span>
+                        </div>
+                      </div>
+					  <div class="form-group">
+					  <label class="col-md-2 control-label"></label>
+					  <div class="col-xs-4" >
+					 <div class="progress" >
+                      <div class="progress-bar" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 60%;" id="uploadProcessBar" >
+                        <span id="uploadProcessing"></span>
+                      </div>
+                    </div>
+					</div>
+					</div>
+
+						<div class="form-group">					  
+                        <label class="col-md-2 control-label"></label>
+                        <div class="col-xs-4">
+                         <input class="btn btn-info btn-lg" type="submit" id="submitButton" value="提交并生成报表">
+                     
+                        </div>
+                      </div>
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
 					<!-- Row End -->
 
 				</div>
@@ -396,7 +338,7 @@
 			<!-- Dashboard Wrapper End -->
 
 			<footer>
-				<p>© BlueMoon 2013-14</p>
+				<p>© 八谦律师事务所</p>
 			</footer>
 
 		</div>
@@ -555,7 +497,7 @@
 			success : function(html) {
 				alert(html);
 				document.getElementById("uploadProcessing").innerHTML=html+"%";
-				$("#uploadProcessBar").attr("style","width:"+html+''+"%");
+				$("#uploadProcessBar").attr("style","width:"+html+"%");
 				process = html;
 			}
 		});
@@ -568,16 +510,15 @@
 			action : 'uploadFile',
 			name : 'file',
 			onSubmit : function(file, ext) {
-				processInterval=setInterval(process, 100);
-				document.getElementById("uploadProcessing").innerHTML="正在上传...";
-				
+				processInterval=setInterval(process, 50);
+	
 			},
 			onComplete : function(file, response) {
 				if(response=='typeerror'){
 					alert("只能上传word格式的文件");
 					document.getElementById("uploadProcessing").innerHTML="";
 				}else{
-					document.getElementById("uploadProcessing").innerHTML="上传成功";
+					document.getElementById("uploadProcessing").innerHTML="100%";
 					clearInterval(processInterval);
 					$("#uploadProcessBar").attr("style","width:100%");
 					var result = response.split(",");
@@ -613,7 +554,7 @@
 	
 	function checkAndSubmitForm(){
 		$("#submitButton").attr("disabled","true");
-		document.getElementById("submitButton").innerHTML="正在提交...";
+		document.getElementById("submitButton").innerHTML="正在解析合并文件,请稍后...";
 		var tableData = $("#flswclForm").serialize();
 		$.ajax({
 			data:tableData,
@@ -629,7 +570,19 @@
 			}
 		});
 	}
+	
+	function checkSubmit(){
+		var fileName = document.getElementById("uploadedFileName").innerHTML;
+		if(fileName=="" || fileName==null){
+			alert("请选择上传文件");
+			return false;
+		}else{
+			return true;
+		}
+		
+	}
 	</script>
+
 
 </body>
 </html>

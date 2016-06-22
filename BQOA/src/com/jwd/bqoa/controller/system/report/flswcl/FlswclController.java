@@ -29,10 +29,10 @@ public class FlswclController extends BaseController{
 	private FlswclService flswclService;
 	
 	@RequestMapping(value="/generateFlswclReport")
-	@ResponseBody
-	public Map generateFlswclReport(HttpSession session){
+	public String generateFlswclReport(HttpSession session){
 		Map<String , String> result = new HashMap<String  , String>();
 		List<String> fileGenInfo = new ArrayList<String>();
+		
 		PageData pd = this.getPageData();
 		try{
 			String contextPath = session.getServletContext().getRealPath("");
@@ -42,7 +42,7 @@ public class FlswclController extends BaseController{
 			genFileInfo.put("contextPath" , contextPath);
 			genFileInfo.put("reportNum" , pd.getString("reportNum"));
 			genFileInfo.put("suffixFileUrl" , pd.getString("suffixFileUrl"));
-			fileGenInfo = generateFlswclWordService.genFlswclWord(genFileInfo);
+			fileGenInfo = generateFlswclWordService.genFlswclWord(genFileInfo ,pd);
 		}catch(Exception e){
 			result.put("msg", "文件生成时产生错误，请联系管理员");
 		}
@@ -56,7 +56,8 @@ public class FlswclController extends BaseController{
 		}catch(Exception e){
 			e.printStackTrace();			
 		}
-		return result;
+		
+		return "redirect:flswclReportList.do";
 	}
 	
 	@RequestMapping(value="/flswclReportList")
@@ -83,6 +84,7 @@ public class FlswclController extends BaseController{
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = this.getPageData();
 		System.out.println(pd);
+		mv.addObject("pd" , pd);
 		mv.setViewName("system/ReportGen/newFlswcl");
 		return mv;
 	}

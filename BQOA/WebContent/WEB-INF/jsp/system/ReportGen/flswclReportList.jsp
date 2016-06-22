@@ -73,9 +73,8 @@
                       <thead>
                         <tr>
                           <th>序号</th>
-                          <th>公司名称</th>
+                          <th width="30%">公司名称</th>
                           <th>合同编号</th>
-                          <th>咨询日期</th>
                           <th>工作人员</th>
                           <th>生成时间</th>
                           <th>状态</th>
@@ -89,7 +88,6 @@
 								<td>${status.index+1 }</td>
 								<td>${flsw.clientName }</td>
 								<td><a href="showOneFlswclDetail.do?id=${flsw.id }" >${flsw.reportNum }</a></td>
-								<td>${flsw.inquireTime }</td>
 								<td>${flsw.worker }</td>
 								<td>${flsw.genTime }</td></a>								
 								<td><c:if test="${flsw.status=='新建' }"><span class="label label-info">

@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import com.jacob.activeX.ActiveXComponent;
 import com.jacob.com.Dispatch;
 import com.jacob.com.Variant;
+import com.jwd.bqoa.util.PageData;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -31,12 +32,12 @@ public class GenerateFlswclWordService {
 		configuration  =new Configuration();
 		configuration.setDefaultEncoding("UTF-8");
 	}
-	public List<String> genFlswclWord(Map<String , String> info){
+	public List<String> genFlswclWord(Map<String , String> info , PageData pd){
 		List<String> res = new ArrayList<String>();
 		try{
 			System.out.println(info.get("suffixFileUrl"));
 			String xmlUrl = word2xml(info.get("suffixFileUrl"));
-			res = createWord(xmlUrl , info.get("contextPath") , info.get("creator") , info.get("reportNum"));
+			res = createWord(xmlUrl , info.get("contextPath") , info.get("creator") , info.get("reportNum") , pd);
 			return res;
 		}catch(Exception e){
 			return null;
@@ -46,10 +47,10 @@ public class GenerateFlswclWordService {
 	}
 
 
-	private List<String> createWord(String xmlUrl , String contextPath , String creator , String reportNum) throws DocumentException{
+	private List<String> createWord(String xmlUrl , String contextPath , String creator , String reportNum , PageData pd) throws DocumentException{
 		Map<String , Object> dataMap  = new HashMap<String , Object>();
 		List<String> res = new ArrayList<String>();
-		getData(dataMap , xmlUrl);
+		getData(dataMap , xmlUrl , pd);
 		configuration .setClassForTemplateLoading(this.getClass(), "/wordTemplate");
 		Template t = null;
 		try{
@@ -86,15 +87,28 @@ public class GenerateFlswclWordService {
 		return res;
 	}
 
-	private void getData(Map<String, Object> dataMap , String xmlUrl) throws DocumentException {  
+	private void getData(Map<String, Object> dataMap , String xmlUrl , PageData pd) throws DocumentException {  
 		SAXReader reader = new SAXReader();
 		Document document = reader.read(new File(xmlUrl));
 		Element rootEle = document.getRootElement();
 		Element ele1 = rootEle.element("body");
 		Element sect = ele1.element("sect");
-		
+		System.out.println("pd="+pd);
 	    dataMap.put("content", sect.asXML());  
-
+	    dataMap.put("clientName", pd.getString("clientName"));
+	    dataMap.put("reportNum", pd.getString("reportNum"));
+	    dataMap.put("inquireTime", pd.getString("inquireTime"));
+	    dataMap.put("zixunfangshi", pd.getString("inquireType"));
+	    dataMap.put("zixr", pd.getString("inquireer"));
+	    dataMap.put("lianxifangshi", pd.getString("inquireerPhone"));
+	    dataMap.put("dianziyouxiang", pd.getString("inquireerEmail"));
+	    dataMap.put("flswgs", pd.getString("reportBrief"));
+	    dataMap.put("wenjiancailiao", pd.getString("givenFiles"));
+	    dataMap.put("chuliyijian", pd.getString("suggestions"));
+	    dataMap.put("gzry", pd.getString("worker"));
+	    dataMap.put("gzsj", pd.getString("workTime"));
+	    dataMap.put("lxdh", pd.getString("workerPhone"));
+	    dataMap.put("shry", pd.getString("approver"));
 	}  
 
 	public  String word2xml(String url){
