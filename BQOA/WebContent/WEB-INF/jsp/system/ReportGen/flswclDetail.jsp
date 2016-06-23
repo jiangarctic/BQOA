@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Blue Moon - Responsive Admin Dashboard</title>
+<title>八谦律师事务所</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description"
-	content="Blue Moon - Responsive Admin Dashboard" />
+	content="八谦律师事务所" />
 <meta name="keywords"
 	content="Notifications, Admin, Dashboard, Bootstrap3, Sass, transform, CSS3, HTML5, Web design, UI Design, Responsive Dashboard, Responsive Admin, Admin Theme, Best Admin UI, Bootstrap Theme, Wrapbootstrap, Bootstrap, bootstrap.gallery" />
 <meta name="author" content="Bootstrap Gallery" />
@@ -73,48 +73,40 @@
 
 					<!-- Row Start -->
 					<div class="row">
-						<div class="col-lg-12 col-md-12">
-							<div class="widget">
-								<div class="widget-header">
-									<div class="title">
-										法律事务处理记录-详情<span class="mini-title"> <a
-											id="create-account"></a>
-										</span>
-									</div>
-								</div>
-								<div class="widget-body">
-									<form class="form-horizontal row-border" action="">
-										<div class="form-group">
-
-											<div class="col-md-15">
-
-												<div>
-													<label class="col-md-2 control-label">公司名称：</label>
-													<div class="col-xs-5">
-														<input type="text" class="form-control" id="clientName"
-															value="${flswcl.clientName }" readonly="readonly">
-													</div>
-												</div>
-												<div>
-													<label class="col-md-2 control-label">编号：</label>
-													<div class="col-xs-3">
-														<input type="text" class="form-control"
-															value="${flswcl.reportNum }" id="reportNum"
-															readonly="readonly">
-													</div>
-												</div>
+              <div class="col-lg-12 col-md-12">
+                <div class="widget">
+                  <div class="widget-header">
+                    <div class="title">
+                     法律事务处理-详情显示
+                    </div>
+                    <span class="tools">
+                      <i class="fa fa-cogs"></i>
+                    </span>
+                  </div>
+                  <div class="widget-body">
+                    <form class="form-horizontal row-border" action="generateFlswclReport.do" id="flswclForm" onsubmit="return checkSubmit();">
+                      <div class="form-group">
+                      
+                        <label class="col-md-2 control-label">公司名称</label>
+                        <div class="col-xs-4">
+                        
+                          <input class="form-control" type="text" name="clientName"  placeholder="请手工填写客户名称" id="clientName">
+                        </div>
+						<label class="col-md-2 control-label">编号</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="reportNum" id="reportNum"  placeholder="请手工填写合同编号">
+                        </div>
+                      </div>
 
 
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-2 control-label">咨询日期</label>
-											<div class="col-sm-10">
-												<div class="input-group date form_datetime col-md-5"
+	                  <div class="form-group">
+                        <label class="col-md-2 control-label">咨询日期</label>
+											<div class="col-xs-10">
+												<div class="input-group date form_datetime col-md-15"
 													data-date-format="yyyy年mm月dd日  p HH:ii"
 													data-link-field="dtp_input1">
-													<input class="form-control" size="16" type="text"
-														value="${flswcl.inquireTime }" readonly> <span
+													<input class="form-control" size="16" type="text" name="inquireTime"
+														value="" required="required"> <span
 														class="input-group-addon"><span
 														class="glyphicon glyphicon-remove"></span></span> <span
 														class="input-group-addon"><span
@@ -122,153 +114,130 @@
 												</div>
 												<input type="hidden" id="dtp_input1" value="" /><br />
 											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-2 control-label">咨询方式</label>
-											<div class="col-md-10">
-												<input class="form-control" type="text" name="inquireType"
-													id="inquireType" value="${flswcl.inquireType }">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-2 control-label">咨询人及所属部门、职务</label>
-											<div class="col-md-10">
-												<input class="form-control" type="text" name="inquireer"
-													value="${flswcl.inquireer }">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-2 control-label">联系方式</label>
-											<div class="col-md-10">
-												<input type="text" name="inquireerPhone "
-													class="form-control" value="${flswcl.inquireerPhone }">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-2 control-label">电子邮箱</label>
-											<div class="col-md-10">
-												<input class="form-control" type="text"
-													name="inquireerEmail" value="${flswcl.inquireerEmail }">
-											</div>
-										</div>
+                      </div>
 
-										<div class="form-group">
-											<label class="col-md-2 control-label">法律事务内容概述：</label>
-											<div class="col-md-9">
-												<textarea class="textarea form-control" placeholder="" width="100%"
-													name="reportBrief">${flswcl.reportBrief }</textarea>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-2 control-label">公司提供的文件材料</label>
-											<div class="col-md-10">
-												<input class="form-control" type="text" name="givenFiles"
-													value="${flswcl.givenFiles }">
-											</div>
-										</div>
+					    <div class="form-group">
+                        <label class="col-md-2 control-label">咨询方式</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="inquireType" id="inquireType" value="${pd.inquireType }">
+                        </div>
+						<label class="col-md-2 control-label">咨询人及所属部门、职务</label>						
+							<div class="col-xs-4">
+                          <input class="form-control" type="text"  placeholder="请手动填入：姓名_单位_职务" name="inquireer" required="required">
+                        </div>						
+							<div class="col-xs-4">
+                          <input class="form-control" type="text"  value="${pd.clientContactor }&nbsp;&nbsp;${pd.contactorDesc}" name="inquireer" required="required">
+                        </div>                     
+                      </div>
+                      
+
+					  <div class="form-group">	
+					  			  
+                        <label class="col-md-2 control-label">联系方式</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" value="${pd.clientPhone }" name="inquireerPhone" required="required">
+                        </div>
+						<label class="col-md-2 control-label">邮箱</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="email" value="${pd.clientEmail }" name="inquireerEmail" >
+                        </div>
+                      </div>
 
 
-										<div class="form-group">
-											<label class="col-md-2 control-label">处理意见</label>
-											<div class="col-md-10">
-												<table
-													class="table table-responsive table-striped table-bordered table-hover no-margin">
-													<thead>
-														<tr>
-															<th style="width: 50%" rowspan="4"><textarea
-																	cols="70" rows="9" name="suggestions"
-																	>${flswcl.suggestions }</textarea></th>
-															<th style="width: 50%" class="hidden-xs"><div>
-																	<label class="col-md-5 control-label">工作人员：</label>
-																	<div class="col-xs-6">
-																		<input type="text" class="form-control" name="worker"
-																			value="江万东" readonly="readonly"
-																			value="${flswcl.work }">
-																	</div>
-																</div></th>
-														</tr>
-														<tr>
-															<th style="width: 50%">
-																<div>
-																	<label class="col-md-5 control-label">工作时间：</label>
-																	<div class="col-xs-6">
-																		<input type="text" class="form-control"
-																			name="workTime" placeholder=""
-																			value="${flswcl.workTime }">
-																	</div>
-																</div>小时
-															</th>
-														</tr>
-														<tr>
-															<th style="width: 50%"><div>
-																	<label class="col-md-5 control-label">联系电话：</label>
-																	<div class="col-xs-6">
-																		<input type="text" class="form-control"
-																			name="workerPhone" value="${flswcl.workerPhone }"
-																			readonly="readonly">
-																	</div>
-																</div></th>
+                      <div class="form-group">
+                        <label class="col-md-2 control-label">法律事务内容概述</label>
+                        <div class="col-md-10">
+                          <textarea placeholder="" name="reportBrief" style="width:100%;border:2px solid #d5d3e0" rows=3 required="required">${pd.reportBrief }</textarea>
+                        </div>
+                      </div>
 
-														</tr>
-														<tr>
-															<th style="width: 50%">
-																<div>
-																	<label class="col-md-5 control-label">审核人员：</label>
-																	<div class="col-sm-6">
-																		<input type="text" class="form-control"
-																			name="approver" value="${flswcl.approver }"
-																			readonly="readonly">
-																	</div>
-																</div>
-															</th>
+					  
+                      <div class="form-group">
+                        <label class="col-md-2 control-label">公司提供的文件材料：</label>
+                        <div class="col-md-10">
+                          <textarea placeholder="" name="givenFiles" style="width:100%;border:2px solid #d5d3e0" rows=4 >${pd.givenFiles }</textarea>
+                        </div>
+                      </div>
+		
+		                 <div class="form-group">
+                        <label class="col-md-2 control-label">处理意见（或结果）：</label>
+                        <div class="col-md-10" >
+                          <textarea placeholder="" name="suggestions" style="width:100%;border:2px solid #d5d3e0" rows=4 required="required">${pd.suggestions }</textarea>
+                        </div>	
+                      </div>
 
-														</tr>
-													</thead>
-												</table>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-2 control-label">结果性文件材料名称</label>
-											<div class="col-md-10">
-												<table
-													class="table table-responsive table-striped table-bordered table-hover no-margin">
-													<thead>
-														<tr>
-															<th style="width: 50%" rowspan="4"><textarea
-																	cols="70" rows="9" placeholder="" name="resultFileName">${flswcl.resultFileName }</textarea></th>
-															<th style="width: 50%" class="hidden-xs">
-																<div>
-																	<label class="col-md-5 control-label">回复时间：</label>
-																	<div class="col-sm-6">
-																		<input type="text" class="form-control"
-																			name="replyTime" value="${flswcl.replyTime }"
-																			readonly="readonly">
-																	</div>
-																</div>
-															</th>
-														</tr>
-														<tr>
-															<th style="width: 50%">
-																<div>
-																	<label class="col-md-5 control-label">回复方式：</label>
-																	<div class="col-sm-6">
-																		<input type="text" class="form-control"
-																			name="replyType" value="${flswcl.replyType }"
-																			readonly="readonly">
-																	</div>
-																</div>
-															</th>
-														</tr>
-													</thead>
-												</table>
-											</div>
-										</div>
+					  	<div class="form-group">					  
+                        <label class="col-md-2 control-label">工作人员</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="worker" value="${pd.worker}" readonly>
+                        </div>
+						<label class="col-md-2 control-label">工作时间</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="workTime" value="${pd.workTime }" placeholder="单位：小时" required="required">
+                        </div>
+						 <label class="col-md-2 control-label">联系电话</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="workerPhone" value="${workerPhone}">
+                        </div>
+						<label class="col-md-2 control-label">审核人员</label>
+                        <div class="col-xs-4">
+                          <select id="approver" class="form-control" name="approver" value="${pd.approver }">
+								<option value="邵钧">邵钧</option>
+								<option value="徐博">徐博</option>
+						</select>
+                        </div>
+                      </div>
 
-									</form>
-								</div>
-							</div>
-						</div>
+					  	<div class="form-group">
+                        <label class="col-md-2 control-label">结果性文件材料名称：</label>
+                        <div class="col-md-10" >
+                          <textarea placeholder="" name="resultFileName" style="width:100%;border:2px solid #d5d3e0" rows=4 required="required">${pd.resultFileName }</textarea>
+                        </div>	
+                      </div>
+
+					  	<div class="form-group">					  
+                        <label class="col-md-2 control-label">回复时间</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="replyTime">
+                        </div>
+						<label class="col-md-2 control-label">回复方式</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="replyType">
+                        </div>
+						<input id="fileNameStore" style="display:none" name="suffixFileUrl"/>
+                      </div>
+
+					  <div class="form-group">					  
+                        <label class="col-md-2 control-label">附加文件</label>
+                        <div class="col-xs-4" >
+                          <input type="file" name="file" id="upload"  />
+						  <span id="uploadedFileName"></span>
+                        </div>
+                      </div>
+					  <div class="form-group">
+					  <label class="col-md-2 control-label"></label>
+					  <div class="col-xs-4" >
+					 <div class="progress" >
+                      <div class="progress-bar" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 60%;" id="uploadProcessBar" >
+                        <span id="uploadProcessing"></span>
+                      </div>
+                    </div>
 					</div>
+					</div>
+
+						<div class="form-group">					  
+                        <label class="col-md-2 control-label"></label>
+                        <div class="col-xs-4">
+                         <input class="btn btn-info btn-lg" type="submit" id="submitButton" value="提交并生成报表">
+                     
+                        </div>
+                      </div>
+                      <input style="display:none" value="${pd.clientName}" id="clientName" name="clientNameFlag"/>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
 					<!-- Row End -->
 
 				</div>

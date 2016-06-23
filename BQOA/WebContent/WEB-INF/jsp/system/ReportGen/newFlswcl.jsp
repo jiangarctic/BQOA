@@ -591,7 +591,7 @@
 	
 	function checkAndSubmitForm(){
 		$("#submitButton").attr("disabled","true");
-		document.getElementById("submitButton").innerHTML="正在解析合并文件,请稍后...";
+		$("#submitButton").val("正在解析合并文件，请稍后...");
 		var tableData = $("#flswclForm").serialize();
 		$.ajax({
 			data:tableData,
@@ -614,6 +614,8 @@
 			alert("请选择上传文件");
 			return false;
 		}else{
+			$("#submitButton").attr("disabled","true");
+			$("#submitButton").val("正在解析合并文件，请稍后...");
 			return true;
 		}
 		

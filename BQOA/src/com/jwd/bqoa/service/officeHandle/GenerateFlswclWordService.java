@@ -64,8 +64,9 @@ public class GenerateFlswclWordService {
 		if(!uploadDir.exists()){
 			uploadDir.mkdirs();
 		}
-		File outFile = new File(genFolder+"/"+reportNum+"_"+creator+".doc");
 		long timeStamp = System.currentTimeMillis();
+		File outFile = new File(genFolder+"/"+reportNum+"_"+creator+"_"+timeStamp+".doc");
+		
 		res.add(genFolder+"/"+reportNum+"_"+creator+"_"+timeStamp+".doc");
 		res.add(reportNum+"_"+creator+"_"+timeStamp+".doc");
 		Writer out = null;
