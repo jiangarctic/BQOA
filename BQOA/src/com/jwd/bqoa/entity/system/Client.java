@@ -12,6 +12,8 @@ public class Client implements Serializable{
 	private String commissionStart;
 	private String commissionEnd;
 	private String shortName;
+	private String clientEmail;
+	private String contactorDesc;
 	private int status;
 	public int getClientId() {
 		return ClientId;
@@ -75,12 +77,29 @@ public class Client implements Serializable{
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	
+	public String getClientEmail() {
+		return clientEmail;
+	}
+	public void setClientEmail(String clientEmail) {
+		this.clientEmail = clientEmail;
+	}
+	public String getContactorDesc() {
+		return contactorDesc;
+	}
+	public void setContactorDesc(String contactorDesc) {
+		this.contactorDesc = contactorDesc;
+	}
 	@Override
 	public String toString() {
 		return "Client [ClientId=" + ClientId + ", clientName=" + clientName + ", clientAddress=" + clientAddress
 				+ ", clientType=" + clientType + ", clientContactor=" + clientContactor + ", clientPhone=" + clientPhone
-				+ ", commissionStart=" + commissionStart + ", commissionEnd=" + commissionEnd + "]";
+				+ ", commissionStart=" + commissionStart + ", commissionEnd=" + commissionEnd + ", shortName="
+				+ shortName + ", clientEmail=" + clientEmail + ", contactorDesc=" + contactorDesc + ", status=" + status
+				+ "]";
 	}
+
 	
 	
 }

@@ -45,8 +45,8 @@ public class ClientController extends BaseController{
 	
 	@RequestMapping(value="/clientListData")
 	@ResponseBody
-	public List<Client> getClientListData() throws Exception{
-		List<Client> list = clientService.queryClients();
+	public List<PageInfo> getClientListData() throws Exception{
+		List<PageInfo> list = clientService.queryClients();
 		System.out.println(list);
 		return list;
 	} 

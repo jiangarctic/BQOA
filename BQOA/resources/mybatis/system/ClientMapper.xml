@@ -4,8 +4,8 @@
 
 <mapper namespace="ClientMapper">
 	<insert id="saveClient" parameterType="pd" flushCache="false">
-		insert into sys_client (clientName,clientAddress,clientType,clientContactor,clientPhone,commissionStart,commissionEnd , shortName) 
-		values (#{clientName} ,#{clientAddress},#{clientType},#{clientContactor},#{clientPhone},#{commissionStart},#{commissionEnd},#{shortName})
+		insert into sys_client (clientName,clientAddress,clientType,clientContactor,clientPhone,commissionStart,commissionEnd , shortName , clientEmail,contactorDesc ) 
+		values (#{clientName} ,#{clientAddress},#{clientType},#{clientContactor},#{clientPhone},#{commissionStart},#{commissionEnd},#{shortName} , #{clientEmail} ,#{contactorDesc} )
 	</insert>
 	
 	<select id="queryClientsByPage" parameterType="pi" resultType="pd">
@@ -17,7 +17,11 @@
 	</select>
 	
 	<select id="queryClients" resultType="pd">
-		select clientName , shortName from sys_client
+		select clientName , shortName ,  clientContactor ,clientPhone ,contactorDesc , clientEmail  from sys_client
+	</select>
+	
+	<select id="QueryClientByName" parameterType="pd" resultType="pd">
+		select clientName , shortName ,  clientContactor ,clientPhone ,contactorDesc , clientEmail  from sys_client where clientName=#{clientName}
 	</select>
 
 </mapper>

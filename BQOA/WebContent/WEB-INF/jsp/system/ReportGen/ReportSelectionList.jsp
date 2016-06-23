@@ -129,12 +129,12 @@
 														<div class="form-group">
 															<label for="emailId" class="col-sm-2 control-label">咨询方式</label>
 															<div class="col-sm-10">
-																<div class="col-sm-10">
 																	<select id="inquireType" class="form-control">
-																		<option value="面谈">现场</option>
-																		<option value="面谈">电话</option>
-																	</select>
-																</div>
+																		<option value="面谈">面谈</option>
+																		<option value="电话咨询">电话咨询</option>
+																		<option value="电子邮件咨询">电子邮件咨询</option>
+																		<option value="other">其他</option>
+																	</select>															
 															</div>
 														</div>
 														<div class="form-group">
@@ -267,12 +267,16 @@
 				url : 'clientListData.do',
 				dataType : 'json',
 				success : function(data) {
+					var opt = '';
+					
 					for (var i = 0; i < data.length; i++) {
-						var opt = '<option value="'+data[i].clientName+'">'
+						 opt = '<option value="'+data[i].clientName+'">'
 								+ data[i].clientName + '</option>';
 						$("#waitClient").append(opt);
 						map[data[i].clientName] = data[i].shortName;
 					}
+					 opt = '<option value="other">手工输入</option>';
+				$("#waitClient").append(opt);
 				},
 				error : function(data) {
 					alert("客户加载失败");

@@ -10,13 +10,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jwd.bqoa.controller.base.BaseController;
+import com.jwd.bqoa.entity.system.Client;
 import com.jwd.bqoa.entity.system.User;
 import com.jwd.bqoa.service.flsw.FlswclService;
 import com.jwd.bqoa.service.officeHandle.GenerateFlswclWordService;
+import com.jwd.bqoa.service.system.client.ClientService;
 import com.jwd.bqoa.util.Const;
 import com.jwd.bqoa.util.DateUtil;
 import com.jwd.bqoa.util.PageData;
@@ -27,13 +28,27 @@ public class FlswclController extends BaseController{
 	private GenerateFlswclWordService generateFlswclWordService;
 	@Resource(name="flswclService")
 	private FlswclService flswclService;
+	@Resource(name="clientService")
+	private ClientService clientService;
 	
 	@RequestMapping(value="/generateFlswclReport")
-	public String generateFlswclReport(HttpSession session){
+	public String generateFlswclReport(HttpSession session) throws Exception{
 		Map<String , String> result = new HashMap<String  , String>();
 		List<String> fileGenInfo = new ArrayList<String>();
 		
 		PageData pd = this.getPageData();
+		if(pd.getString("clientNameFlag").equals("other")){
+			PageData pd2 = new PageData();
+			String reportNum = pd.getString("reportNum");
+			String[] contactor = pd.getString("inquireer").split("_");
+			pd2.put("clientName", pd.getString("clientName"));
+			pd2.put("shortName", reportNum.substring(0, reportNum.indexOf("1")));
+			pd2.put("clientEmail", pd.getString("inquireerEmail"));
+			pd2.put("clientPhone",pd.getString("inquireerPhone"));
+			pd2.put("clientContactor", contactor[0]);
+			pd2.put("contactorDesc", contactor[1]);
+			clientService.addClient(pd2);
+		}
 		try{
 			String contextPath = session.getServletContext().getRealPath("");
 			Map<String , String> genFileInfo = new HashMap<String , String>();
@@ -71,8 +86,7 @@ public class FlswclController extends BaseController{
 	@RequestMapping(value="/showOneFlswclDetail")
 	public ModelAndView showOneFlswclDetail() throws Exception{
 		ModelAndView mv = this.getModelAndView();
-		PageData pd = this.getPageData();
-		
+		PageData pd = this.getPageData();		
 		mv.setViewName("system/ReportGen/flswclDetail");
 		PageData pd2 = flswclService.queryOneFlswcl(pd);
 		mv.addObject("flswcl"  , pd2);
@@ -80,11 +94,23 @@ public class FlswclController extends BaseController{
 	}
 	
 	@RequestMapping(value="/newFlswclPage")
-	public ModelAndView newFlswclPage(){
+	public ModelAndView newFlswclPage() throws Exception{
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = this.getPageData();
+		String shortName = "";
+		String inquireType=pd.getString("inquireType");
+		if(!pd.getString("clientName").equals("other")){
+			shortName=pd.getString("reportNum");			
+		pd = clientService.queryClientByName(pd);		
+		}else{
+			pd = new PageData();
+			shortName="other";
+			pd.put("clientName", "other");
+		}
+		pd.put("inquireType", inquireType);
+		pd.put("shortName", shortName);
 		System.out.println(pd);
-		mv.addObject("pd" , pd);
+		mv.addObject("pd" ,pd);
 		mv.setViewName("system/ReportGen/newFlswcl");
 		return mv;
 	}

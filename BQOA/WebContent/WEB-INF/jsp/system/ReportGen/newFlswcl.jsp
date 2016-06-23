@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Blue Moon - Responsive Admin Dashboard</title>
+<title>八谦律师事务所</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description"
@@ -50,7 +50,7 @@
 
 	<!-- Main Container start -->
 	<div class="dashboard-container">
-
+	
 		<div class="container">
 			<!-- Top Nav Start -->
 			<%@ include file="/WEB-INF/jsp/system/admin/Menus.jsp"%>
@@ -89,25 +89,39 @@
                   <div class="widget-body">
                     <form class="form-horizontal row-border" action="generateFlswclReport.do" id="flswclForm" onsubmit="return checkSubmit();">
                       <div class="form-group">
+                      <c:if test="${pd.clientName=='other' }">
                         <label class="col-md-2 control-label">公司名称</label>
                         <div class="col-xs-4">
-                          <input class="form-control" type="text" name="clientName" readonly value="${pd.clientName }" id="clientName">
+                        
+                          <input class="form-control" type="text" name="clientName"  placeholder="请手工填写客户名称" id="clientName">
                         </div>
 						<label class="col-md-2 control-label">编号</label>
                         <div class="col-xs-4">
-                          <input class="form-control" type="text" name="reportNum" id="reportNum"  value="${pd.reportNum }">
+                          <input class="form-control" type="text" name="reportNum" id="reportNum"  placeholder="请手工填写合同编号">
                         </div>
+                        </c:if>
+                         <c:if test="${pd.clientName!='other' }">
+                        <label class="col-md-2 control-label">公司名称</label>
+                        <div class="col-xs-4">
+                        
+                          <input class="form-control" type="text" name="clientName" value="${pd.clientName }" id="clientName">
+                        </div>
+						<label class="col-md-2 control-label">编号</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" name="reportNum" id="reportNum"  value="${pd.shortName }">
+                        </div>
+                        </c:if>
                       </div>
 
 
-	                      <div class="form-group">
+	                  <div class="form-group">
                         <label class="col-md-2 control-label">咨询日期</label>
 											<div class="col-xs-10">
 												<div class="input-group date form_datetime col-md-15"
 													data-date-format="yyyy年mm月dd日  p HH:ii"
 													data-link-field="dtp_input1">
 													<input class="form-control" size="16" type="text" name="inquireTime"
-														value="${flswcl.inquireTime }" required="required"> <span
+														value="" required="required"> <span
 														class="input-group-addon"><span
 														class="glyphicon glyphicon-remove"></span></span> <span
 														class="input-group-addon"><span
@@ -123,20 +137,41 @@
                           <input class="form-control" type="text" name="inquireType" id="inquireType" value="${pd.inquireType }">
                         </div>
 						<label class="col-md-2 control-label">咨询人及所属部门、职务</label>
-                        <div class="col-xs-4">
-                          <input class="form-control" type="text"  name="inquireer" required="required">
+						<c:if test="${pd.clientName=='other' }">
+							<div class="col-xs-4">
+                          <input class="form-control" type="text"  placeholder="请手动填入：姓名_单位_职务" name="inquireer" required="required">
                         </div>
+						</c:if>
+						<c:if test="${pd.clientName!='other' }">
+							<div class="col-xs-4">
+                          <input class="form-control" type="text"  value="${pd.clientContactor }&nbsp;&nbsp;${pd.contactorDesc}" name="inquireer" required="required">
+                        </div>
+						</c:if>
+                        
                       </div>
+                      
 
-					  <div class="form-group">					  
+					  <div class="form-group">	
+					  <c:if test="${pd.clientName!='other' }">				  
                         <label class="col-md-2 control-label">联系方式</label>
                         <div class="col-xs-4">
-                          <input class="form-control" type="text" name="inquireerPhone" required="required">
+                          <input class="form-control" type="text" value="${pd.clientPhone }" name="inquireerPhone" required="required">
                         </div>
 						<label class="col-md-2 control-label">邮箱</label>
                         <div class="col-xs-4">
-                          <input class="form-control" type="email" name="inquireerEmail" >
+                          <input class="form-control" type="email" value="${pd.clientEmail }" name="inquireerEmail" >
                         </div>
+                        </c:if>
+                        <c:if test="${pd.clientName=='other' }">				  
+                        <label class="col-md-2 control-label">联系方式</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="text" placeholder="请手工填入联系方式" name="inquireerPhone" required="required">
+                        </div>
+						<label class="col-md-2 control-label">邮箱</label>
+                        <div class="col-xs-4">
+                          <input class="form-control" type="email" placeholder="请手工填入电子邮箱" name="inquireerEmail" >
+                        </div>
+                        </c:if>
                       </div>
 
 
@@ -228,7 +263,7 @@
                      
                         </div>
                       </div>
-                      
+                      <input style="display:none" value="${pd.clientName}" id="clientName" name="clientNameFlag"/>
                     </form>
                   </div>
                 </div>
@@ -460,6 +495,8 @@
 	</script>
 	
 		<script type="text/javascript">
+		
+		
 		$(function() {
 			$.scrollUp({
 				scrollName : 'scrollUp', // Element ID
@@ -581,6 +618,8 @@
 		}
 		
 	}
+	
+	
 	</script>
 
 

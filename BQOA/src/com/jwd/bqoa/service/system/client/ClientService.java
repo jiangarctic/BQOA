@@ -24,8 +24,12 @@ public List<Client> queryClients(PageInfo pageInfo) throws Exception{
 	return (List<Client>) dao.findForList("ClientMapper.queryClientsByPage", pageInfo);
 }
 
-public List<Client> queryClients() throws Exception{
-	return (List<Client>) dao.findForList("ClientMapper.queryClients" , null);
+public List<PageInfo> queryClients() throws Exception{
+	return (List<PageInfo>) dao.findForList("ClientMapper.queryClients" , null);
+}
+
+public PageData queryClientByName(PageData pd) throws Exception{
+	return (PageData) dao.findForObject("ClientMapper.QueryClientByName" , pd);
 }
 
 public Integer getCountOfClient() throws Exception{

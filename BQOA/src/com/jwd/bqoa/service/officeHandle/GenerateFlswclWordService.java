@@ -65,8 +65,9 @@ public class GenerateFlswclWordService {
 			uploadDir.mkdirs();
 		}
 		File outFile = new File(genFolder+"/"+reportNum+"_"+creator+".doc");
-		res.add(genFolder+"/"+reportNum+"_"+creator+".doc");
-		res.add(reportNum+"_"+creator+".doc");
+		long timeStamp = System.currentTimeMillis();
+		res.add(genFolder+"/"+reportNum+"_"+creator+"_"+timeStamp+".doc");
+		res.add(reportNum+"_"+creator+"_"+timeStamp+".doc");
 		Writer out = null;
 		try{
 			out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile)));
@@ -93,22 +94,53 @@ public class GenerateFlswclWordService {
 		Element rootEle = document.getRootElement();
 		Element ele1 = rootEle.element("body");
 		Element sect = ele1.element("sect");
-		System.out.println("pd="+pd);
+		String[] flswnr = pd.getString("reportBrief").split("\n");
+		String[] wjcl =pd.getString("givenFiles").split("\n");
+		String[] chuliyijian = pd.getString("suggestions").split("\n");
+		String[] jgwj = pd.getString("resultFileName").split("\n");
+		for(int i = 0 ; i < 6 ; i++){
+			if(i<chuliyijian.length){
+				dataMap.put("chuliyijian"+i , chuliyijian[i]);
+			}else{
+				dataMap.put("chuliyijian"+i , "");
+			}
+		}
+		for(int i = 0 ; i < 4 ; i++){
+			if(i<flswnr.length){
+				dataMap.put("flswgs"+i , flswnr[i]);
+			}else{
+				dataMap.put("flswgs"+i , "");
+			}
+		}
+		for(int i = 0 ; i <3 ; i++){
+			if(i<wjcl.length){
+				dataMap.put("wenjiancailiao"+i , wjcl[i]);
+			}else{
+				dataMap.put("wenjiancailiao"+i , "");
+			}
+		}
+		for(int i = 0 ; i < 2 ; i++){
+			if(i<jgwj.length){
+				dataMap.put("jieguowenjian"+i , jgwj[i]);
+			}else{
+				dataMap.put("jieguowenjian"+i , "");
+			}
+		}
+		
+		
 	    dataMap.put("content", sect.asXML());  
 	    dataMap.put("clientName", pd.getString("clientName"));
 	    dataMap.put("reportNum", pd.getString("reportNum"));
 	    dataMap.put("inquireTime", pd.getString("inquireTime"));
-	    dataMap.put("zixunfangshi", pd.getString("inquireType"));
-	    dataMap.put("zixr", pd.getString("inquireer"));
+	    dataMap.put("inquireType", pd.getString("inquireType"));
+	    dataMap.put("zixunren", pd.getString("inquireer"));
 	    dataMap.put("lianxifangshi", pd.getString("inquireerPhone"));
 	    dataMap.put("dianziyouxiang", pd.getString("inquireerEmail"));
-	    dataMap.put("flswgs", pd.getString("reportBrief"));
-	    dataMap.put("wenjiancailiao", pd.getString("givenFiles"));
-	    dataMap.put("chuliyijian", pd.getString("suggestions"));
 	    dataMap.put("gzry", pd.getString("worker"));
 	    dataMap.put("gzsj", pd.getString("workTime"));
 	    dataMap.put("lxdh", pd.getString("workerPhone"));
 	    dataMap.put("shry", pd.getString("approver"));
+	    dataMap.put("yejiaoNum", pd.getString("reportNum"));
 	}  
 
 	public  String word2xml(String url){
