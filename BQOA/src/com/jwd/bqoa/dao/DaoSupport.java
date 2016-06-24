@@ -31,5 +31,7 @@ public class DaoSupport implements  Dao{
 	public Object findForObject(String str) throws Exception {
 		return sqlSessionTemplate.selectOne(str);
 	}
+	
+	
 
 }
