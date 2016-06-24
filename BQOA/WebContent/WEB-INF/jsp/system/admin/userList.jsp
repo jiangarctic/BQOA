@@ -278,7 +278,7 @@
 														<label for="waitClient" class="col-sm-2 control-label">密码：</label>
 														<div class="col-sm-10">
 															<input class="form-control" type="password" id="password"
-																name="password" placeholder="请输入6位以上密码" required="required">
+																name="PASSWORD" placeholder="请输入6位以上密码" required="required">
 														</div>
 													</div>
 													<div class="form-group" id="div_confirm">
@@ -296,6 +296,7 @@
 																	</select>															
 															</div>
 														</div>
+
 													<div class="form-group">
 														<div class="col-sm-offset-2 col-sm-10">
 															<input type="submit" class="btn btn-info"

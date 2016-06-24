@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,11 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jwd.bqoa.controller.base.BaseController;
-import com.jwd.bqoa.entity.system.PageInfo;
 import com.jwd.bqoa.service.system.user.UserService;
 import com.jwd.bqoa.util.Const;
 import com.jwd.bqoa.util.PageData;
 import com.jwd.bqoa.util.PageUtil;
+import com.jwd.bqoa.util.UuidUtil;
 
 @Controller
 public class UserManageController extends BaseController{
@@ -47,9 +48,16 @@ public class UserManageController extends BaseController{
 	}
 	
 	@RequestMapping("/addUser")
-	public ModelAndView addUser() throws Exception{
+	public String addUser() throws Exception{
 		PageData pd = this.getPageData();
-		System.out.println(pd);
-		return null;
+		String password = pd.getString("PASSWORD");
+		System.out.println("oriPass  ="+password);
+		String newPass = new SimpleHash("SHA-1" , pd.getString("USERNAME") , password).toString();
+		System.out.println("newPass  ="+newPass);
+		String USER_ID = UuidUtil.get32UUID();
+		pd.put("USER_ID", USER_ID);
+		pd.put("PASSWORD_NEW", newPass);
+		userService.addUser(pd);
+		return "redirect:userManage.do";
 	}
 }

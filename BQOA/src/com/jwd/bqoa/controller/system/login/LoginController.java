@@ -70,7 +70,9 @@ public class LoginController extends BaseController{
 			String sesssion_secCode  = (String) session.getAttribute(Const.SESSION_SECURITY_CODE);
 			if(sesssion_secCode.equalsIgnoreCase(secCode)){
 				if(Tools.notEmpty(username) && Tools.notEmpty(password)){
+					System.out.println("md5Pass="+password);
 					String passwd = new SimpleHash("SHA-1" , username , password).toString();
+					System.out.println(passwd);
 					pd.put("USERNAME", username);
 					pd.put("PASSWORD", passwd);
 					pd = userService.getUserByNameAndPwd(pd);

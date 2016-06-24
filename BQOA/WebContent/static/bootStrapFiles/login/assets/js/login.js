@@ -19,7 +19,8 @@ function getTimeStamp(){
 function checkAndLogin(){
 	var username = $("#username").val();
 	var password = $("#password").val();
-	$("#password").val($.md5($("#password").val()));
+	$("#password").val($.md5(password));
+	var newPass = $("#password").val();
 	var secCode = $("#secCode").val();
 	var vali = true;
 	if(username==''){
@@ -41,7 +42,7 @@ function checkAndLogin(){
 		$.ajax({
 			type:"POST",
 			url:'login_login',
-			data:{uName:username,pass:password,code:secCode,tm:new Date().getTime()},
+			data:{uName:username,pass:newPass,code:secCode,tm:new Date().getTime()},
 			dataType:'json',
 			cache:false,
 			success:function(data){

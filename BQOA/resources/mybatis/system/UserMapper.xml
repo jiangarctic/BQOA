@@ -24,7 +24,7 @@
 	</select>
 		<select id="findUserAndRoleList" parameterType="pd" resultMap="userAndRoleResultMap">
 		select u.USER_ID , u.USERNAME , u.PASSWORD , u.NAME , r.ROLE_ID , r.ROLE_NAME , r.RIGHTS as ROLE_RIGHTS 
-		from SYS_USER u left join SYS_ROLE r on u.ROLE_ID = r.ROLE_ID where u.STATUS=0 limit #{startIndex} , #{rows}
+		from SYS_USER u left join SYS_ROLE r on u.ROLE_ID = r.ROLE_ID  limit #{startIndex} , #{rows}
 	</select>
 	<select id="getUserCount" resultType="pd">
 		select count(*) total from sys_user where 1=1
@@ -32,4 +32,7 @@
 	<select id="queryRoleDataList" resultType="pd" >
 		select ROLE_NAME ,ROLE_ID from sys_role where 1=1
 	</select>
+	<insert id="addUser" parameterType="pd">
+		insert into sys_user (USER_ID , USERNAME ,PASSWORD ,NAME , ROLE_ID , STATUS) values(#{USER_ID} , #{USERNAME} ,#{PASSWORD_NEW} , #{NAME} , #{ROLE_ID}  , 0)
+	</insert>
 </mapper>

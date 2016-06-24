@@ -42,4 +42,8 @@ public class UserService {
 	public List<PageData> getRoleDataList() throws Exception{
 		return (List<PageData>) dao.findForList("UserMapper.queryRoleDataList", null);
 	}
+	
+	public void addUser(PageData pd) throws Exception{
+		dao.save("UserMapper.addUser", pd);
+	}
 }
