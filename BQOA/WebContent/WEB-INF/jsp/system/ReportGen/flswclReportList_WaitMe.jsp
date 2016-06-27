@@ -33,7 +33,7 @@
 <body>
 	<c:set var="currentMain_Menu" value="办公" />
 	<c:set var="currentSub_Menu" value="法律事务报表" />
-		<input id="currentPage" style="display: none" value="${currentPage }" />
+	<input id="currentPage" style="display: none" value="${currentPage }" />
 	<input id="maxPage" style="display: none" value="${maxPage }" />
 	<!-- Header Start -->
 	<%@ include file="/WEB-INF/jsp/system/admin/homeHeader.jsp"%>
@@ -70,16 +70,16 @@
 						<div class="col-lg-12 col-md-12">
 							<div class="widget">
 								<div class="widget-header">
-									<div class="title">我的法律事务处理意见表</div>
+									<div class="title">法律事务处理意见-待我审批</div>
 									<span class="tools">
-										<button class="btn btn-primary btn-sm" type="button"
-											disabled="disabled">
+										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toMe();"
+											>
 											我的报表 <span class="fa fa-user"></span>
 										</button>
-										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toWaitMe();">
+										<button class="btn btn-primary btn-sm" type="button" disabled="disabled">
 											待我审批 <span class="fa fa-check"></span>
 										</button>
-										<button class="btn btn-primary btn-sm" type="button" onclick="toAll();">
+										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toAll();">
 											查看全部 <span class="fa fa-eye"></span>
 										</button>
 									</span>
@@ -310,23 +310,24 @@
 			alert(fileName);
 		}
 		
-		function toWaitMe(){
-			location.href="flswclReportList_WaitMe.do";
-		}
 		function toAll(){
 			location.href="flswclReportList_All.do";
 		}
+		
+		function toMe(){
+			location.href="flswclReportList_me.do";
+		}
 		function changePage(page) {
-			location.href = "flswclReportList_me.do?currentPage=" + page;
+			location.href = "flswclReportList_WaitMe.do?currentPage=" + page;
 		}
 
 		function prevPage() {
 			var currentPage = $("#currentPage").val() * 1;
-			location.href = "flswclReportList_me?currentPage=" + (currentPage - 1);
+			location.href = "flswclReportList_WaitMe?currentPage=" + (currentPage - 1);
 		}
 		function nextPage() {
 			var currentPage = $("#currentPage").val() * 1;
-			location.href = "flswclReportList_me?currentPage=" + (currentPage + 1);
+			location.href = "flswclReportList_WaitMe?currentPage=" + (currentPage + 1);
 		}
 	</script>
 

@@ -10,10 +10,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jwd.bqoa.controller.base.BaseController;
-import com.jwd.bqoa.entity.system.Client;
 import com.jwd.bqoa.entity.system.User;
 import com.jwd.bqoa.service.flsw.FlswclService;
 import com.jwd.bqoa.service.officeHandle.GenerateFlswclWordService;
@@ -21,6 +21,7 @@ import com.jwd.bqoa.service.system.client.ClientService;
 import com.jwd.bqoa.util.Const;
 import com.jwd.bqoa.util.DateUtil;
 import com.jwd.bqoa.util.PageData;
+import com.jwd.bqoa.util.PageUtil;
 
 @Controller
 public class FlswclController extends BaseController{
@@ -75,14 +76,63 @@ public class FlswclController extends BaseController{
 		return "redirect:flswclReportList.do";
 	}
 	
-	@RequestMapping(value="/flswclReportList")
-	public ModelAndView toFlswclList() throws Exception{
+	@RequestMapping(value="/flswclReportList_me")
+	public ModelAndView toFlswclList(HttpSession session ,@RequestParam(value="currentPage", required=false, defaultValue="1" ) int currentPage) throws Exception{
 		ModelAndView mv = this.getModelAndView();
-		mv.setViewName("system/ReportGen/flswclReportList");
-		List<PageData> flswlist = flswclService.queryFlswcl();
+		PageData pd = new PageData();
+		User u = (User) session.getAttribute(Const.SESSION_USER);
+		pd.put("worker",u.getNAME() );
+		Long total = (Long) flswclService.queryFlswclMeCount(pd).get("total");
+		int totalPages = PageUtil.getTotalPages(total);
+		pd.put("startIndex", (currentPage-1)*Const.ROWSPERPAGE);
+		pd.put("rows", Const.ROWSPERPAGE);
+		String pageStr = PageUtil.getPagenationInfo(total, currentPage);
+		mv.setViewName("system/ReportGen/flswclReportList");		
+		List<PageData> flswlist = flswclService.queryFlswcl_me(pd);
+		mv.addObject("page" , pageStr);
+		mv.addObject("currentPage" , currentPage);
+		mv.addObject("maxPage" , totalPages);
 		mv.addObject("flswclList" , flswlist);
 		return mv;
 	}
+	@RequestMapping(value="/flswclReportList_All")
+	public ModelAndView toFlswclList(@RequestParam(value="currentPage", required=false, defaultValue="1" ) int currentPage) throws Exception{
+		ModelAndView mv = this.getModelAndView();
+		PageData pd = new PageData();
+		mv.setViewName("system/ReportGen/flswclReportList_All");
+		Long total = (Long) flswclService.queryFlswclAllCount().get("total");
+		int totalPages = PageUtil.getTotalPages(total);
+		pd.put("startIndex", (currentPage-1)*Const.ROWSPERPAGE);
+		pd.put("rows", Const.ROWSPERPAGE);
+		String pageStr = PageUtil.getPagenationInfo(total, currentPage);
+		List<PageData> flswlist = flswclService.queryFlswcl(pd);
+		mv.addObject("flswclList" , flswlist);
+		mv.addObject("page" , pageStr);
+		mv.addObject("currentPage" , currentPage);
+		mv.addObject("maxPage" , totalPages);
+		return mv;
+	}
+	@RequestMapping(value="/flswclReportList_WaitMe")
+	public ModelAndView toFlswclList_WaitMe(HttpSession session , @RequestParam(value="currentPage", required=false, defaultValue="1" ) int currentPage) throws Exception{
+		ModelAndView mv = this.getModelAndView();
+		mv.setViewName("system/ReportGen/flswclReportList_WaitMe");
+		PageData pd = new PageData();
+		User u = (User) session.getAttribute(Const.SESSION_USER);
+		pd.put("approver",u.getNAME() );
+		Long total = (Long) flswclService.queryFlswclWaitMeCount(pd).get("total");
+		int totalPages =PageUtil.getTotalPages(total);
+		pd.put("startIndex", (currentPage-1)*Const.ROWSPERPAGE);
+		pd.put("rows", Const.ROWSPERPAGE);
+		String pageStr = PageUtil.getPagenationInfo(total, currentPage);		
+		List<PageData> flswlist = flswclService.queryFlswcl_WaitMe(pd);
+		mv.addObject("flswclList" , flswlist);
+		mv.addObject("page" , pageStr);
+		mv.addObject("currentPage" , currentPage);
+		mv.addObject("maxPage" , totalPages);
+		return mv;
+	}
+	
+	
 	@RequestMapping(value="/showOneFlswclDetail")
 	public ModelAndView showOneFlswclDetail() throws Exception{
 		ModelAndView mv = this.getModelAndView();

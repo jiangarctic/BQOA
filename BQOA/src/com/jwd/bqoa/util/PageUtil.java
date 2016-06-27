@@ -20,7 +20,7 @@ public class PageUtil {
 	
 	public static String getPagenationInfo(long totalCount , int currentPage ){
 		int rowsPerPage = Const.ROWSPERPAGE;
-		int totalPages = (int) (Math.floor(totalCount/Const.ROWSPERPAGE)+1);
+		int totalPages = PageUtil.getTotalPages(totalCount);
 		int isLast = currentPage==totalPages?1:0;
 		StringBuffer sb = new StringBuffer();
 		sb.append("<ul class=\"pagination no-margin\">");
@@ -30,7 +30,7 @@ public class PageUtil {
 			sb.append(" <li><a href=\"javascript:prevPage();\">«</a></li>");
 		}
 		
-		if(totalPages<=3){
+		if(totalPages<=10){
 			for(int i = 1 ; i <=totalPages ; i++){
 				if(currentPage==i){
 					sb.append(" <li class=\"active\"><a href=\"#\">"+i+"</a></li>");
@@ -39,13 +39,13 @@ public class PageUtil {
 				}
 			}
 		}else{
-			if(currentPage>3){
-				for(int i =1 ; i <=3 ; i++){
+			if(currentPage>10){
+				for(int i =1 ; i <=10 ; i++){
 					sb.append("<li><a href=\"javascript:changePage("+i+");\">"+i+"</a></li>");
 				}
 				sb.append("<li><a>...</a></li><li class=\"active\"><a href=\"#\">"+currentPage+"</a></li>");
 			}else{
-				for(int i =1 ; i <=3 ; i++){
+				for(int i =1 ; i <=10 ; i++){
 					if(i== currentPage){
 						sb.append("<li class=\"active\"><a href=\"#\">"+i+"</a></li>");
 					}else{
@@ -63,6 +63,17 @@ public class PageUtil {
 			sb.append("<li ><a href=\"javascript:nextPage();\">»</a></li></ul>");
 		}
 		return sb.toString();
+	}
+	
+	public static int getTotalPages (long total){
+		int rowsPerpage = Const.ROWSPERPAGE;
+		long totalPages =0;
+		if(total%rowsPerpage==0){
+			totalPages = total/rowsPerpage;
+		}else{
+		 totalPages = (int) (Math.floor(total/Const.ROWSPERPAGE)+1);
+		}
+		return (int) totalPages;
 	}
 	
 }

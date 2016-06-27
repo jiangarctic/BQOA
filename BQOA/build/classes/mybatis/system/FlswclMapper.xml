@@ -13,10 +13,26 @@
 	</insert>
 	
 	<select id="queryAllflswcl" resultType="pd">
-		select * from sys_flswcl where 1=1
+		select * from sys_flswcl where 1=1 ORDER BY id desc limit #{startIndex} , #{rows} 
+	</select>
+	<select id="queryflswcl_me" resultType="pd">
+		select * from sys_flswcl where worker=#{worker} ORDER BY id desc limit #{startIndex} , #{rows}
+	</select>
+	<select id="queryflswcl_WaitMe" resultType="pd">
+		select * from sys_flswcl where approver=#{approver} ORDER BY id desc limit #{startIndex} , #{rows}
 	</select>
 	
 	<select id="queryOneFlswcl" parameterType="pd" resultType="pd">
 		select * from sys_flswcl where 1=1 and id=#{id}
 	</select>
+	<select id="queryFlswclAllCount"  resultType="pd">
+		select count(*) total from sys_flswcl 
+	</select>
+	<select id="queryFlswclMeCount" parameterType="pd" resultType="pd">
+		select count(*) total from sys_flswcl where worker=#{worker}
+	</select>
+	<select id="queryFlswclWaitMeCount" parameterType="pd" resultType="pd">
+		select count(*) total from sys_flswcl where approver=#{approver} 
+	</select>
+	
 </mapper>

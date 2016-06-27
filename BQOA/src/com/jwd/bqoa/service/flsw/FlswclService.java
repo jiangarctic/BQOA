@@ -20,11 +20,29 @@ public class FlswclService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<PageData> queryFlswcl() throws Exception{
-		return (List<PageData>) dao.findForList("FlswclMapper.queryAllflswcl", null);
+	public List<PageData> queryFlswcl(PageData pd) throws Exception{
+		return (List<PageData>) dao.findForList("FlswclMapper.queryAllflswcl", pd);
+	}
+	@SuppressWarnings("unchecked")
+	public List<PageData> queryFlswcl_me(PageData pd) throws Exception{
+		return (List<PageData>) dao.findForList("FlswclMapper.queryflswcl_me", pd);
+	}
+	@SuppressWarnings("unchecked")
+	public List<PageData> queryFlswcl_WaitMe(PageData pd) throws Exception{
+		return (List<PageData>) dao.findForList("FlswclMapper.queryflswcl_WaitMe", pd);
 	}
 	
 	public PageData queryOneFlswcl(PageData pd) throws Exception{
 		return (PageData) dao.findForObject("FlswclMapper.queryOneFlswcl", pd);
+	}
+	
+	public PageData queryFlswclAllCount() throws Exception{
+		return (PageData) dao.findForObject("FlswclMapper.queryFlswclAllCount", null);
+	}
+	public PageData queryFlswclMeCount(PageData pd) throws Exception{
+		return (PageData) dao.findForObject("FlswclMapper.queryFlswclMeCount", pd);
+	}
+	public PageData queryFlswclWaitMeCount(PageData pd) throws Exception{
+		return (PageData) dao.findForObject("FlswclMapper.queryFlswclWaitMeCount", pd);
 	}
 }

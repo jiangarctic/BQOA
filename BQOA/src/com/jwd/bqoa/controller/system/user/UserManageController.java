@@ -26,7 +26,7 @@ public class UserManageController extends BaseController{
 	@RequestMapping("/userManage")
 	public ModelAndView toUserList(@RequestParam(value="currentPage", required=false, defaultValue="1" ) int currentPage) throws Exception{
 		Long total = (Long) userService.getUserTotal().get("total");
-		int totalPages = (int) (Math.floor(total/Const.ROWSPERPAGE)+1);
+		int totalPages = PageUtil.getTotalPages(total);
 		PageData pd = new PageData();
 		pd.put("startIndex", (currentPage-1)*Const.ROWSPERPAGE);
 		pd.put("rows", Const.ROWSPERPAGE);
