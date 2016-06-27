@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50535
 File Encoding         : 65001
 
-Date: 2016-06-24 17:57:56
+Date: 2016-06-27 18:04:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -71,16 +71,13 @@ CREATE TABLE `sys_flswcl` (
   `genTime` varchar(20) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_flswcl
 -- ----------------------------
-INSERT INTO `sys_flswcl` VALUES ('51', '安宁创佳房地产开发有限公司', '创佳160623H', '2016年06月23日  下午 03:38', '面谈', '江万东', '18314496694', '373701119@qq.com', '大胜靠德奥斯卡的富兰克林省得放假\r\n爱上的咖啡是对方立刻', '达瓦的境况按揭房\r\n三款f法兰克\r\n按付款v我考虑\r\n', '安达卡夫卡我无法华为客服\r\n冯矿伟v开始看律师的 \r\n圣诞快乐都是废话胃口了\r\n首付款', '江万东', '3', '18314496694', '邵钧', '达瓦cqev\r\n分为服务吃v', '', '', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/flsw/江万东/创佳160623H_江万东.doc', '创佳160623H_江万东.doc', '2016-06-23 15:39:49', '新建');
-INSERT INTO `sys_flswcl` VALUES ('52', '云南龙城世家物业服务有限公司', '龙世160623H', '2016年06月23日  下午 03:43', '面谈', '万东', '18314496694', '373701119@qq.com', '达瓦vasd\'蓝山咖啡\r\n私搭乱建', '按时打卡积分4\r\n圣诞快乐就\r\n势大力沉', '撒打开了\r\n上档次的哇w\r\n是搜索v是vsdv是v\r\n的邓超是v', '江万东', '3', '18314496694', '邵钧', '擦萨斯\r\n\r\n上档次V领框架', '', '', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/flsw/江万东/龙世160623H_江万东.doc', '龙世160623H_江万东.doc', '2016-06-23 15:44:25', '新建');
-INSERT INTO `sys_flswcl` VALUES ('53', '安宁创佳房地产开发有限公司', '创佳160623H', '2016年06月23日  下午 06:22', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'jadh \r\ndas\r\ndasd', 'adsfavwg\r\nfdcqv\r\nvw', 'fcvwev', '江万东', '2', '18314496694', '邵钧', 'adwcsdv\r\nvsdvsdv', '', '', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/flsw/江万东/创佳160623H_江万东_1466677372948.doc', '创佳160623H_江万东_1466677372948.doc', '2016-06-23 18:22:52', '新建');
-INSERT INTO `sys_flswcl` VALUES ('54', '呵呵', '华盛顿160234H', '2016年06月23日  下午 06:35', '面谈', '江万东_JAVA_ajsdj', '18314496694', '373701119@qq.com', 'awddaw', 'daw', 'awd', '江万东', '2', '18314496694', '邵钧', 'adwwd', '', '', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/flsw/江万东/华盛顿160234H_江万东_1466678184809.doc', '华盛顿160234H_江万东_1466678184809.doc', '2016-06-23 18:36:24', '新建');
-INSERT INTO `sys_flswcl` VALUES ('55', '北方夜视科技集团有限公司', '北视160623H', '2016年06月23日  下午 06:37', '面谈', 'dfg  ', '13888888888', 'dawd@aweda', 'awdwa', 'dawdwa', 'dwada', '江万东', '3', '18314496694', '邵钧', 'awd', '', '', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/flsw/江万东/北视160623H_江万东_1466678266343.doc', '北视160623H_江万东_1466678266343.doc', '2016-06-23 18:37:46', '新建');
+INSERT INTO `sys_flswcl` VALUES ('61', '安宁创佳房地产开发有限公司', '创佳160627H', '2016年06月27日  下午 04:09', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'wad', 'wda', 'dwa', '江万东', '2', '18314496694', '邵钧', 'daw', '', '', 'E:/BQOAFILES/flsw/江万东/创佳160627H_江万东_1467015004840.doc', '创佳160627H_江万东_1467015004840.doc', '2016-06-27 16:10:04', '新建');
+INSERT INTO `sys_flswcl` VALUES ('62', '安宁创佳房地产开发有限公司', '创佳160627H', '2016年06月27日  下午 04:10', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'wda', 'wda', 'adw', '江万东', '3', '18314496694', '邵钧', 'awd', 'd', '', 'E:/BQOAFILES/flsw/江万东/创佳160627H_江万东_1467015044939.doc', '创佳160627H_江万东_1467015044939.doc', '2016-06-27 16:10:44', '新建');
 
 -- ----------------------------
 -- Table structure for sys_gl_qx
@@ -129,7 +126,7 @@ INSERT INTO `sys_menu` VALUES ('6', '通讯录', '#', '1', '3', null);
 INSERT INTO `sys_menu` VALUES ('7', '客户关系', 'CRM_ClientList.do', '0', '3', null);
 INSERT INTO `sys_menu` VALUES ('8', '客户列表', 'CRM_ClientList.do', '7', '1', null);
 INSERT INTO `sys_menu` VALUES ('9', '个人事项', '#', '1', '4', null);
-INSERT INTO `sys_menu` VALUES ('10', '法律事务报表', 'flswclReportList.do', '4', '2', null);
+INSERT INTO `sys_menu` VALUES ('10', '法律事务报表', 'flswclReportList_me.do', '4', '2', null);
 INSERT INTO `sys_menu` VALUES ('11', '用户管理', 'userManage.do', '1', '5', null);
 
 -- ----------------------------
@@ -154,7 +151,7 @@ CREATE TABLE `sys_role` (
 -- ----------------------------
 INSERT INTO `sys_role` VALUES ('1', '管理员', '4095', '0', '1', '4095', '1', '1', '1');
 INSERT INTO `sys_role` VALUES ('2', '合伙人律师', '4095', '0', '1', '4095', '1', '1', '1');
-INSERT INTO `sys_role` VALUES ('3', '助理律师', '4095', '0', '1', '4095', '1', '1', '1');
+INSERT INTO `sys_role` VALUES ('3', '助理律师', '4095', '0', '1', '3071', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -178,7 +175,7 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', 'd10baec1db2eb3e55bffc491b2933f003f719d8d', '江万东', '1', null, null, '0', null, '373701119@qq.com', null, '18314496694');
+INSERT INTO `sys_user` VALUES ('1', 'admin', '4da2f9956f7daffb72444c5f4dd16eec563d4b20', '江万东', '1', null, null, '0', null, '373701119@qq.com', null, '18314496694');
 INSERT INTO `sys_user` VALUES ('2', 'admin1', 'sdajkdaksjdewuf', '江万东2', '1', null, null, '0', null, null, null, null);
 INSERT INTO `sys_user` VALUES ('3', 'admin2', 'aklfjqieojf', '江万东3', '1', null, null, '0', null, null, null, null);
 INSERT INTO `sys_user` VALUES ('4', 'admin3', 'adcwevwev', '江万东4', '1', null, null, '0', null, null, null, null);
@@ -191,6 +188,10 @@ INSERT INTO `sys_user` VALUES ('10', 'admin9', 'sdfkh', 'jwd10', '1', null, null
 INSERT INTO `sys_user` VALUES ('11', 'admin10', 'kdfj', 'jwd11', '1', null, null, '0', null, null, null, null);
 INSERT INTO `sys_user` VALUES ('12', 'admin12', 'sadfjk', 'jwd12', '1', null, null, '0', null, null, null, null);
 INSERT INTO `sys_user` VALUES ('13', 'admin13', 'aflkjq', 'jwd13', '1', null, null, '0', null, null, null, null);
+INSERT INTO `sys_user` VALUES ('6bf2bcea20174dafb7f839d1261c2345', 'yangyan', 'b10c4cadc9eab4585b66972b476a95e41648f4c9', '杨燕', '1', null, null, '0', null, null, null, null);
+INSERT INTO `sys_user` VALUES ('56d52224772c46dfa52c149f86b8d074', 'xubo', '538a610be7c3a1bdd16be1e29fd7b5db86be00a5', '徐博', '1', null, null, '0', null, null, null, null);
+INSERT INTO `sys_user` VALUES ('c3aeb6fa85c64cab99f7f68af8f4ec2b', 'shaojun', '954a101e20a18aebebaa1b0cb4169bada5301966', '邵钧', '1', null, null, '0', null, null, null, null);
+INSERT INTO `sys_user` VALUES ('96797ba3ee104d6aa828f815b854944c', 'yangyan', '332c32befcedc5d80b3003466b5ffb8b28b7d65d', '杨燕', '3', null, null, '0', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for sys_user_qx
