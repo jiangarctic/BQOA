@@ -79,6 +79,10 @@
 										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toWaitMe();">
 											待我审批 <span class="fa fa-check"></span>
 										</button>
+										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toHasApproved();"
+											onclick="javascript:toWaitMe();">
+											 我已审批 <span class="fa fa-flag"></span>
+										</button>
 										<button class="btn btn-primary btn-sm" type="button" onclick="toAll();">
 											查看全部 <span class="fa fa-eye"></span>
 										</button>
@@ -327,6 +331,9 @@
 		function nextPage() {
 			var currentPage = $("#currentPage").val() * 1;
 			location.href = "flswclReportList_me?currentPage=" + (currentPage + 1);
+		}
+		function toHasApproved(){
+			location.href="flswclReportList_HasApproved.do";
 		}
 	</script>
 

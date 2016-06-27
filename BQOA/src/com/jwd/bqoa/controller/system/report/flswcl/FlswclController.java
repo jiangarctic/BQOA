@@ -8,6 +8,9 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,7 +54,7 @@ public class FlswclController extends BaseController{
 			clientService.addClient(pd2);
 		}
 		try{
-			String contextPath = session.getServletContext().getRealPath("");
+			String contextPath = Const.UPLOAD_DIR;
 			Map<String , String> genFileInfo = new HashMap<String , String>();
 			User sessionUser = (User) session.getAttribute(Const.SESSION_USER);
 			genFileInfo.put("creator", sessionUser.getNAME());
@@ -73,7 +76,7 @@ public class FlswclController extends BaseController{
 			e.printStackTrace();			
 		}
 		
-		return "redirect:flswclReportList.do";
+		return "redirect:flswclReportList_me.do";
 	}
 	
 	@RequestMapping(value="/flswclReportList_me")
@@ -98,18 +101,34 @@ public class FlswclController extends BaseController{
 	@RequestMapping(value="/flswclReportList_All")
 	public ModelAndView toFlswclList(@RequestParam(value="currentPage", required=false, defaultValue="1" ) int currentPage) throws Exception{
 		ModelAndView mv = this.getModelAndView();
-		PageData pd = new PageData();
-		mv.setViewName("system/ReportGen/flswclReportList_All");
-		Long total = (Long) flswclService.queryFlswclAllCount().get("total");
-		int totalPages = PageUtil.getTotalPages(total);
-		pd.put("startIndex", (currentPage-1)*Const.ROWSPERPAGE);
-		pd.put("rows", Const.ROWSPERPAGE);
-		String pageStr = PageUtil.getPagenationInfo(total, currentPage);
-		List<PageData> flswlist = flswclService.queryFlswcl(pd);
-		mv.addObject("flswclList" , flswlist);
-		mv.addObject("page" , pageStr);
-		mv.addObject("currentPage" , currentPage);
-		mv.addObject("maxPage" , totalPages);
+		PageData pd1 = this.getPageData();
+		String queryCon = pd1.getString("queryCon");
+		if(queryCon==null || queryCon.equals("")){
+			PageData pd = new PageData();
+			mv.setViewName("system/ReportGen/flswclReportList_All");
+			Long total = (Long) flswclService.queryFlswclAllCount(null).get("total");
+			int totalPages = PageUtil.getTotalPages(total);
+			pd.put("query_clientName", "");
+			pd.put("query_worker", "");
+			pd.put("startIndex", (currentPage-1)*Const.ROWSPERPAGE);
+			pd.put("rows", Const.ROWSPERPAGE);
+			
+			String pageStr = PageUtil.getPagenationInfo(total, currentPage);
+			List<PageData> flswlist = flswclService.queryFlswcl(pd);
+			mv.addObject("flswclList" , flswlist);
+			mv.addObject("page" , pageStr);
+			mv.addObject("currentPage" , currentPage);
+			mv.addObject("maxPage" , totalPages);			
+		}else{
+			PageData pd = new PageData();
+			mv.setViewName("system/ReportGen/flswclReportList_All");
+			pd.put("query_clientName", pd1.getString("query_clientName"));
+			pd.put("query_worker", pd1.getString("query_worker"));
+			List<PageData> flswlist = flswclService.queryFlswcl(pd);
+			mv.addObject("flswclList" , flswlist);
+		}
+		mv.addObject(Const.SESSION_QX , this.getCRUDAuth());
+		System.out.println("QX="+this.getCRUDAuth());
 		return mv;
 	}
 	@RequestMapping(value="/flswclReportList_WaitMe")
@@ -125,6 +144,27 @@ public class FlswclController extends BaseController{
 		pd.put("rows", Const.ROWSPERPAGE);
 		String pageStr = PageUtil.getPagenationInfo(total, currentPage);		
 		List<PageData> flswlist = flswclService.queryFlswcl_WaitMe(pd);
+		mv.addObject("flswclList" , flswlist);
+		mv.addObject("page" , pageStr);
+		mv.addObject("currentPage" , currentPage);
+		mv.addObject("maxPage" , totalPages);
+		return mv;
+	}
+	
+	@RequestMapping(value="/flswclReportList_HasApproved")
+	public ModelAndView toFlswclList_HasApproved(HttpSession session , @RequestParam(value="currentPage", required=false, defaultValue="1" ) int currentPage) throws Exception{
+		ModelAndView mv = this.getModelAndView();
+		mv.setViewName("system/ReportGen/flswclReportList_HasApproved");
+		PageData pd = new PageData();
+		User u = (User) session.getAttribute(Const.SESSION_USER);
+		pd.put("approver",u.getNAME() );
+		pd.put("status","已审批" );
+		Long total = (Long) flswclService.queryFlswclHasApprovedCount(pd).get("total");
+		int totalPages =PageUtil.getTotalPages(total);
+		pd.put("startIndex", (currentPage-1)*Const.ROWSPERPAGE);
+		pd.put("rows", Const.ROWSPERPAGE);
+		String pageStr = PageUtil.getPagenationInfo(total, currentPage);		
+		List<PageData> flswlist = flswclService.queryFlswcl_HasApproved(pd);
 		mv.addObject("flswclList" , flswlist);
 		mv.addObject("page" , pageStr);
 		mv.addObject("currentPage" , currentPage);
@@ -163,5 +203,12 @@ public class FlswclController extends BaseController{
 		mv.addObject("pd" ,pd);
 		mv.setViewName("system/ReportGen/newFlswcl");
 		return mv;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private Map<String , String> getCRUDAuth(){
+		Subject currentUser = SecurityUtils.getSubject();
+		Session session = currentUser.getSession();
+		return (Map<String , String>)session.getAttribute(Const.SESSION_QX);
 	}
 }

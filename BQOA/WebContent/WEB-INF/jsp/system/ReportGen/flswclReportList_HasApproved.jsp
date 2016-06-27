@@ -56,7 +56,17 @@
 
 				<!-- Left Sidebar Start -->
 				<div class="left-sidebar">
-
+					<div class="row" style="padding-bottom: 15px;">
+						<div class="col-xs-2">
+							<input type="text" class="form-control" placeholder="客户名称查找" id="search_clientName">
+						</div>
+						<div class="col-xs-2">
+							<input type="text" class="form-control" placeholder="工作人员查找" id="search_worker">
+						</div>
+						<button class="btn btn-primary" type="button" onclick="queryByCond();">
+							查找 <span class="fa fa-search"></span>
+						</button>
+					</div>
 					<!-- Row Start -->
 
 					<!-- Row End -->
@@ -70,20 +80,22 @@
 						<div class="col-lg-12 col-md-12">
 							<div class="widget">
 								<div class="widget-header">
-									<div class="title">法律事务处理意见-待我审批</div>
+									<div class="title">法律事务处理意见-我已审批</div>
 									<span class="tools">
-										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toMe();"
-											>
+										<button class="btn btn-primary btn-sm" type="button"
+											onclick="javascript:toMe();">
 											我的报表 <span class="fa fa-user"></span>
 										</button>
-										<button class="btn btn-primary btn-sm" type="button" disabled="disabled">
+										<button class="btn btn-primary btn-sm" type="button"
+											onclick="javascript:toWaitMe();">
 											待我审批 <span class="fa fa-check"></span>
 										</button>
-										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toHasApproved();"
+										<button class="btn btn-primary btn-sm" type="button" disabled="disabled"
 											onclick="javascript:toWaitMe();">
 											 我已审批 <span class="fa fa-flag"></span>
 										</button>
-										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toAll();">
+										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toAll();"
+											>
 											查看全部 <span class="fa fa-eye"></span>
 										</button>
 									</span>
@@ -103,6 +115,10 @@
 											</tr>
 										</thead>
 										<tbody>
+
+										<c:if test="${empty flswclList}">
+										<tr><td colspan="8"><h3>暂无数据</h3></td></tr>
+										</c:if>
 											<c:forEach var="flsw" items="${flswclList }"
 												varStatus="status">
 												<tr>
@@ -114,8 +130,7 @@
 													</a>
 													<td><c:if test="${flsw.status=='新建' }">
 															<span class="label label-info"> ${flsw.status} </span>
-														</c:if>
-														<c:if test="${flsw.status=='已审核' }">
+														</c:if> <c:if test="${flsw.status=='已审核' }">
 															<span class="label label-success"> ${flsw.status}
 															</span>
 														</c:if></td>
@@ -264,7 +279,7 @@
 			<!-- Dashboard Wrapper End -->
 
 			<footer>
-				<p>© 八谦律师事务所</p>
+				<p>© 八谦律师十事务所</p>
 			</footer>
 
 		</div>
@@ -313,28 +328,34 @@
 		function downloadFile(fileUrl) {
 			alert(fileName);
 		}
-		
+		function toMe() {
+			location.href = "flswclReportList_me.do";
+		}
+		function toWaitMe() {
+			location.href = "flswclReportList_WaitMe.do";
+		}
 		function toAll(){
 			location.href="flswclReportList_All.do";
 		}
-		
-		function toMe(){
-			location.href="flswclReportList_me.do";
-		}
-		function toHasApproved(){
-			location.href="flswclReportList_HasApproved.do";
-		}
 		function changePage(page) {
-			location.href = "flswclReportList_WaitMe.do?currentPage=" + page;
+			location.href = "flswclReportList_All.do?currentPage=" + page;
 		}
 
 		function prevPage() {
 			var currentPage = $("#currentPage").val() * 1;
-			location.href = "flswclReportList_WaitMe?currentPage=" + (currentPage - 1);
+			location.href = "flswclReportList_All?currentPage="
+					+ (currentPage - 1);
 		}
 		function nextPage() {
 			var currentPage = $("#currentPage").val() * 1;
-			location.href = "flswclReportList_WaitMe?currentPage=" + (currentPage + 1);
+			location.href = "flswclReportList_All?currentPage="
+					+ (currentPage + 1);
+		}
+		function queryByCond(){
+			var clientName = $("#search_clientName").val();
+			var worker = $("#search_worker").val();
+			var queryCon = clientName+"_"+worker;
+			location.href = "flswclReportList_All?queryCon=1&query_clientName="+clientName+"&query_worker="+worker;
 		}
 	</script>
 

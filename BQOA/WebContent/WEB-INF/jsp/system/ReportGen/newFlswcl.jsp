@@ -611,8 +611,9 @@
 	function checkSubmit(){
 		var fileName = document.getElementById("uploadedFileName").innerHTML;
 		if(fileName=="" || fileName==null){
-			alert("请选择上传文件");
-			return false;
+			var con = confirm("未上传附件仅能生成法律事务处理表头，确认不上传附件吗？");
+			
+			return con;
 		}else{
 			$("#submitButton").attr("disabled","true");
 			$("#submitButton").val("正在解析合并文件，请稍后...");

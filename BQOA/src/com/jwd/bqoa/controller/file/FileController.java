@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import com.jwd.bqoa.util.Const;
 @Controller
 public class FileController {
 	@RequestMapping("/uploadFile")
@@ -29,13 +31,15 @@ public class FileController {
 		if( suffix.equals(".doc") || suffix.equals(".docx")){
 			session.setAttribute("file", file);
 			resp.setContentType("text/html;charset=UTF-8");
-			File uploadDir = new File(session.getServletContext().getRealPath("")+"/upload/");
+			//File uploadDir = new File(session.getServletContext().getRealPath("")+"/upload/");
+			File uploadDir = new File(Const.UPLOAD_DIR+"/upload/");
 			if(!uploadDir.exists()){
 				uploadDir.mkdirs();
 			}
 			String fileName = file.getOriginalFilename().subSequence(0, file.getOriginalFilename().lastIndexOf("."))
 					+"_"+System.currentTimeMillis() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-			String localPath = session.getServletContext().getRealPath("")+"/upload/"+fileName;
+			//String localPath = session.getServletContext().getRealPath("")+"/upload/"+fileName;
+			String localPath = Const.UPLOAD_DIR+"/upload/"+fileName;
 			resp.setContentType("text/html;charset=UTF-8");
 			Writer writer = resp.getWriter();
 			try{

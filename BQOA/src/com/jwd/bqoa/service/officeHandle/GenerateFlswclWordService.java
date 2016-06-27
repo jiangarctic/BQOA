@@ -34,11 +34,17 @@ public class GenerateFlswclWordService {
 	}
 	public List<String> genFlswclWord(Map<String , String> info , PageData pd){
 		List<String> res = new ArrayList<String>();
+		String suffixUrl = info.get("suffixFileUrl");
 		try{
-			System.out.println(info.get("suffixFileUrl"));
-			String xmlUrl = word2xml(info.get("suffixFileUrl"));
-			res = createWord(xmlUrl , info.get("contextPath") , info.get("creator") , info.get("reportNum") , pd);
-			return res;
+			if(suffixUrl != null || suffixUrl.equals("")){
+				String xmlUrl = word2xml(info.get("suffixFileUrl"));
+				res = createWord(xmlUrl , info.get("contextPath") , info.get("creator") , info.get("reportNum") , pd);
+				return res;
+			}else{
+				res = createWord("" , info.get("contextPath") , info.get("creator") , info.get("reportNum") , pd);
+				return res;	
+			}
+			
 		}catch(Exception e){
 			return null;
 		}
@@ -89,12 +95,18 @@ public class GenerateFlswclWordService {
 		return res;
 	}
 
-	private void getData(Map<String, Object> dataMap , String xmlUrl , PageData pd) throws DocumentException {  
-		SAXReader reader = new SAXReader();
-		Document document = reader.read(new File(xmlUrl));
-		Element rootEle = document.getRootElement();
-		Element ele1 = rootEle.element("body");
-		Element sect = ele1.element("sect");
+	private void getData(Map<String, Object> dataMap , String xmlUrl , PageData pd) throws DocumentException {
+		if(!xmlUrl.equals("")){
+			SAXReader reader = new SAXReader();
+			Document document = reader.read(new File(xmlUrl));
+			Element rootEle = document.getRootElement();
+			Element ele1 = rootEle.element("body");
+			Element sect = ele1.element("sect");
+			dataMap.put("content", sect.asXML());  
+		}else{
+			dataMap.put("content", "");  
+		}
+
 		String[] flswnr = pd.getString("reportBrief").split("\n");
 		String[] wjcl =pd.getString("givenFiles").split("\n");
 		String[] chuliyijian = pd.getString("suggestions").split("\n");
@@ -129,7 +141,7 @@ public class GenerateFlswclWordService {
 		}
 		
 		
-	    dataMap.put("content", sect.asXML());  
+	    
 	    dataMap.put("clientName", pd.getString("clientName"));
 	    dataMap.put("reportNum", pd.getString("reportNum"));
 	    dataMap.put("inquireTime", pd.getString("inquireTime"));

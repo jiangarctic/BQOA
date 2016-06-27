@@ -31,18 +31,25 @@ public class FlswclService {
 	public List<PageData> queryFlswcl_WaitMe(PageData pd) throws Exception{
 		return (List<PageData>) dao.findForList("FlswclMapper.queryflswcl_WaitMe", pd);
 	}
+	@SuppressWarnings("unchecked")
+	public List<PageData> queryFlswcl_HasApproved(PageData pd) throws Exception{
+		return (List<PageData>) dao.findForList("FlswclMapper.queryflswcl_HasApproved", pd);
+	}
 	
 	public PageData queryOneFlswcl(PageData pd) throws Exception{
 		return (PageData) dao.findForObject("FlswclMapper.queryOneFlswcl", pd);
 	}
 	
-	public PageData queryFlswclAllCount() throws Exception{
-		return (PageData) dao.findForObject("FlswclMapper.queryFlswclAllCount", null);
+	public PageData queryFlswclAllCount(PageData pd) throws Exception{
+		return (PageData) dao.findForObject("FlswclMapper.queryFlswclAllCount", pd);
 	}
 	public PageData queryFlswclMeCount(PageData pd) throws Exception{
 		return (PageData) dao.findForObject("FlswclMapper.queryFlswclMeCount", pd);
 	}
 	public PageData queryFlswclWaitMeCount(PageData pd) throws Exception{
 		return (PageData) dao.findForObject("FlswclMapper.queryFlswclWaitMeCount", pd);
+	}
+	public PageData queryFlswclHasApprovedCount(PageData pd) throws Exception{
+		return (PageData) dao.findForObject("FlswclMapper.queryFlswclHasApprovedCount", pd);
 	}
 }
