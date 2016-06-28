@@ -1,6 +1,8 @@
 package com.jwd.bqoa.controller.system.report.flswcl;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -255,11 +257,21 @@ public class FlswclController extends BaseController{
 		try{
 			PageData pd = this.getPageData();
 			String finalUrl = pd.getString("suffixFileUrl");
+			String finalFileName = finalUrl.substring(finalUrl.lastIndexOf("/"));
 			File finalDir = new File(Const.UPLOAD_DIR+"/flsw/final/");
 			if(!finalDir.exists()){
 				finalDir.mkdirs();
 			}
 			File fileFile = new File(Const.UPLOAD_DIR+"/flsw/final/"+finalUrl);
+			FileInputStream fis = new FileInputStream(finalUrl);
+			FileOutputStream fos = new FileOutputStream(Const.UPLOAD_DIR+"/flsw/final/"+finalUrl);
+			byte[] buffer = new byte[1024];
+			int i=0;
+			while((i =fis.read(buffer))!=-1){
+				fos.write(buffer, 0, i);
+			}
+			fis.close();
+			fos.close();
 			pd.put("status", u.getNAME()+"已审");
 			pd.put("genFileUrl", Const.UPLOAD_DIR+"/flsw/final/"+finalUrl);
 			pd.put("genFileName", finalUrl);
@@ -267,6 +279,7 @@ public class FlswclController extends BaseController{
 			flswclService.updateFlswcl(pd);
 			result.put("msg", "提交成功");
 		}catch(Exception e){
+			e.printStackTrace();
 			result.put("msg", "提交出现异常 , 请联系管理员");
 		}
 		return result;
