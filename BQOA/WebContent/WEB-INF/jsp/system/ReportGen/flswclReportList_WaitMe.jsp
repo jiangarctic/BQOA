@@ -38,7 +38,10 @@
 	<!-- Header Start -->
 	<%@ include file="/WEB-INF/jsp/system/admin/homeHeader.jsp"%>
 	<!-- Header End -->
-
+	<button type="button" id="modaltoggle1" data-toggle="modal"
+		data-target="#myModal" style="display: none"></button>
+	<button type="button" id="modaltoggle2" data-toggle="modal"
+		data-target="#myModal2" style="display: none"></button>
 	<!-- Main Container start -->
 	<div class="dashboard-container">
 
@@ -72,18 +75,21 @@
 								<div class="widget-header">
 									<div class="title">法律事务处理意见-待我审批</div>
 									<span class="tools">
-										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toMe();"
-											>
+										<button class="btn btn-primary btn-sm" type="button"
+											onclick="javascript:toMe();">
 											我的报表 <span class="fa fa-user"></span>
 										</button>
-										<button class="btn btn-primary btn-sm" type="button" disabled="disabled">
+										<button class="btn btn-primary btn-sm" type="button"
+											disabled="disabled">
 											待我审批 <span class="fa fa-check"></span>
 										</button>
-										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toHasApproved();"
+										<button class="btn btn-primary btn-sm" type="button"
+											onclick="javascript:toHasApproved();"
 											onclick="javascript:toWaitMe();">
-											 我已审批 <span class="fa fa-flag"></span>
+											我已审批 <span class="fa fa-flag"></span>
 										</button>
-										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toAll();">
+										<button class="btn btn-primary btn-sm" type="button"
+											onclick="javascript:toAll();">
 											查看全部 <span class="fa fa-eye"></span>
 										</button>
 									</span>
@@ -93,7 +99,7 @@
 										<thead>
 											<tr>
 												<th>序号</th>
-												<th width="30%">公司名称</th>
+												<th width="25%">公司名称</th>
 												<th>合同编号</th>
 												<th>工作人员</th>
 												<th>生成时间</th>
@@ -114,16 +120,16 @@
 													</a>
 													<td><c:if test="${flsw.status=='新建' }">
 															<span class="label label-info"> ${flsw.status} </span>
-														</c:if>
-														<c:if test="${flsw.status=='已审核' }">
+														</c:if> <c:if test="${flsw.status=='已审核' }">
 															<span class="label label-success"> ${flsw.status}
 															</span>
 														</c:if></td>
 													<td><a
 														href="downloadFile.do?url=${flsw.genFileUrl }&oriName=${flsw.genFileName }">${flsw.genFileName }</a></td>
-													<td><a href="showOneFlswclDetail.do?id=${flsw.id }"><span
+													<td><a href="javascript:showFlswDeail(${flsw.id })"><span
 															class="fa fa-pencil-square">&nbsp;详情</span></a>&nbsp;&nbsp;<a
-														href="#"><span class="fa fa-times">&nbsp;删除</span></a></td>
+														href="javascript:updateUpdated(${flsw.id })"><span
+															class="fa fa-times">&nbsp;上传修改版</span></a></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -134,9 +140,92 @@
 						</div>
 					</div>
 					<!-- Row End -->
+					<!-- Modal -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">操作记录</h4>
+								</div>
+								<div class="modal-body">
+									<div class="widget-body">
+
+										<table
+											class="table table-responsive table-striped table-bordered table-hover no-margin">
+											<thead>
+												<tr>
+													<th style="width: 5%">序号</th>
+													<th style="width: 15%">操作人</th>
+													<th style="width: 20%" class="hidden-xs">时间</th>
+													<th style="width: 40%" class="hidden-xs">文件</th>
+												</tr>
+											</thead>
+											<tbody id="flswclStatustbody">
+
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Modal -->
 
 					<!-- Row Start -->
+					<!-- Modal2 -->
+					<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+								</div>
+								<div class="modal-body">
+									<form class="form-horizontal row-border" id="finalFileForm">
+										<div class="form-group">
+											<label class="col-md-2 control-label">附加文件</label>
+											<div class="col-xs-4">
+												<input type="file" name="file" id="upload" /> <span
+													id="uploadedFileName"></span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-2 control-label"></label>
+											<div class="col-xs-4">
+												<div class="progress">
+													<div class="progress-bar" role="progressbar"
+														aria-valuemin="0" aria-valuemax="100" style="width: 60%;"
+														id="uploadProcessBar">
+														<span id="uploadProcessing"></span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<input id="fileNameStore" style="display: none"
+											name="suffixFileUrl" /> <input id="flswclId"
+											style="display: none" name="id" />
+									</form>
+								</div>
+								<div class="modal-footer">
 
+									<button type="button" class="btn btn-primary"
+										onclick="javascript:submitFinalFile();">提交</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- Model2 End -->
 					<!-- Row End -->
 
 					<!-- Row Start -->
@@ -278,7 +367,94 @@
 
 	<!-- Custom JS -->
 	<script src="static/bootStrapFiles/js/menu.js"></script>
+	<script type="text/javascript" src="static/commonJS/ajaxupload.js"></script>
+		<script>
+		var processInterval = null;
+		var process = 0;
+		function process() {
+			$.ajax({
+						url : "uploadProcess",
+						type : 'GET',
+						dataType : 'html',
+						success : function(html) {
+							alert(html);
+							document.getElementById("uploadProcessing").innerHTML = html
+									+ "%";
+							$("#uploadProcessBar").attr("style",
+									"width:" + html + "%");
+							process = html;
+						}
+					});
+		}
+		$(function() {
+			document.getElementById("uploadProcessing").innerHTML = "";
+			$("#uploadProcessBar").attr("style", "width:0%");
+			new AjaxUpload(
+					$('#upload'),
+					{
 
+						action : 'uploadFile',
+						name : 'file',
+						onSubmit : function(file, ext) {
+							processInterval = setInterval(process, 50);
+
+						},
+						onComplete : function(file, response) {
+							if (response == 'typeerror') {
+								alert("只能上传word格式的文件");
+								document.getElementById("uploadProcessing").innerHTML = "";
+							} else {
+								document.getElementById("uploadProcessing").innerHTML = "100%";
+								clearInterval(processInterval);
+								$("#uploadProcessBar").attr("style",
+										"width:100%");
+								var result = response.split(",");
+								var oriName = result[0];
+								var fileName = result[1];
+								$("#fileNameStore").val(fileName);
+								document.getElementById("uploadedFileName").innerHTML = oriName
+										+ '   &nbsp;<span class="fa fa-times" onclick="javascript:cancelFile()"></span>';
+							}
+
+						}
+					});
+		});
+		function cancelFile() {
+			var fileName = $("#fileNameStore").val();
+			$
+					.ajax({
+						data : 'fileUrl=' + fileName,
+						url : 'deleteUploadedFile',
+						dataType : 'json',
+						type : 'post',
+						success : function(data) {
+							if (data.msg == 'success') {
+								document.getElementById("uploadedFileName").innerHTML = "";
+								$("#fileNameStore").val("");
+								document.getElementById("uploadProcessing").innerHTML = "";
+								$("#uploadProcessBar")
+										.attr("style", "width:0%");
+							} else {
+								alert("删除文件失败");
+							}
+						}
+					});
+		}
+
+		function submitFinalFile() {
+			var formData = $("#finalFileForm").serialize();
+			alert(formData);
+			$.ajax({
+				data : formData,
+				dataType : 'json',
+				type : 'POST',
+				url : 'upluadFinalflswFile.do',
+				success : function(data) {
+					alert(data.msg);
+				}
+			});
+		}
+	</script>
 	<script type="text/javascript">
 		//ScrollUp
 		$(function() {
@@ -313,16 +489,16 @@
 		function downloadFile(fileUrl) {
 			alert(fileName);
 		}
-		
-		function toAll(){
-			location.href="flswclReportList_All.do";
+
+		function toAll() {
+			location.href = "flswclReportList_All.do";
 		}
-		
-		function toMe(){
-			location.href="flswclReportList_me.do";
+
+		function toMe() {
+			location.href = "flswclReportList_me.do";
 		}
-		function toHasApproved(){
-			location.href="flswclReportList_HasApproved.do";
+		function toHasApproved() {
+			location.href = "flswclReportList_HasApproved.do";
 		}
 		function changePage(page) {
 			location.href = "flswclReportList_WaitMe.do?currentPage=" + page;
@@ -330,13 +506,48 @@
 
 		function prevPage() {
 			var currentPage = $("#currentPage").val() * 1;
-			location.href = "flswclReportList_WaitMe?currentPage=" + (currentPage - 1);
+			location.href = "flswclReportList_WaitMe?currentPage="
+					+ (currentPage - 1);
 		}
 		function nextPage() {
 			var currentPage = $("#currentPage").val() * 1;
-			location.href = "flswclReportList_WaitMe?currentPage=" + (currentPage + 1);
+			location.href = "flswclReportList_WaitMe?currentPage="
+					+ (currentPage + 1);
+		}
+		function updateUpdated(id) {
+			$("#modaltoggle2").click();
+			$("#uploadProcessBar").attr("style",
+			"width:0%");
+			$("#flswclId").val(id);
+		}
+
+		function showFlswDeail(id) {
+			$("#flswclStatustbody").empty();
+			$.ajax({
+				data : 'id=' + id,
+				url : "getFlswclStatusById.do",
+				dataType : 'json',
+				type : 'POST',
+				success : function(data) {
+					var tr = '';
+					for (var i = 0; i < data.length; i++) {
+						tr = '<tr><td>' + (i + 1) + '</td><td>'
+								+ data[i].handler + '</td><td>'
+								+ data[i].genTime
+								+ '</td><td><a href="downloadFile.do?url='
+								+ data[i].genFileUrl + '&oriName='
+								+ data[i].genFileName + '" >'
+								+ data[i].genFileName + '</a></td></tr>';
+						$("#flswclStatustbody").append(tr);
+					}
+				}
+			});
+			$("#modaltoggle1").click();
+
 		}
 	</script>
+
+
 
 </body>
 </html>

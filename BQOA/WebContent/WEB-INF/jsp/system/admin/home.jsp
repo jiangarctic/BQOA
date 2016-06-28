@@ -44,248 +44,270 @@
         <!-- Sub Nav End -->
 
         <!-- Dashboard Wrapper Start -->
-        <div class="dashboard-wrapper-lg">
+        <div class="dashboard-wrapper">
           
-          <!-- Row starts -->
-          <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-6">
-              <div class="mini-widget">
-                <div class="mini-widget-heading clearfix">
-                  <div class="pull-left">Visitors</div>
-                  <div class="pull-right"><i class="fa fa-angle-up"></i> 12.2<sup>%</sup></div>
-                </div>
-                <div class="mini-widget-body clearfix">
-                  <div class="pull-left">
-                    <i class="fa fa-globe"></i>
+          <!-- Left Sidebar Start -->
+          <div class="left-sidebar">
+            
+            <!-- Row Start -->
+            <div class="row">
+              <div class="col-lg-12 col-md-12">
+                <div class="widget">
+                  <div class="widget-header">
+                    <div class="title">
+                      消息提醒事项
+                      <span class="mini-title">
+                        Metro Navigation
+                      </span>
+                    </div>
+                    
                   </div>
-                  <div class="pull-right number">8757</div>
+                  <div class="widget-body">
+                    <div class="metro-nav">
+                      <div class="metro-nav-block nav-block-blue double">
+                        <a href="#">
+                          <i class="fa fa-list-ol"></i>
+                          <div class="info">1 条</div>
+                          <div class="brand">新消息</div>
+                        </a>
+                      </div>
+                      <div class="metro-nav-block nav-block-orange">
+                        <a href="#" >
+                          <i class="fa fa-user"></i>
+                          <div class="info">2</div>
+                          <div class="brand">待办事项</div>
+                        </a>
+                      </div>
+                      <div class="metro-nav-block nav-block-yellow">
+                        <a href="#">
+                          <i class="fa fa-shopping-cart"></i>
+                          <div class="info">3</div>
+                          <div class="brand">站内信</div>
+                        </a>
+                      </div>
+                      
+                      
+                
+                    </div>
+                  </div>
                 </div>
-<!--                 <div class="mini-widget-footer center-align-text">
-                  <span>Better than last week</span>
-                </div> -->
               </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-              <div class="mini-widget">
-                <div class="mini-widget-heading clearfix">
-                  <div class="pull-left">Shares</div>
-                  <div class="pull-right"><i class="fa fa-angle-up"></i> 18.3<sup>%</sup></div>
-                </div>
-                <div class="mini-widget-body clearfix">
-                  <div class="pull-left">
-                    <i class="fa fa-twitter"></i>
-                  </div>
-                  <div class="pull-right number">3780</div>
-                </div>
-<!--                 <div class="mini-widget-footer center-align-text">
-                  <span>Better than last week</span>
-                </div> -->
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-              <div class="mini-widget">
-                <div class="mini-widget-heading clearfix">
-                  <div class="pull-left">Downloads</div>
-                  <div class="pull-right"><i class="fa fa-angle-down"></i> 21.9<sup>%</sup></div>
-                </div>
-                <div class="mini-widget-body clearfix">
-                  <div class="pull-left">
-                    <i class="fa fa-upload"></i>
-                  </div>
-                  <div class="pull-right number">12658</div>
-                </div>
-<!--                 <div class="mini-widget-footer center-align-text">
-                  <span>Better than last week</span>
-                </div> -->
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-              <div class="mini-widget mini-widget-grey">
-                <div class="mini-widget-heading clearfix">
-                  <div class="pull-left">Signups</div>
-                  <div class="pull-right"><i class="fa fa-angle-up"></i> 67.1<sup>%</sup></div>
-                </div>
-                <div class="mini-widget-body clearfix">
-                  <div class="pull-left">
-                    <i class="fa fa-coffee"></i>
-                  </div>
-                  <div class="pull-right number">1135</div>
-                </div>
-<!--                 <div class="mini-widget-footer center-align-text">
-                  <span>Better than last week</span>
-                </div> -->
-              </div>
-            </div>
-          </div>
-          <!-- Row ends -->
+            <!-- Row End -->
 
-          <!-- Row Start -->
-          <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Sessions
-                    <span class="mini-title">
-                      Right now
-                    </span>
-                  </div>
-                </div>
-                <div class="widget-body">
-                  <div id="area-chart" class="chart-height-md"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Mobile vs Desktop
-                  </div>
-                </div>
-                <div class="widget-body">
-                  <div id="mobVsDesk" class="chart-height-md"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Demography
-                  </div>
-                </div>
-                <div class="widget-body">
-                  <div id="mob-desktop" class="chart-height-md"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Row End -->
+            <!-- Row Start -->
+            <!-- Row End -->
 
-          <!-- Row Start -->
-          <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Social Statistics
-                  </div>
-                </div>
-                <div class="widget-body">
-                  <div class="social-stats">
-                    <!-- Row Starts -->
-                    <div class="row">
-                      <div class="col-md-3 col-sm-3 col-xs-12">
-                        <div class="social-icon facebook-bg">
-                          <i class="fa fa-facebook fa-2x"></i>
-                        </div>
-                        <div class="stats-details">
-                          <h3>8985</h3>
-                          <h6 class="text-success">+ 21%</h6>
-                          <h5>Likes</h5>
-                        </div>
+            <!-- Row Start -->
+            <div class="row">
+              <div class="col-lg-12 col-md-12">
+                <div class="widget">
+                  <div class="widget-header">
+                    <div class="title">
+                     站内信 
+                      <span class="mini-title"><a id="mailbox">博悦</a></span>
+                    </div>
+                    <div class="tools pull-right">
+                      <div class="btn-group">
+                        <a class="btn btn-default btn-sm">
+                          <i class="fa fa-mail-forward" data-original-title="Forward">
+                          </i>
+                        </a>
+                        <a class="btn btn-default btn-sm">
+                          <i class="fa fa-exclamation-circle" data-original-title="Report">
+                          </i>
+                        </a>
+                        <a class="btn btn-default btn-sm">
+                          <i class="fa fa-trash-o" data-original-title="Delete">
+                          </i>
+                        </a>
                       </div>
-                      <div class="col-md-3 col-sm-3 col-xs-12">
-                        <div class="social-icon twitter-bg">
-                          <i class="fa fa-twitter fa-2x"></i>
-                        </div>
-                        <div class="stats-details">
-                          <h3>4927</h3>
-                          <h6 class="text-success">+ 15%</h6>
-                          <h5>Tweets</h5>
-                        </div>
+                      <div class="btn-group">
+                        <a class="btn btn-default btn-sm">
+                          <i class="fa fa-folder-o"  data-original-title="Move to">
+                          </i>
+                        </a>
+                        <a class="btn btn-default btn-sm">
+                          <i class="fa fa-tag" data-original-title="Tag">
+                          </i>
+                        </a>
                       </div>
-                      <div class="col-md-3 col-sm-3 col-xs-12">
-                        <div class="social-icon linkedin-bg">
-                          <i class="fa fa-linkedin fa-2x"></i>
-                        </div>
-                        <div class="stats-details">
-                          <h3>764</h3>
-                          <h6 class="text-success">+ 11%</h6>
-                          <h5>Connections</h5>
-                        </div>
-                      </div>
-                      <div class="col-md-3 col-sm-3 col-xs-12">
-                        <div class="social-icon gplus-bg">
-                          <i class="fa fa-google-plus fa-2x"></i>
-                        </div>
-                        <div class="stats-details">
-                          <h3>1278</h3>
-                          <h6 class="text-warning">- 8%</h6>
-                          <h5>Shares</h5>
-                        </div>
+                      <div class="btn-group">
+                        <a class="btn btn-default btn-sm">
+                          <i class="fa fa-chevron-left" data-original-title="Prev">
+                          </i>
+                        </a>
+                        <a class="btn btn-default btn-sm btn-info" >
+                          <i class="fa fa-chevron-right" data-original-title="Next">
+                          </i>
+                        </a>
                       </div>
                     </div>
-                    <!-- Row Ends -->
+                  </div>
+                  <div class="widget-body">
+                    <div class="mail table-responsive">
+                      <table class="table table-condensed table-striped table-hover no-margin">
+                        <thead>
+                          <tr>
+                            <th style="width:3%">
+                              <input type="checkbox" class="no-margin">
+                            </th>
+                            <th style="width:17%">
+                             发送人
+                            </th>
+                            <th style="width:55%" class="hidden-phone">
+                              主题
+                            </th>
+                            <th style="width:12%" class="right-align-text hidden-phone">
+                              状态
+                            </th>
+                            <th style="width:12%" class="right-align-text hidden-phone">
+                              时间
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <input type="checkbox" class="no-margin">
+                            </td>
+                            <td>
+                             杨燕
+                            </td>
+                            <td class="hidden-phone">
+                              <strong>
+                                法律事务处理结果
+                              </strong>
+                              <small class="info-fade">
+                                
+                              </small>
+                            </td>
+                            <td class="right-align-text hidden-phone">
+                              <span class="label label-info">
+                                未读
+                              </span>
+                            </td>
+                            <td class="right-align-text hidden-phone">
+                              2016 05 23
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <input type="checkbox" class="no-margin">
+                            </td>
+                            <td>
+                              高黎
+                            </td>
+                            <td class="hidden-phone">
+                              <strong>
+                                酒店预订事项
+                              </strong>
+                              <small class="info-fade">
+                               
+                              </small>
+                            </td>
+                            <td class="right-align-text hidden-phone">
+                              <span class="label label-success">
+                                未读
+                              </span>
+                            </td>
+                            <td class="right-align-text hidden-phone">
+                              2016 05 24
+                            </td>
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Downloads
-                  </div>
-                </div>
-                <div class="widget-body">
-                  <div id="gg1" class="gauge chart-height-md"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Row End -->
+            <!-- Row End -->
 
-          <!-- Row Start -->
-          <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Monthly Revenue &amp; Growth
-                    <span class="mini-title">
-                      Sub title
+            <!-- Row Start -->
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <div class="widget">
+                  <div class="widget-header">
+                    <div class="title">
+                      个人事项
+                    </div>
+                    <span class="tools">
+                      <i class="fa fa-cogs"></i>
                     </span>
                   </div>
-                  <span class="tools">
-                    <a class="btn btn-danger btn-sm" href="#">
-                      <i class="fa fa-cog"></i>
-                    </a>
-                  </span>
-                </div>
-                <div class="widget-body">
-                  <div id="monthlyRevenueGrowth" class="chart-height-md"></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Monthly Expenses &amp; Cancellations
+                  <div class="widget-body">
+                    <div class="todo-container">
+                      <ul class="todo-list">
+                        <li class="new">
+                          <input type="checkbox" id="1" />
+                          <label for="1">
+                            Send flowers to Sandy 
+                            <span class="date">Due Feb 14</span>
+                          </label>
+                        </li>
+                        <li class="process">
+                          <input type="checkbox" id="2" checked/>
+                          <label for="2">
+                            Coffee with Karan
+                            <span class="date">Done Jan 28</span>
+                          </label>
+                        </li>
+                        <li class="completed">
+                          <input type="checkbox" id="3" checked />
+                          <label for="3">
+                            Be creative
+                            <span class="date">Due Feb 2</span>
+                          </label>
+                        </li>
+                        <li class="completed">
+                          <input type="checkbox" id="4" />
+                          <label for="4">
+                            Buy new iPad
+                            <span class="date">Due Feb 7</span>
+                          </label>
+                        </li>
+                        <li class="process">
+                          <input type="checkbox" id="5" checked/>
+                          <label for="5">
+                            Pay credit card bill
+                            <span class="date">Completed Jan 29</span>
+                          </label>
+                        </li>
+                        <li class="new">
+                          <input type="checkbox" id="6" />
+                          <label for="6">
+                            Take a photograph 
+                            <span class="date">Due Jan 30</span>
+                          </label>
+                        </li>
+                        <li class="process">
+                          <input type="checkbox" id="8">
+                          <label for="2">
+                            Have tea with the Queen
+                            <span class="date">Completed Jan 18</span>
+                          </label>
+                        </li>
+                      </ul>
+                      <form class="no-margin">
+                        <div class="input-group">
+                          <input type="text" class="form-control">
+                          <span class="input-group-btn">
+                            <button class="btn btn-info" type="button">增加</button>
+                          </span>
+                        </div>
+                      </form>
+                    </div>
                   </div>
-                  <span class="tools">
-                    <a class="btn btn-danger btn-sm" href="#">
-                      <i class="fa fa-cog"></i>
-                    </a>
-                  </span>
-                </div>
-                <div class="widget-body">
-                  <div id="monthlyExpensesCancellations" class="chart-height-md"></div>
                 </div>
               </div>
-            </div>
-          </div>
-          <!-- Row End -->
-
-          <!-- Row Start -->
-          <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+              
+              <div class="col-lg-5 col-md-6 col-sm-8 col-xs-12">
               <div class="widget">
                 <div class="widget-header">
                   <div class="title">
-                    Project Activity
+                    待办案件
                   </div>
                 </div>
                 <div class="widget-body">
@@ -352,58 +374,697 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Chats
-                  </div>
-                </div>
-                <div class="widget-body">
-                  <ul class="messages-list clearfix">
-                    <li>Are we meeting today?</li>
-                    <li>Yes, what time suits you?</li>
-                    <li>I was thinking after lunch, I have a meeting in the morning</li>
-                    <li>Are we meeting today?</li>
-                  </ul>
-                </div>
-              </div>
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-              <div class="widget">
-                <div class="widget-header">
-                  <div class="title">
-                    Appointments
+            <!-- Row End -->
+
+            <!-- Row Start -->
+            <div class="row">
+              <div class="col-lg-12 col-md-12">
+                <div class="widget">
+                  <div class="widget-header">
+                    <div class="title">
+                      团队微博
+                    </div>
+                    <span class="tools">
+                      <i class="fa fa-cogs"></i>
+                    </span>
                   </div>
-                </div>
-                <div class="widget-body">
-                  <!-- Row starts -->
-                  <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <div class="bg-primary-light">
-                        <div class="spacer-xs">
-                          <h5 class="text-primary no-margin">Today</h5>
-                          <h3 class="text-primary no-margin">Friday</h3>
-                          <ul class="appointments">
-                            <li>Meet Mr. John @ 9:30 AM</li>
-                            <li>Interview call @ 11:00 PM</li>
-                            <li>Send greetings to Sandy by 3:00 PM</li>
-                            <li>Dinner with Sndy @ 8:00 PM</li>
+                  <div class="widget-body">
+                    <div id="scrollbar-three">
+                      <div class="scrollbar">
+                        <div class="track">
+                          <div class="thumb">
+                            <div class="end">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="viewport">
+                        <div class="overview">
+                          <ul class="chats">
+                            <li class="in">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  杨燕
+                                </a>
+                                <span class="date-time">
+                                  2016 05 23 12:20
+                                </span>
+                                <span class="body">
+                                  看见一本不错的法律书籍，叫《完美的合同》，大家有时间看看
+                                </span>
+                              </div>
+                            </li>
+                            <li class="out">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  邵钧
+                                </a>
+                                <span class="date-time">
+                                  2016 05 24 09:32
+                                </span>
+                                <span class="body">
+                                  本周六团队活动，初步定为曲靖
+                                </span>
+                              </div>
+                            </li>
+                            <li class="in">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  Kelly
+                                </a>
+                                <span class="date-time">
+                                  at Feb 8, 2013 04:21
+                                </span>
+                                <span class="body">
+                                  Beard stumptown, cardigans banh mi lomo thundercats. whatever keytar, scenester farm-to-table banksy Austin twitter handle freegan cred raw denim single-origin coffee viral.
+                                </span>
+                              </div>
+                            </li>
+                            <li class="out">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  Hehe
+                                </a>
+                                <span class="date-time">
+                                  at Jan 29, 2013 08:10
+                                </span>
+                                <span class="body">
+                                  Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Reprehenderit butcher retro keffiyeh dreamcatcher synth terry richardsoAustin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+                                </span>
+                              </div>
+                            </li>
+                            <li class="in">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  Bulley
+                                </a>
+                                <span class="date-time">
+                                  at jan 14, 2013 06:43
+                                </span>
+                                <span class="body">
+                                  Tight pants next level keffiyeh you probably haven't heard of fixie sustainable quinoa 8-bit american apparel have a terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats.
+                                </span>
+                              </div>
+                            </li>
+                            <li class="out">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  Batman
+                                </a>
+                                <span class="date-time">
+                                  at Jan 09, 2013 01:19
+                                </span>
+                                <span class="body">
+                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
+                                </span>
+                              </div>
+                            </li>
+                            <li class="in">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  Ganggyy
+                                </a>
+                                <span class="date-time">
+                                  at Jan 03, 2013 09:09
+                                </span>
+                                <span class="body">
+                                  Enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
+                                </span>
+                              </div>
+                            </li>
+                            <li class="out">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  Cowboy
+                                </a>
+                                <span class="date-time">
+                                  at Jan 01, 2013 07:49
+                                </span>
+                                <span class="body">
+                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
+                                </span>
+                              </div>
+                            </li>
+                            <li class="in">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  Cockoo
+                                </a>
+                                <span class="date-time">
+                                  at Dec 28, 2012 02:39
+                                </span>
+                                <span class="body">
+                                  Dnim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit,  
+                                </span>
+                              </div>
+                            </li>
+                            <li class="out">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  Batman
+                                </a>
+                                <span class="date-time">
+                                  at Jan 09, 2013 01:19
+                                </span>
+                                <span class="body">
+                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
+                                </span>
+                              </div>
+                            </li>
+                            <li class="in">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  Ganggyy
+                                </a>
+                                <span class="date-time">
+                                  at Jan 03, 2013 09:09
+                                </span>
+                                <span class="body">
+                                  Enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
+                                </span>
+                              </div>
+                            </li>
+                            <li class="out">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  Cowboy
+                                </a>
+                                <span class="date-time">
+                                  at Jan 01, 2013 07:49
+                                </span>
+                                <span class="body">
+                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
+                                </span>
+                              </div>
+                            </li>
+                            <li class="in">
+                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
+                              <div class="message">
+                                <span class="arrow">
+                                </span>
+                                <a href="#" class="name">
+                                  Cockoo
+                                </a>
+                                <span class="date-time">
+                                  at Dec 28, 2012 02:39
+                                </span>
+                                <span class="body">
+                                  Dnim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit,  
+                                </span>
+                              </div>
+                            </li>
                           </ul>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-8 col-sm-8 col-xs-12">
-                      <div id="datepicker"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Row End -->
+
+            <!-- Row Start -->
+           
+            <!-- Row End -->
+
+          </div>
+          <!-- Left Sidebar End -->
+
+          <!-- Right Sidebar Start -->
+          <div class="right-sidebar">
+            
+            
+            
+            <div class="wrapper">
+              <div id="scrollbar">
+                <div class="scrollbar">
+                  <div class="track">
+                    <div class="thumb">
+                      <div class="end">
+                      </div>
                     </div>
                   </div>
-                  <!-- Row ends -->
+                </div>
+                <div class="viewport">
+                  <div class="overview">
+                    <div class="featured-articles-container">
+                      <h5 class="heading">
+                        团队公告
+                      </h5>
+                      <div class="articles">
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Hosting Made For WordPress
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Reinvent cutting-edge
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          partnerships models 24/7
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Eyeballs frictionless
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Empower deliver innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Mashups experiences plug
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Mashups experiences plug
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          B2B plug and play
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Need some interesting
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Mashups experiences plug
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          B2B plug and play
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Need some interesting
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Mashups experiences plug
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Need some interesting
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Mashups experiences plug
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          B2B plug and play
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Need some interesting
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Mashups experiences plug
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          B2B plug and play
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Need some interesting
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet">
+                            &nbsp;
+                          </span>
+                          Mashups experiences plug
+                        </a>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <hr class="hr-stylish-1">
+            
+            <div class="wrapper">
+              <div id="scrollbar-two">
+                <div class="scrollbar">
+                  <div class="track">
+                    <div class="thumb">
+                      <div class="end">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="viewport">
+                  <div class="overview">
+                    <div class="featured-articles-container">
+                      <h5 class="heading-blue">
+                        通讯录
+                      </h5>
+                      <div class="articles">
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Hosting Made For WordPress
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Reinvent cutting-edge
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          partnerships models 24/7
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Eyeballs frictionless
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Empower deliver innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Mashups experiences plug
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Need some interesting
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Mashups experiences plug
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          B2B plug and play
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Need some interesting
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Mashups experiences plug
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          B2B plug and play
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Need some interesting
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Portals technologies
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Collaborative innovate
+                        </a>
+                        <a href="#">
+                          <span class="label-bullet-blue">
+                            &nbsp;
+                          </span>
+                          Mashups experiences plug
+                        </a>
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Row End -->
-
+          <!-- Right Sidebar End -->
         </div>
         <!-- Dashboard Wrapper End -->
 
@@ -415,28 +1076,24 @@
     </div>
     <!-- Main Container end -->
 
+    
+    <script src="static/bootStrapFiles/js/wysi/wysihtml5-0.3.0.min.js"></script>
     <script src="static/bootStrapFiles/js/jquery.js"></script>
     <script src="static/bootStrapFiles/js/bootstrap.min.js"></script>
+    <script src="static/bootStrapFiles/js/wysi/bootstrap3-wysihtml5.js"></script>
     <script src="static/bootStrapFiles/js/jquery.scrollUp.js"></script>
     
-    <!-- jQuery UI JS -->
-    <script src="static/bootStrapFiles/js/jquery-ui-v1.10.3.js"></script>
-
-    <!-- Just Gage -->
-    <script src="static/bootStrapFiles/js/justgage/justgage.js"></script>
-    <script src="static/bootStrapFiles/js/justgage/raphael.2.1.0.min.js"></script>
-
-    <!-- Flot Charts -->
-    <script src="static/bootStrapFiles/js/flot/jquery.flot.js"></script>
-    <script src="static/bootStrapFiles/js/flot/jquery.flot.orderBar.min.js"></script>
-    <script src="static/bootStrapFiles/js/flot/jquery.flot.stack.min.js"></script>
-    <script src="static/bootStrapFiles/js/flot/jquery.flot.pie.min.js"></script>
-    <script src="static/bootStrapFiles/js/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="static/bootStrapFiles/js/flot/jquery.flot.resize.min.js"></script>
-
+    
+    
+    <!-- Sparkline JS -->
+    <script src="static/bootStrapFiles/js/sparkline.js"></script>
+    
+    <!-- Tiny Scrollbar JS -->
+    <script src="static/bootStrapFiles/js/tiny-scrollbar.js"></script>
+    
     <!-- Custom JS -->
     <script src="static/bootStrapFiles/js/menu.js"></script>
-    <script src="static/bootStrapFiles/js/custom-index2.js"></script>
+    <script src="static/bootStrapFiles/js/custom.js"></script>
     
     <script type="text/javascript">
       //ScrollUp
@@ -452,6 +1109,25 @@
           activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
         });
       });
+
+
+      //Tooltip
+      $('a').tooltip('hide');
+      $('i').tooltip('hide');
+
+      //Tiny Scrollbar
+      $('#scrollbar').tinyscrollbar();
+      $('#scrollbar-one').tinyscrollbar();
+      $('#scrollbar-two').tinyscrollbar();
+      $('#scrollbar-three').tinyscrollbar();
+
+      //Tabs
+      $('#myTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+      })
+
+
     </script>
 
   </body>

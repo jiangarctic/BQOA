@@ -36,7 +36,7 @@ public class GenerateFlswclWordService {
 		List<String> res = new ArrayList<String>();
 		String suffixUrl = info.get("suffixFileUrl");
 		try{
-			if(suffixUrl != null || suffixUrl.equals("")){
+			if(!suffixUrl.equals("")){
 				String xmlUrl = word2xml(info.get("suffixFileUrl"));
 				res = createWord(xmlUrl , info.get("contextPath") , info.get("creator") , info.get("reportNum") , pd);
 				return res;
@@ -60,7 +60,12 @@ public class GenerateFlswclWordService {
 		configuration .setClassForTemplateLoading(this.getClass(), "/wordTemplate");
 		Template t = null;
 		try{
-			t = configuration.getTemplate("flswcl.ftl");
+			if(xmlUrl.equals("")){
+				t = configuration.getTemplate("flswcl_nosuffix.ftl");
+			}else{
+				t = configuration.getTemplate("flswcl.ftl");
+			}
+			
 			
 		}catch(IOException e){
 			e.printStackTrace();

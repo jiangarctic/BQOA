@@ -3,13 +3,17 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="FlswclMapper">
-	<insert id="insertNewFlswcl" parameterType="pd" flushCache="false">
+	<insert id="insertNewFlswcl" parameterType="pd" flushCache="false" keyProperty="id" useGeneratedKeys="true" >
 		insert into sys_flswcl (clientName,reportNum,inquireTime,inquireType,inquireer,
 		inquireerPhone,inquireerEmail,reportBrief,givenFiles,suggestions,worker,workTime,
 		workerPhone,approver,resultFileName,replyTime,replyType,genFileUrl , genFileName , genTime, status)
 		 values(#{clientName},#{reportNum},#{inquireTime},#{inquireType},#{inquireer},
 		#{inquireerPhone},#{inquireerEmail},#{reportBrief},#{givenFiles},#{suggestions},#{worker},#{workTime},
 		#{workerPhone},#{approver},#{resultFileName},#{replyTime},#{replyType},#{genFileUrl} , #{genFileName} , #{genTime},#{status});
+	</insert>
+	<insert id="insertNewFlswclStatus" parameterType="pd" flushCache="false">
+		insert into  flswcl_status (flswId , status , genFileUrl , genFileName , genTime , handler) 
+		values (#{flswId} , #{status}  , #{genFileUrl} , #{genFileName} , #{genTime} , #{handler})
 	</insert>
 	
 	<select id="queryAllflswcl" resultType="pd">
@@ -51,5 +55,21 @@
 	<select id="queryFlswclHasApprovedCount" parameterType="pd" resultType="pd">
 		select count(*) total from sys_flswcl where approver=#{approver} and status=#{status}
 	</select>
+	<select id="lastInsertId" resultType="int">
+		select max(id) from sys_flswcl
+	</select>
 	
+	<delete id="deleteFlswcl" parameterType="pd">
+		delete from sys_flswcl where id=#{id}
+	</delete>
+	
+	<delete id="deleteFlswclStatus" parameterType="pd">
+		delete from flswcl_status where flswId = #{id}
+	</delete>
+	<select id="queryFlswclStatusById" parameterType="pd" resultType="pd">
+		select * from flswcl_status where flswId =#{id} ORDER BY id asc
+	</select>
+	<update id="updateFlsw" parameterType="pd">
+		update sys_flswcl set genFileUrl=#{genFileUrl} , genFileName=#{genFileName} , status=#{status} where id=#{id}
+	</update>
 </mapper>

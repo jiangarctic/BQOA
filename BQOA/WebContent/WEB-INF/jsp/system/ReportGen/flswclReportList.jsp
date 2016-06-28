@@ -33,12 +33,13 @@
 <body>
 	<c:set var="currentMain_Menu" value="办公" />
 	<c:set var="currentSub_Menu" value="法律事务报表" />
-		<input id="currentPage" style="display: none" value="${currentPage }" />
+	<input id="currentPage" style="display: none" value="${currentPage }" />
 	<input id="maxPage" style="display: none" value="${maxPage }" />
 	<!-- Header Start -->
 	<%@ include file="/WEB-INF/jsp/system/admin/homeHeader.jsp"%>
 	<!-- Header End -->
-
+	<button type="button" id="modaltoggle1" data-toggle="modal"
+		data-target="#myModal" style="display: none"></button>
 	<!-- Main Container start -->
 	<div class="dashboard-container">
 
@@ -76,14 +77,17 @@
 											disabled="disabled">
 											我的报表 <span class="fa fa-user"></span>
 										</button>
-										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toWaitMe();">
+										<button class="btn btn-primary btn-sm" type="button"
+											onclick="javascript:toWaitMe();">
 											待我审批 <span class="fa fa-check"></span>
 										</button>
-										<button class="btn btn-primary btn-sm" type="button" onclick="javascript:toHasApproved();"
+										<button class="btn btn-primary btn-sm" type="button"
+											onclick="javascript:toHasApproved();"
 											onclick="javascript:toWaitMe();">
-											 我已审批 <span class="fa fa-flag"></span>
+											我已审批 <span class="fa fa-flag"></span>
 										</button>
-										<button class="btn btn-primary btn-sm" type="button" onclick="toAll();">
+										<button class="btn btn-primary btn-sm" type="button"
+											onclick="toAll();">
 											查看全部 <span class="fa fa-eye"></span>
 										</button>
 									</span>
@@ -114,16 +118,16 @@
 													</a>
 													<td><c:if test="${flsw.status=='新建' }">
 															<span class="label label-info"> ${flsw.status} </span>
-														</c:if>
-														<c:if test="${flsw.status=='已审核' }">
+														</c:if> <c:if test="${flsw.status!='新建' }">
 															<span class="label label-success"> ${flsw.status}
 															</span>
 														</c:if></td>
 													<td><a
 														href="downloadFile.do?url=${flsw.genFileUrl }&oriName=${flsw.genFileName }">${flsw.genFileName }</a></td>
-													<td><a href="showOneFlswclDetail.do?id=${flsw.id }"><span
+													<td><a href="javascript:showFlswDeail(${flsw.id })"><span
 															class="fa fa-pencil-square">&nbsp;详情</span></a>&nbsp;&nbsp;<a
-														href="#"><span class="fa fa-times">&nbsp;删除</span></a></td>
+														href="javascript:deleteFlsw(${flsw.id })"><span
+															class="fa fa-times">&nbsp;删除</span></a></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -133,141 +137,175 @@
 							</div>
 						</div>
 					</div>
-					<!-- Row End -->
+					<!-- Modal -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">操作记录</h4>
+								</div>
+								<div class="modal-body">
+									<div class="widget-body">
 
-					<!-- Row Start -->
+										<table
+											class="table table-responsive table-striped table-bordered table-hover no-margin">
+											<thead>
+												<tr>
+													<th style="width: 5%">序号</th>
+													<th style="width: 15%">操作人</th>
+													<th style="width: 20%" class="hidden-xs">时间</th>
+													<th style="width: 40%" class="hidden-xs">文件</th>
+												</tr>
+											</thead>
+											<tbody id="flswclStatustbody">
 
-					<!-- Row End -->
-
-					<!-- Row Start -->
-
-					<!-- Row End -->
-
-					<!-- Row Start -->
-
-					<!-- Row End -->
-
-				</div>
-				<!-- Left Sidebar End -->
-
-				<!-- Right Sidebar Start -->
-				<div class="right-sidebar">
-					<div class="wrapper">
-						<table
-							class="table table-condensed table-striped table-bordered table-hover no-margin">
-							<thead>
-								<tr>
-									<th style="width: 10%"><input type="checkbox"
-										class="no-margin" /></th>
-									<th style="width: 70%">Name</th>
-									<th style="width: 20%">Status</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><input type="checkbox" class="no-margin" /></td>
-									<td><span class="name"> Mahendra Singh Dhoni </span></td>
-									<td><span class="label label-info"> New </span></td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" class="no-margin" /></td>
-									<td><span class="name"> Michel Clark </span></td>
-									<td><span class="label label-success"> New </span></td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" class="no-margin" /></td>
-									<td><span class="name"> Rahul Dravid </span></td>
-									<td><span class="label label-warning"> New </span></td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" class="no-margin" /></td>
-									<td><span class="name"> Anthony Michell </span></td>
-									<td><span class="label label-info"> New </span></td>
-								</tr>
-								<tr>
-									<td><input type="checkbox" class="no-margin" /></td>
-									<td><span class="name"> Srinu Baswa </span></td>
-									<td><span class="label label-success"> New </span></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-
-					<hr class="hr-stylish-1">
-
-					<div class="wrapper">
-						<div class="btn-toolbar no-margin">
-							<div class="btn-group">
-								<a href="#" class="btn btn-success"> <i
-									class="fa fa-headphones"> </i>
-								</a> <a href="#" class="btn btn-warning"> <i
-									class="fa fa-thumbs-down"> </i>
-								</a> <a href="#" class="btn btn-danger"> <i class="fa fa-signal">
-								</i>
-								</a> <a href="#" class="btn btn-info"> <i class="fa fa-share">
-								</i>
-								</a>
-							</div>
-							<div class="btn-group">
-								<a href="#" class="btn btn-default"> <i class="fa fa-leaf"></i>
-								</a>
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Close</button>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
+					<!-- Modal -->
 
-					<hr class="hr-stylish-1">
+					<!-- Row End -->
 
-					<div class="wrapper">
-						<table
-							class="table table-condensed table-striped table-bordered table-hover no-margin">
-							<thead>
-								<tr>
-									<th style="width: 10%"><input type="checkbox"
-										class="no-margin" /></th>
-									<th style="width: 70%">Name</th>
-									<th style="width: 20%">Status</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="success">
-									<td><input type="checkbox" class="no-margin" /></td>
-									<td><span class="name"> Mahendra Singh Dhoni </span></td>
-									<td><span class="label label-info"> New </span></td>
-								</tr>
-								<tr class="error">
-									<td><input type="checkbox" class="no-margin" /></td>
-									<td><span class="name"> Michel Clark </span></td>
-									<td><span class="label label-success"> New </span></td>
-								</tr>
-								<tr class="success">
-									<td><input type="checkbox" class="no-margin" /></td>
-									<td><span class="name"> Rahul Dravid </span></td>
-									<td><span class="label label-warning"> New </span></td>
-								</tr>
-								<tr class="warning">
-									<td><input type="checkbox" class="no-margin" /></td>
-									<td><span class="name"> Anthony Michell </span></td>
-									<td><span class="label label-info"> New </span></td>
-								</tr>
-								<tr class="info">
-									<td><input type="checkbox" class="no-margin" /></td>
-									<td><span class="name"> Srinu Baswa </span></td>
-									<td><span class="label label-success"> New </span></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- Right Sidebar End -->
+				<!-- Row Start -->
+
+				<!-- Row End -->
+
+				<!-- Row Start -->
+
+				<!-- Row End -->
 
 			</div>
-			<!-- Dashboard Wrapper End -->
+			<!-- Left Sidebar End -->
 
-			<footer>
-				<p>© 八谦律师事务所</p>
-			</footer>
+			<!-- Right Sidebar Start -->
+			<div class="right-sidebar">
+				<div class="wrapper">
+					<table
+						class="table table-condensed table-striped table-bordered table-hover no-margin">
+						<thead>
+							<tr>
+								<th style="width: 10%"><input type="checkbox"
+									class="no-margin" /></th>
+								<th style="width: 70%">Name</th>
+								<th style="width: 20%">Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="checkbox" class="no-margin" /></td>
+								<td><span class="name"> Mahendra Singh Dhoni </span></td>
+								<td><span class="label label-info"> New </span></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="no-margin" /></td>
+								<td><span class="name"> Michel Clark </span></td>
+								<td><span class="label label-success"> New </span></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="no-margin" /></td>
+								<td><span class="name"> Rahul Dravid </span></td>
+								<td><span class="label label-warning"> New </span></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="no-margin" /></td>
+								<td><span class="name"> Anthony Michell </span></td>
+								<td><span class="label label-info"> New </span></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="no-margin" /></td>
+								<td><span class="name"> Srinu Baswa </span></td>
+								<td><span class="label label-success"> New </span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<hr class="hr-stylish-1">
+
+				<div class="wrapper">
+					<div class="btn-toolbar no-margin">
+						<div class="btn-group">
+							<a href="#" class="btn btn-success"> <i
+								class="fa fa-headphones"> </i>
+							</a> <a href="#" class="btn btn-warning"> <i
+								class="fa fa-thumbs-down"> </i>
+							</a> <a href="#" class="btn btn-danger"> <i class="fa fa-signal">
+							</i>
+							</a> <a href="#" class="btn btn-info"> <i class="fa fa-share">
+							</i>
+							</a>
+						</div>
+						<div class="btn-group">
+							<a href="#" class="btn btn-default"> <i class="fa fa-leaf"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<hr class="hr-stylish-1">
+
+				<div class="wrapper">
+					<table
+						class="table table-condensed table-striped table-bordered table-hover no-margin">
+						<thead>
+							<tr>
+								<th style="width: 10%"><input type="checkbox"
+									class="no-margin" /></th>
+								<th style="width: 70%">Name</th>
+								<th style="width: 20%">Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="success">
+								<td><input type="checkbox" class="no-margin" /></td>
+								<td><span class="name"> Mahendra Singh Dhoni </span></td>
+								<td><span class="label label-info"> New </span></td>
+							</tr>
+							<tr class="error">
+								<td><input type="checkbox" class="no-margin" /></td>
+								<td><span class="name"> Michel Clark </span></td>
+								<td><span class="label label-success"> New </span></td>
+							</tr>
+							<tr class="success">
+								<td><input type="checkbox" class="no-margin" /></td>
+								<td><span class="name"> Rahul Dravid </span></td>
+								<td><span class="label label-warning"> New </span></td>
+							</tr>
+							<tr class="warning">
+								<td><input type="checkbox" class="no-margin" /></td>
+								<td><span class="name"> Anthony Michell </span></td>
+								<td><span class="label label-info"> New </span></td>
+							</tr>
+							<tr class="info">
+								<td><input type="checkbox" class="no-margin" /></td>
+								<td><span class="name"> Srinu Baswa </span></td>
+								<td><span class="label label-success"> New </span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- Right Sidebar End -->
 
 		</div>
+		<!-- Dashboard Wrapper End -->
+
+		<footer>
+			<p>© 八谦律师事务所</p>
+		</footer>
+
+	</div>
 	</div>
 	<!-- Main Container end -->
 
@@ -313,12 +351,12 @@
 		function downloadFile(fileUrl) {
 			alert(fileName);
 		}
-		
-		function toWaitMe(){
-			location.href="flswclReportList_WaitMe.do";
+
+		function toWaitMe() {
+			location.href = "flswclReportList_WaitMe.do";
 		}
-		function toAll(){
-			location.href="flswclReportList_All.do";
+		function toAll() {
+			location.href = "flswclReportList_All.do";
 		}
 		function changePage(page) {
 			location.href = "flswclReportList_me.do?currentPage=" + page;
@@ -326,14 +364,56 @@
 
 		function prevPage() {
 			var currentPage = $("#currentPage").val() * 1;
-			location.href = "flswclReportList_me?currentPage=" + (currentPage - 1);
+			location.href = "flswclReportList_me?currentPage="
+					+ (currentPage - 1);
 		}
 		function nextPage() {
 			var currentPage = $("#currentPage").val() * 1;
-			location.href = "flswclReportList_me?currentPage=" + (currentPage + 1);
+			location.href = "flswclReportList_me?currentPage="
+					+ (currentPage + 1);
 		}
-		function toHasApproved(){
-			location.href="flswclReportList_HasApproved.do";
+		function toHasApproved() {
+			location.href = "flswclReportList_HasApproved.do";
+		}
+		function deleteFlsw(id) {
+			var vali = confirm("确认删除记录？删除后不可恢复！");
+			if (vali == true) {
+				$.ajax({
+					data : 'id=' + id,
+					url : 'deleteFlswcl.do',
+					dataType : 'json',
+					type : "POST",
+					success : function(data) {
+						alert(data.msg);
+						location.href = "flswclReportList_me.do";
+					}
+				});
+			}
+		}
+
+		function showFlswDeail(id) {
+			$("#flswclStatustbody").empty();
+			$.ajax({
+				data : 'id=' + id,
+				url : "getFlswclStatusById.do",
+				dataType : 'json',
+				type : 'POST',
+				success : function(data) {
+					var tr = '';
+					for (var i = 0; i < data.length; i++) {
+						tr = '<tr><td>' + (i + 1) + '</td><td>'
+								+ data[i].handler + '</td><td>'
+								+ data[i].genTime
+								+ '</td><td><a href="downloadFile.do?url='
+								+ data[i].genFileUrl + '&oriName='
+								+ data[i].genFileName + '" >'
+								+ data[i].genFileName + '</a></td></tr>';
+						$("#flswclStatustbody").append(tr);
+					}
+				}
+			});
+			$("#modaltoggle1").click();
+
 		}
 	</script>
 

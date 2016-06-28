@@ -1,5 +1,6 @@
 package com.jwd.bqoa.controller.system.report.flswcl;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +15,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jwd.bqoa.controller.base.BaseController;
@@ -25,6 +27,7 @@ import com.jwd.bqoa.util.Const;
 import com.jwd.bqoa.util.DateUtil;
 import com.jwd.bqoa.util.PageData;
 import com.jwd.bqoa.util.PageUtil;
+
 
 @Controller
 public class FlswclController extends BaseController{
@@ -39,8 +42,9 @@ public class FlswclController extends BaseController{
 	public String generateFlswclReport(HttpSession session) throws Exception{
 		Map<String , String> result = new HashMap<String  , String>();
 		List<String> fileGenInfo = new ArrayList<String>();
-		
+		User sessionUser = (User) session.getAttribute(Const.SESSION_USER);
 		PageData pd = this.getPageData();
+		//如果生成报表客户名称是自己填写，则插入新客户
 		if(pd.getString("clientNameFlag").equals("other")){
 			PageData pd2 = new PageData();
 			String reportNum = pd.getString("reportNum");
@@ -53,24 +57,39 @@ public class FlswclController extends BaseController{
 			pd2.put("contactorDesc", contactor[1]);
 			clientService.addClient(pd2);
 		}
+		//生成文件
 		try{
 			String contextPath = Const.UPLOAD_DIR;
 			Map<String , String> genFileInfo = new HashMap<String , String>();
-			User sessionUser = (User) session.getAttribute(Const.SESSION_USER);
+			
 			genFileInfo.put("creator", sessionUser.getNAME());
 			genFileInfo.put("contextPath" , contextPath);
 			genFileInfo.put("reportNum" , pd.getString("reportNum"));
-			genFileInfo.put("suffixFileUrl" , pd.getString("suffixFileUrl"));
+			if(pd.getString("suffixFileUrl")==null || pd.getString("suffixFileUrl").equals("")){
+				genFileInfo.put("suffixFileUrl" ,"");
+			}else{
+				genFileInfo.put("suffixFileUrl" , pd.getString("suffixFileUrl"));
+			}
+			
 			fileGenInfo = generateFlswclWordService.genFlswclWord(genFileInfo ,pd);
 		}catch(Exception e){
 			result.put("msg", "文件生成时产生错误，请联系管理员");
 		}
+		//插入法律事务信息和状态
 		try{
 			pd.put("genFileUrl", fileGenInfo.get(0));
 			pd.put("genFileName", fileGenInfo.get(1));
 			pd.put("genTime", DateUtil.getTime());
 			pd.put("status", "新建");
-			flswclService.insertNewFlswReport(pd);
+			PageData pd2 = new PageData();
+			Integer obj = (Integer) flswclService.insertNewFlswReport(pd);
+			pd2.put("flswId", obj);
+			pd2.put("status", sessionUser.getNAME()+"新建");
+			pd2.put("genFileUrl", fileGenInfo.get(0));
+			pd2.put("genFileName", fileGenInfo.get(1));
+			pd2.put("genTime", DateUtil.getTime());
+			pd2.put("handler", sessionUser.getNAME());
+			flswclService.insertFlswclStatus(pd2);
 			result.put("msg", "success");
 		}catch(Exception e){
 			e.printStackTrace();			
@@ -205,10 +224,60 @@ public class FlswclController extends BaseController{
 		return mv;
 	}
 	
+	@RequestMapping("/deleteFlswcl")
+	@ResponseBody
+	public Map<String , String> deleteFlswcl(){
+		Map<String , String> result = new HashMap<String , String>();
+		PageData pd = this.getPageData();
+		try{
+			flswclService.deleteFlswcl(pd);
+			result.put("msg", "删除成功！");
+		}catch(Exception e){
+			result.put("msg", "删除中发生未知错误，请联系管理员~");
+		}
+		return result;
+	}
+	
+	@RequestMapping("/getFlswclStatusById")
+	@ResponseBody
+	public List<PageData> getFlswclStatusById() throws Exception{
+		List<PageData> list = new ArrayList<PageData>();
+		PageData pd = this.getPageData();
+		list = flswclService.queryFlswclStatusById(pd);
+		return list;
+	}
+	
+	@RequestMapping("/upluadFinalflswFile")
+	@ResponseBody
+	public Map<String , String> upluadFinalFile(HttpSession session){
+		Map<String , String> result = new HashMap<String , String>();
+		User u = (User) session.getAttribute(Const.SESSION_USER);
+		try{
+			PageData pd = this.getPageData();
+			String finalUrl = pd.getString("suffixFileUrl");
+			File finalDir = new File(Const.UPLOAD_DIR+"/flsw/final/");
+			if(!finalDir.exists()){
+				finalDir.mkdirs();
+			}
+			File fileFile = new File(Const.UPLOAD_DIR+"/flsw/final/"+finalUrl);
+			pd.put("status", u.getNAME()+"已审");
+			pd.put("genFileUrl", Const.UPLOAD_DIR+"/flsw/final/"+finalUrl);
+			pd.put("genFileName", finalUrl);
+			pd.put("handler", u.getNAME());
+			flswclService.updateFlswcl(pd);
+			result.put("msg", "提交成功");
+		}catch(Exception e){
+			result.put("msg", "提交出现异常 , 请联系管理员");
+		}
+		return result;
+	}
+	
 	@SuppressWarnings("unchecked")
 	private Map<String , String> getCRUDAuth(){
 		Subject currentUser = SecurityUtils.getSubject();
 		Session session = currentUser.getSession();
 		return (Map<String , String>)session.getAttribute(Const.SESSION_QX);
 	}
+	
+	
 }
