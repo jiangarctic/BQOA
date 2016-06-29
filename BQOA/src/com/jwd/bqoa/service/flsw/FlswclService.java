@@ -46,11 +46,16 @@ public class FlswclService {
 	@SuppressWarnings("unchecked")
 	public List<PageData> queryFlswcl_HasApproved(PageData pd) throws Exception{
 		List<String> ids = (List<String>) dao.findForList("FlswclMapper.queryApprovedIdsByApprover", pd);
-		Map<String , Object> map = new HashMap<String , Object>();
-		map.put("startIndex", pd.get("startIndex"));
-		map.put("rows", pd.get("rows"));
-		map.put("ids", ids);
-		return (List<PageData>) dao.findForList("FlswclMapper.queryflswcl_HasApproved", map);
+		if(ids.size()>0){
+			Map<String , Object> map = new HashMap<String , Object>();
+			map.put("ids", ids);
+			map.put("startIndex", pd.get("startIndex"));
+			map.put("rows", pd.get("rows"));			
+			return (List<PageData>) dao.findForList("FlswclMapper.queryflswcl_HasApproved", map);
+		}else{
+			return null;
+		}
+		
 	}
 	
 	public PageData queryOneFlswcl(PageData pd) throws Exception{
