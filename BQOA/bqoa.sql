@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50535
 File Encoding         : 65001
 
-Date: 2016-06-29 11:29:30
+Date: 2016-06-29 18:08:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,13 +29,13 @@ CREATE TABLE `flswcl_status` (
   `handler` varchar(50) DEFAULT NULL,
   `approver` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of flswcl_status
 -- ----------------------------
-INSERT INTO `flswcl_status` VALUES ('16', '76', '江万东新建', 'E:/BQOAFILES/flsw/江万东/创佳160629H_江万东_1467170438514.doc', '创佳160629H_江万东_1467170438514.doc', '2016-06-29 11:20:38', '江万东', null);
-INSERT INTO `flswcl_status` VALUES ('17', '76', '邵钧已审,最终', 'E:/BQOAFILES/flsw/final/111_1467170483796.docx', '111_1467170483796.docx', '2016-06-29 11:21:29', '邵钧', null);
+INSERT INTO `flswcl_status` VALUES ('37', '88', '江万东新建', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload//flsw/江万东/创佳160629H_江万东_1467194220809.doc', '创佳160629H_江万东_1467194220809.doc', '2016-06-29 17:57:00', '江万东', null);
+INSERT INTO `flswcl_status` VALUES ('38', '88', '邵钧已通过,最终', '', '', '2016-06-29 17:57:22', '邵钧', '邵钧');
 
 -- ----------------------------
 -- Table structure for sys_client
@@ -94,12 +94,12 @@ CREATE TABLE `sys_flswcl` (
   `status` varchar(20) DEFAULT NULL,
   `nextApprover` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_flswcl
 -- ----------------------------
-INSERT INTO `sys_flswcl` VALUES ('76', '安宁创佳房地产开发有限公司', '创佳160629H', '2016年06月29日  上午 11:20', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'dwa', 'dwadw', 'a', '江万东', '2', '18314496694', '邵钧', 'dwa', '', '', 'E:/BQOAFILES/flsw/final/111_1467170483796.docx', '111_1467170483796.docx', '2016-06-29 11:20:38', '邵钧已审,最终', 'god');
+INSERT INTO `sys_flswcl` VALUES ('88', '安宁创佳房地产开发有限公司', '创佳160629H', '2016年06月29日  下午 05:56', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'awd', 'awd', 'dwa', '江万东', '3', '18314496694', '邵钧', 'dwa', '', '', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload//flsw/江万东/创佳160629H_江万东_1467194220809.doc', '创佳160629H_江万东_1467194220809.doc', '2016-06-29 17:57:00', '邵钧已通过,最终', 'god');
 
 -- ----------------------------
 -- Table structure for sys_gl_qx

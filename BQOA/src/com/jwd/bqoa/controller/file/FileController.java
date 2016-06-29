@@ -31,15 +31,16 @@ public class FileController {
 		if( suffix.equals(".doc") || suffix.equals(".docx")){
 			session.setAttribute("file", file);
 			resp.setContentType("text/html;charset=UTF-8");
+			String uploadDirAddr = session.getServletContext().getRealPath("")+"/upload/";
 			//File uploadDir = new File(session.getServletContext().getRealPath("")+"/upload/");
-			File uploadDir = new File(Const.UPLOAD_DIR+"/upload/");
+			File uploadDir = new File(uploadDirAddr+"/upload/");
 			if(!uploadDir.exists()){
 				uploadDir.mkdirs();
 			}
 			String fileName = file.getOriginalFilename().subSequence(0, file.getOriginalFilename().lastIndexOf("."))
 					+"_"+System.currentTimeMillis() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 			//String localPath = session.getServletContext().getRealPath("")+"/upload/"+fileName;
-			String localPath = Const.UPLOAD_DIR+"/upload/"+fileName;
+			String localPath = uploadDirAddr+"/upload/"+fileName;
 			resp.setContentType("text/html;charset=UTF-8");
 			Writer writer = resp.getWriter();
 			try{

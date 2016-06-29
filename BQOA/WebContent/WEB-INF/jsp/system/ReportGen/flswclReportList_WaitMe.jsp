@@ -129,7 +129,9 @@
 													<td><a href="javascript:showFlswDeail(${flsw.id })"><span
 															class="fa fa-pencil-square">&nbsp;详情</span></a>&nbsp;&nbsp;<a
 														href="javascript:updateUpdated(${flsw.id })"><span
-															class="fa fa-times">&nbsp;上传修改版</span></a></td>
+															class="fa fa-times">&nbsp;上传修改版</span></a>&nbsp;&nbsp;<a
+														href="javascript:turnToFinal(${flsw.id })"><span
+															class="fa fa-times">&nbsp;转为最终版</span></a></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -212,17 +214,15 @@
 										</div>
 										<input id="fileNameStore" style="display: none"
 											name="suffixFileUrl" /> <input id="flswclId"
-											style="display: none" name="flswId" />
-											<input id="flag"
+											style="display: none" name="id" /><input id="flag"
 											style="display: none" name="flag" />
+											
 									</form>
 								</div>
 								<div class="modal-footer">
 
 									<button type="button" class="btn btn-primary"
-										onclick="javascript:submitFinalFile(0);">提交最终</button>
-										<button type="button" class="btn btn-primary"
-										onclick="javascript:submitFinalFile(1);">返回作者</button>
+										onclick="javascript:submitFinalFile();">提交</button>
 								</div>
 							</div>
 						</div>
@@ -445,8 +445,8 @@
 					});
 		}
 
-		function submitFinalFile(flag) {
-			$("#flag").val(flag);
+		function submitFinalFile() {
+			$("#flag").val("other");
 			var formData = $("#finalFileForm").serialize();
 			$.ajax({
 				data : formData,
@@ -550,6 +550,19 @@
 			});
 			$("#modaltoggle1").click();
 
+		}
+		
+		function turnToFinal(id){
+			$.ajax({
+				data : "id="+id+"&flag=pass",
+				dataType : 'json',
+				type : 'POST',
+				url : 'upluadFinalflswFile.do',
+				success : function(data) {
+					alert(data.msg);
+					location.href="flswclReportList_HasApproved.do";
+				}
+			});
 		}
 	</script>
 

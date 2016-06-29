@@ -39,6 +39,10 @@ public class GenerateFlswclWordService {
 			if(!suffixUrl.equals("")){
 				String xmlUrl = word2xml(info.get("suffixFileUrl"));
 				res = createWord(xmlUrl , info.get("contextPath") , info.get("creator") , info.get("reportNum") , pd);
+				File file = new File(suffixUrl);
+				File file1 = new File(xmlUrl);
+				file.delete();
+				file1.delete();
 				return res;
 			}else{
 				res = createWord("" , info.get("contextPath") , info.get("creator") , info.get("reportNum") , pd);

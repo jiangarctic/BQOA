@@ -38,7 +38,8 @@
 	<!-- Header Start -->
 	<%@ include file="/WEB-INF/jsp/system/admin/homeHeader.jsp"%>
 	<!-- Header End -->
-
+	<button type="button" id="modaltoggle1" data-toggle="modal"
+		data-target="#myModal" style="display: none"></button>
 	<!-- Main Container start -->
 	<div class="dashboard-container">
 
@@ -127,16 +128,15 @@
 													<td><a href="showOneFlswclDetail.do?id=${flsw.id }">${flsw.reportNum }</a></td>
 													<td>${flsw.worker }</td>
 													<td>${flsw.genTime }</td>
-													</a>
 													<td><c:if test="${flsw.status=='新建' }">
 															<span class="label label-info"> ${flsw.status} </span>
-														</c:if> <c:if test="${flsw.status=='已审核' }">
+														</c:if> <c:if test="${flsw.status!='新建' }">
 															<span class="label label-success"> ${flsw.status}
 															</span>
 														</c:if></td>
 													<td><a
 														href="downloadFile.do?url=${flsw.genFileUrl }&oriName=${flsw.genFileName }">${flsw.genFileName }</a></td>
-													<td><a href="showOneFlswclDetail.do?id=${flsw.id }"><span
+													<td><a href="javascript:showFlswDeail(${flsw.id })"><span
 															class="fa fa-pencil-square">&nbsp;详情</span></a>&nbsp;&nbsp;<a
 														href="#"><span class="fa fa-times">&nbsp;删除</span></a></td>
 												</tr>
@@ -151,7 +151,43 @@
 					<!-- Row End -->
 
 					<!-- Row Start -->
+					<!-- Modal -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">操作记录</h4>
+								</div>
+								<div class="modal-body">
+									<div class="widget-body">
 
+										<table
+											class="table table-responsive table-striped table-bordered table-hover no-margin">
+											<thead>
+												<tr>
+													<th style="width: 5%">序号</th>
+													<th style="width: 15%">操作人</th>
+													<th style="width: 20%" class="hidden-xs">时间</th>
+													<th style="width: 40%" class="hidden-xs">文件</th>
+												</tr>
+											</thead>
+											<tbody id="flswclStatustbody">
+
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Modal -->
 					<!-- Row End -->
 
 					<!-- Row Start -->
@@ -356,6 +392,30 @@
 			var worker = $("#search_worker").val();
 			var queryCon = clientName+"_"+worker;
 			location.href = "flswclReportList_All?queryCon=1&query_clientName="+clientName+"&query_worker="+worker;
+		}
+		function showFlswDeail(id) {
+			$("#flswclStatustbody").empty();
+			$.ajax({
+				data : 'id=' + id,
+				url : "getFlswclStatusById.do",
+				dataType : 'json',
+				type : 'POST',
+				success : function(data) {
+					var tr = '';
+					for (var i = 0; i < data.length; i++) {
+						tr = '<tr><td>' + (i + 1) + '</td><td>'
+								+ data[i].handler + '</td><td>'
+								+ data[i].genTime
+								+ '</td><td><a href="downloadFile.do?url='
+								+ data[i].genFileUrl + '&oriName='
+								+ data[i].genFileName + '" >'
+								+ data[i].genFileName + '</a></td></tr>';
+						$("#flswclStatustbody").append(tr);
+					}
+				}
+			});
+			$("#modaltoggle1").click();
+
 		}
 	</script>
 

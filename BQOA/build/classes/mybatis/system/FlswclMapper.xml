@@ -12,8 +12,8 @@
 		#{workerPhone},#{approver},#{resultFileName},#{replyTime},#{replyType},#{genFileUrl} , #{genFileName} , #{genTime},#{status},#{nextApprover});
 	</insert>
 	<insert id="insertNewFlswclStatus" parameterType="pd" flushCache="false">
-		insert into  flswcl_status (flswId , status , genFileUrl , genFileName , genTime , handler) 
-		values (#{flswId} , #{status}  , #{genFileUrl} , #{genFileName} , #{genTime} , #{handler})
+		insert into  flswcl_status (flswId , status , genFileUrl , genFileName , genTime , handler , approver) 
+		values (#{id} , #{status}  , #{genFileUrl_status} , #{genFileName_status} , #{genTime} , #{handler}  , #{approver})
 	</insert>
 	
 	<select id="queryAllflswcl" resultType="pd">
@@ -36,8 +36,15 @@
 	<select id="queryflswcl_WaitMe" resultType="pd">
 		select * from sys_flswcl where nextApprover=#{approver} ORDER BY id desc limit #{startIndex} , #{rows}
 	</select>
-	<select id="queryflswcl_HasApproved" resultType="pd">
-		select * from sys_flswcl where id = (select flswId from flswcl_status where approver=#{approver}) ORDER BY id desc limit #{startIndex} , #{rows}
+	<select id="queryApprovedIdsByApprover" parameterType="pd" resultType="string">
+		select distinct flswId from flswcl_status where approver=#{approver}
+	</select>
+	<select id="queryflswcl_HasApproved" resultType="pd" > 
+		select * from sys_flswcl where id in 
+			<foreach collection="ids" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		 ORDER BY id desc limit #{startIndex} , #{rows}
 	</select>
 	
 	<select id="queryOneFlswcl" parameterType="pd" resultType="pd">
@@ -70,6 +77,6 @@
 		select * from flswcl_status where flswId =#{id} ORDER BY id asc
 	</select>
 	<update id="updateFlsw" parameterType="pd">
-		update sys_flswcl set genFileUrl=#{genFileUrl} , genFileName=#{genFileName} , status=#{status} , nextApprover=#{nextApprover} where id=#{flswId}
+		update sys_flswcl set genFileUrl=#{genFileUrl} , genFileName=#{genFileName} , status=#{status} , nextApprover=#{nextApprover} where id=#{id}
 	</update>
 </mapper>

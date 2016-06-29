@@ -27,6 +27,7 @@ import com.jwd.bqoa.service.officeHandle.GenerateFlswclWordService;
 import com.jwd.bqoa.service.system.client.ClientService;
 import com.jwd.bqoa.util.Const;
 import com.jwd.bqoa.util.DateUtil;
+import com.jwd.bqoa.util.FileUtil;
 import com.jwd.bqoa.util.PageData;
 import com.jwd.bqoa.util.PageUtil;
 
@@ -61,7 +62,7 @@ public class FlswclController extends BaseController{
 		}
 		//生成文件
 		try{
-			String contextPath = Const.UPLOAD_DIR;
+			String contextPath =  session.getServletContext().getRealPath("")+"/upload/";
 			Map<String , String> genFileInfo = new HashMap<String , String>();
 			
 			genFileInfo.put("creator", sessionUser.getNAME());
@@ -86,10 +87,10 @@ public class FlswclController extends BaseController{
 			pd.put("status", "新建");
 			PageData pd2 = new PageData();
 			Integer obj = (Integer) flswclService.insertNewFlswReport(pd);
-			pd2.put("flswId", obj);
+			pd2.put("id", obj);
 			pd2.put("status", sessionUser.getNAME()+"新建");
-			pd2.put("genFileUrl", fileGenInfo.get(0));
-			pd2.put("genFileName", fileGenInfo.get(1));
+			pd2.put("genFileUrl_status", fileGenInfo.get(0));
+			pd2.put("genFileName_status", fileGenInfo.get(1));
 			pd2.put("genTime", DateUtil.getTime());
 			pd2.put("handler", sessionUser.getNAME());
 			flswclService.insertFlswclStatus(pd2);
@@ -256,45 +257,36 @@ public class FlswclController extends BaseController{
 		User u = (User) session.getAttribute(Const.SESSION_USER);
 		PageData pd = this.getPageData();
 		String flag = pd.getString("flag");
+		String finalUrl="";
+		String finalFileName="";
+		String uploadDir = session.getServletContext().getRealPath("")+"/upload/";
 		try{
-			String finalUrl = pd.getString("suffixFileUrl");
-			String finalFileName = finalUrl.substring(finalUrl.lastIndexOf("/")+1);
-			if(flag.equals("0")){
-				File finalDir = new File(Const.UPLOAD_DIR+"/flsw/final/");
-				if(!finalDir.exists()){
-					finalDir.mkdirs();
-				}
-				FileInputStream fis = new FileInputStream(finalUrl);
-				FileOutputStream fos = new FileOutputStream(Const.UPLOAD_DIR+"/flsw/final/"+finalFileName);
-				byte[] buffer = new byte[1024];
-				int i=0;
-				while((i =fis.read(buffer))!=-1){
-					fos.write(buffer, 0, i);
-				}
-				fis.close();
-				fos.close();
-				pd.put("status", u.getNAME()+"已审,最终");
-				pd.put("genFileUrl", Const.UPLOAD_DIR+"/flsw/final/"+finalFileName);
-				pd.put("nextApprover", "god");
+			File finalDir = new File(uploadDir+"/flsw/final/");
+			if(!finalDir.exists()){
+				finalDir.mkdirs();
+			}
+			PageData pd2 = flswclService.queryOneFlswcl(pd);
+			if(flag.equals("pass")){				
+				finalUrl = pd2.getString("genFileUrl");
+				finalFileName = finalUrl.substring(finalUrl.lastIndexOf("/")+1);
+				pd.put("status", u.getNAME()+"已通过,最终");
+				pd.put("genFileUrl_status", "");
+				pd.put("genFileName_status","");
+				pd.put("genFileUrl",finalUrl);
+				pd.put("genFileName",finalFileName);
 			}else{
-				File finalDir = new File(Const.UPLOAD_DIR+"/flsw/"+u.getNAME()+"/");
-				if(!finalDir.exists()){
-					finalDir.mkdirs();
-				}
-				FileInputStream fis = new FileInputStream(finalUrl);
-				FileOutputStream fos = new FileOutputStream(Const.UPLOAD_DIR+"/flsw/"+u.getNAME()+"/"+finalFileName);
-				byte[] buffer = new byte[1024];
-				int i=0;
-				while((i =fis.read(buffer))!=-1){
-					fos.write(buffer, 0, i);
-				}
-				fis.close();
-				fos.close();
-				pd.put("status", u.getNAME()+"已审,发回作者");
-				pd.put("genFileUrl", Const.UPLOAD_DIR+"/flsw/"+u.getNAME()+"/"+finalFileName);
-				pd.put("nextApprover", "worker");
-			}			
-			pd.put("genFileName",finalFileName);
+				finalUrl = pd.getString("suffixFileUrl");
+				String reportNum =pd2.getString("reportNum");
+				String suffix = pd2.getString("genFileName").substring(pd2.getString("genFileName").lastIndexOf("."));
+				finalFileName  = reportNum+"_"+pd2.getString("worker")+"_"+u.getNAME()+"_"+DateUtil.getTime1()+suffix;
+				pd.put("status", u.getNAME()+"已修改,最终");
+				pd.put("genFileUrl_status", uploadDir+"/flsw/final/"+finalFileName);
+				pd.put("genFileName_status",finalFileName);
+				pd.put("genFileUrl", uploadDir+"/flsw/final/"+finalFileName);
+				pd.put("genFileName",finalFileName);
+			}				
+				FileUtil.transferFile(finalUrl, uploadDir+"/flsw/final/"+finalFileName, true);				
+				pd.put("nextApprover", "god");								
 			pd.put("handler", u.getNAME());
 			pd.put("approver", u.getNAME());
 			pd.put("genTime", DateUtil.getTime());
@@ -306,6 +298,7 @@ public class FlswclController extends BaseController{
 		}
 		return result;
 	}
+	
 	
 	@SuppressWarnings("unchecked")
 	private Map<String , String> getCRUDAuth(){

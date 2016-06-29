@@ -102,7 +102,7 @@
 												<th>工作人员</th>
 												<th>生成时间</th>
 												<th>状态</th>
-												<th>生成文件</th>
+												<th>最新文件</th>
 												<th>操作</th>
 											</tr>
 										</thead>
@@ -115,7 +115,7 @@
 													<td><a href="showOneFlswclDetail.do?id=${flsw.id }">${flsw.reportNum }</a></td>
 													<td>${flsw.worker }</td>
 													<td>${flsw.genTime }</td>
-													</a>
+													
 													<td><c:if test="${flsw.status=='新建' }">
 															<span class="label label-info"> ${flsw.status} </span>
 														</c:if> <c:if test="${flsw.status!='新建' }">

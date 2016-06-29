@@ -1,6 +1,8 @@
 package com.jwd.bqoa.service.flsw;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -43,7 +45,12 @@ public class FlswclService {
 	}
 	@SuppressWarnings("unchecked")
 	public List<PageData> queryFlswcl_HasApproved(PageData pd) throws Exception{
-		return (List<PageData>) dao.findForList("FlswclMapper.queryflswcl_HasApproved", pd);
+		List<String> ids = (List<String>) dao.findForList("FlswclMapper.queryApprovedIdsByApprover", pd);
+		Map<String , Object> map = new HashMap<String , Object>();
+		map.put("startIndex", pd.get("startIndex"));
+		map.put("rows", pd.get("rows"));
+		map.put("ids", ids);
+		return (List<PageData>) dao.findForList("FlswclMapper.queryflswcl_HasApproved", map);
 	}
 	
 	public PageData queryOneFlswcl(PageData pd) throws Exception{
