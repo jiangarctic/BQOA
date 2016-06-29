@@ -212,13 +212,17 @@
 										</div>
 										<input id="fileNameStore" style="display: none"
 											name="suffixFileUrl" /> <input id="flswclId"
-											style="display: none" name="id" />
+											style="display: none" name="flswId" />
+											<input id="flag"
+											style="display: none" name="flag" />
 									</form>
 								</div>
 								<div class="modal-footer">
 
 									<button type="button" class="btn btn-primary"
-										onclick="javascript:submitFinalFile();">提交</button>
+										onclick="javascript:submitFinalFile(0);">提交最终</button>
+										<button type="button" class="btn btn-primary"
+										onclick="javascript:submitFinalFile(1);">返回作者</button>
 								</div>
 							</div>
 						</div>
@@ -441,9 +445,9 @@
 					});
 		}
 
-		function submitFinalFile() {
+		function submitFinalFile(flag) {
+			$("#flag").val(flag);
 			var formData = $("#finalFileForm").serialize();
-			alert(formData);
 			$.ajax({
 				data : formData,
 				dataType : 'json',
@@ -451,6 +455,7 @@
 				url : 'upluadFinalflswFile.do',
 				success : function(data) {
 					alert(data.msg);
+					location.href="flswclReportList_HasApproved.do";
 				}
 			});
 		}
@@ -519,6 +524,7 @@
 			$("#uploadProcessBar").attr("style",
 			"width:0%");
 			$("#flswclId").val(id);
+			
 		}
 
 		function showFlswDeail(id) {

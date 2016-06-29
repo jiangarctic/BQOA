@@ -82,6 +82,7 @@ public class FlswclController extends BaseController{
 			pd.put("genFileUrl", fileGenInfo.get(0));
 			pd.put("genFileName", fileGenInfo.get(1));
 			pd.put("genTime", DateUtil.getTime());
+			pd.put("nextApprover", pd.getString("approver"));
 			pd.put("status", "新建");
 			PageData pd2 = new PageData();
 			Integer obj = (Integer) flswclService.insertNewFlswReport(pd);
@@ -179,7 +180,6 @@ public class FlswclController extends BaseController{
 		PageData pd = new PageData();
 		User u = (User) session.getAttribute(Const.SESSION_USER);
 		pd.put("approver",u.getNAME() );
-		pd.put("status","已审批" );
 		Long total = (Long) flswclService.queryFlswclHasApprovedCount(pd).get("total");
 		int totalPages =PageUtil.getTotalPages(total);
 		pd.put("startIndex", (currentPage-1)*Const.ROWSPERPAGE);
@@ -254,28 +254,50 @@ public class FlswclController extends BaseController{
 	public Map<String , String> upluadFinalFile(HttpSession session){
 		Map<String , String> result = new HashMap<String , String>();
 		User u = (User) session.getAttribute(Const.SESSION_USER);
+		PageData pd = this.getPageData();
+		String flag = pd.getString("flag");
 		try{
-			PageData pd = this.getPageData();
 			String finalUrl = pd.getString("suffixFileUrl");
-			String finalFileName = finalUrl.substring(finalUrl.lastIndexOf("/"));
-			File finalDir = new File(Const.UPLOAD_DIR+"/flsw/final/");
-			if(!finalDir.exists()){
-				finalDir.mkdirs();
-			}
-			File fileFile = new File(Const.UPLOAD_DIR+"/flsw/final/"+finalUrl);
-			FileInputStream fis = new FileInputStream(finalUrl);
-			FileOutputStream fos = new FileOutputStream(Const.UPLOAD_DIR+"/flsw/final/"+finalUrl);
-			byte[] buffer = new byte[1024];
-			int i=0;
-			while((i =fis.read(buffer))!=-1){
-				fos.write(buffer, 0, i);
-			}
-			fis.close();
-			fos.close();
-			pd.put("status", u.getNAME()+"已审");
-			pd.put("genFileUrl", Const.UPLOAD_DIR+"/flsw/final/"+finalUrl);
-			pd.put("genFileName", finalUrl);
+			String finalFileName = finalUrl.substring(finalUrl.lastIndexOf("/")+1);
+			if(flag.equals("0")){
+				File finalDir = new File(Const.UPLOAD_DIR+"/flsw/final/");
+				if(!finalDir.exists()){
+					finalDir.mkdirs();
+				}
+				FileInputStream fis = new FileInputStream(finalUrl);
+				FileOutputStream fos = new FileOutputStream(Const.UPLOAD_DIR+"/flsw/final/"+finalFileName);
+				byte[] buffer = new byte[1024];
+				int i=0;
+				while((i =fis.read(buffer))!=-1){
+					fos.write(buffer, 0, i);
+				}
+				fis.close();
+				fos.close();
+				pd.put("status", u.getNAME()+"已审,最终");
+				pd.put("genFileUrl", Const.UPLOAD_DIR+"/flsw/final/"+finalFileName);
+				pd.put("nextApprover", "god");
+			}else{
+				File finalDir = new File(Const.UPLOAD_DIR+"/flsw/"+u.getNAME()+"/");
+				if(!finalDir.exists()){
+					finalDir.mkdirs();
+				}
+				FileInputStream fis = new FileInputStream(finalUrl);
+				FileOutputStream fos = new FileOutputStream(Const.UPLOAD_DIR+"/flsw/"+u.getNAME()+"/"+finalFileName);
+				byte[] buffer = new byte[1024];
+				int i=0;
+				while((i =fis.read(buffer))!=-1){
+					fos.write(buffer, 0, i);
+				}
+				fis.close();
+				fos.close();
+				pd.put("status", u.getNAME()+"已审,发回作者");
+				pd.put("genFileUrl", Const.UPLOAD_DIR+"/flsw/"+u.getNAME()+"/"+finalFileName);
+				pd.put("nextApprover", "worker");
+			}			
+			pd.put("genFileName",finalFileName);
 			pd.put("handler", u.getNAME());
+			pd.put("approver", u.getNAME());
+			pd.put("genTime", DateUtil.getTime());
 			flswclService.updateFlswcl(pd);
 			result.put("msg", "提交成功");
 		}catch(Exception e){

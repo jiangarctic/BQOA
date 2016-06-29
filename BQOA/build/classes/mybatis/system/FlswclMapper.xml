@@ -6,10 +6,10 @@
 	<insert id="insertNewFlswcl" parameterType="pd" flushCache="false" keyProperty="id" useGeneratedKeys="true" >
 		insert into sys_flswcl (clientName,reportNum,inquireTime,inquireType,inquireer,
 		inquireerPhone,inquireerEmail,reportBrief,givenFiles,suggestions,worker,workTime,
-		workerPhone,approver,resultFileName,replyTime,replyType,genFileUrl , genFileName , genTime, status)
+		workerPhone,approver,resultFileName,replyTime,replyType,genFileUrl , genFileName , genTime, status , nextApprover)
 		 values(#{clientName},#{reportNum},#{inquireTime},#{inquireType},#{inquireer},
 		#{inquireerPhone},#{inquireerEmail},#{reportBrief},#{givenFiles},#{suggestions},#{worker},#{workTime},
-		#{workerPhone},#{approver},#{resultFileName},#{replyTime},#{replyType},#{genFileUrl} , #{genFileName} , #{genTime},#{status});
+		#{workerPhone},#{approver},#{resultFileName},#{replyTime},#{replyType},#{genFileUrl} , #{genFileName} , #{genTime},#{status},#{nextApprover});
 	</insert>
 	<insert id="insertNewFlswclStatus" parameterType="pd" flushCache="false">
 		insert into  flswcl_status (flswId , status , genFileUrl , genFileName , genTime , handler) 
@@ -34,10 +34,10 @@
 		select * from sys_flswcl where worker=#{worker} ORDER BY id desc limit #{startIndex} , #{rows}
 	</select>
 	<select id="queryflswcl_WaitMe" resultType="pd">
-		select * from sys_flswcl where approver=#{approver} ORDER BY id desc limit #{startIndex} , #{rows}
+		select * from sys_flswcl where nextApprover=#{approver} ORDER BY id desc limit #{startIndex} , #{rows}
 	</select>
 	<select id="queryflswcl_HasApproved" resultType="pd">
-		select * from sys_flswcl where approver=#{approver} and status=#{status} ORDER BY id desc limit #{startIndex} , #{rows}
+		select * from sys_flswcl where id = (select flswId from flswcl_status where approver=#{approver}) ORDER BY id desc limit #{startIndex} , #{rows}
 	</select>
 	
 	<select id="queryOneFlswcl" parameterType="pd" resultType="pd">
@@ -70,6 +70,6 @@
 		select * from flswcl_status where flswId =#{id} ORDER BY id asc
 	</select>
 	<update id="updateFlsw" parameterType="pd">
-		update sys_flswcl set genFileUrl=#{genFileUrl} , genFileName=#{genFileName} , status=#{status} where id=#{id}
+		update sys_flswcl set genFileUrl=#{genFileUrl} , genFileName=#{genFileName} , status=#{status} , nextApprover=#{nextApprover} where id=#{flswId}
 	</update>
 </mapper>

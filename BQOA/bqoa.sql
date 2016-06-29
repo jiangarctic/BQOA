@@ -10,10 +10,32 @@ Target Server Type    : MYSQL
 Target Server Version : 50535
 File Encoding         : 65001
 
-Date: 2016-06-27 18:04:56
+Date: 2016-06-29 11:29:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for flswcl_status
+-- ----------------------------
+DROP TABLE IF EXISTS `flswcl_status`;
+CREATE TABLE `flswcl_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `flswId` int(11) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `genFileUrl` varchar(255) DEFAULT NULL,
+  `genFileName` varchar(255) DEFAULT NULL,
+  `genTime` varchar(50) DEFAULT NULL,
+  `handler` varchar(50) DEFAULT NULL,
+  `approver` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of flswcl_status
+-- ----------------------------
+INSERT INTO `flswcl_status` VALUES ('16', '76', '江万东新建', 'E:/BQOAFILES/flsw/江万东/创佳160629H_江万东_1467170438514.doc', '创佳160629H_江万东_1467170438514.doc', '2016-06-29 11:20:38', '江万东', null);
+INSERT INTO `flswcl_status` VALUES ('17', '76', '邵钧已审,最终', 'E:/BQOAFILES/flsw/final/111_1467170483796.docx', '111_1467170483796.docx', '2016-06-29 11:21:29', '邵钧', null);
 
 -- ----------------------------
 -- Table structure for sys_client
@@ -66,18 +88,18 @@ CREATE TABLE `sys_flswcl` (
   `resultFileName` varchar(500) DEFAULT NULL,
   `replyTime` varchar(20) DEFAULT NULL,
   `replyType` varchar(100) DEFAULT NULL,
-  `genFileUrl` varchar(255) DEFAULT NULL,
-  `genFileName` varchar(255) DEFAULT NULL,
+  `genFileUrl` varchar(500) DEFAULT NULL,
+  `genFileName` varchar(500) DEFAULT NULL,
   `genTime` varchar(20) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
+  `nextApprover` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_flswcl
 -- ----------------------------
-INSERT INTO `sys_flswcl` VALUES ('61', '安宁创佳房地产开发有限公司', '创佳160627H', '2016年06月27日  下午 04:09', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'wad', 'wda', 'dwa', '江万东', '2', '18314496694', '邵钧', 'daw', '', '', 'E:/BQOAFILES/flsw/江万东/创佳160627H_江万东_1467015004840.doc', '创佳160627H_江万东_1467015004840.doc', '2016-06-27 16:10:04', '新建');
-INSERT INTO `sys_flswcl` VALUES ('62', '安宁创佳房地产开发有限公司', '创佳160627H', '2016年06月27日  下午 04:10', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'wda', 'wda', 'adw', '江万东', '3', '18314496694', '邵钧', 'awd', 'd', '', 'E:/BQOAFILES/flsw/江万东/创佳160627H_江万东_1467015044939.doc', '创佳160627H_江万东_1467015044939.doc', '2016-06-27 16:10:44', '新建');
+INSERT INTO `sys_flswcl` VALUES ('76', '安宁创佳房地产开发有限公司', '创佳160629H', '2016年06月29日  上午 11:20', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'dwa', 'dwadw', 'a', '江万东', '2', '18314496694', '邵钧', 'dwa', '', '', 'E:/BQOAFILES/flsw/final/111_1467170483796.docx', '111_1467170483796.docx', '2016-06-29 11:20:38', '邵钧已审,最终', 'god');
 
 -- ----------------------------
 -- Table structure for sys_gl_qx
