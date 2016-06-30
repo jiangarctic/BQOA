@@ -44,50 +44,47 @@
         <!-- Sub Nav End -->
 
         <!-- Dashboard Wrapper Start -->
-        <div class="dashboard-wrapper">
+         <div class="dashboard-wrapper">
           
           <!-- Left Sidebar Start -->
-          <div class="left-sidebar">
+          <div class="left-sidebar" style="width:65%">
             
             <!-- Row Start -->
-            <div class="row">
-              <div class="col-lg-12 col-md-12">
+             <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="widget">
                   <div class="widget-header">
                     <div class="title">
-                      消息提醒事项
-                      <span class="mini-title">
-                        Metro Navigation
-                      </span>
+                      最新消息
+					 
+                    </div>
+					 &nbsp;&nbsp;&nbsp;<span>共3条</span> &nbsp;&nbsp;&nbsp;<span>More+</span>
+                  </div>
+                  <div class="widget-body" style="height:300px;overflow:auto;">
+                    <div class="alert alert-block alert-warning fade in">
+                      <button data-dismiss="alert" class="close" type="button">
+                        ×
+                      </button>
+                      <p>
+                        <strong style="font-size: 16px;">案件进度- </strong> XXX合同纠纷案已更新进度，最新进度为：已进行第一次开庭
+                      </p>
+                    </div>
+                    <div class="alert alert-block alert-success fade in">
+                      <button data-dismiss="alert" class="close" type="button">
+                        ×
+                      </button>
+                      <p>
+                        <strong style="font-size: 16px;">个人事项- </strong> 您有新个人事项：2016年6月29日下午2:00在办公室会见当事人XXX
+                      </p>
                     </div>
                     
-                  </div>
-                  <div class="widget-body">
-                    <div class="metro-nav">
-                      <div class="metro-nav-block nav-block-blue double">
-                        <a href="#">
-                          <i class="fa fa-list-ol"></i>
-                          <div class="info">1 条</div>
-                          <div class="brand">新消息</div>
-                        </a>
-                      </div>
-                      <div class="metro-nav-block nav-block-orange">
-                        <a href="#" >
-                          <i class="fa fa-user"></i>
-                          <div class="info">2</div>
-                          <div class="brand">待办事项</div>
-                        </a>
-                      </div>
-                      <div class="metro-nav-block nav-block-yellow">
-                        <a href="#">
-                          <i class="fa fa-shopping-cart"></i>
-                          <div class="info">3</div>
-                          <div class="brand">站内信</div>
-                        </a>
-                      </div>
-                      
-                      
-                
+                    <div class="alert alert-block alert-info fade in no-margin">
+                      <button data-dismiss="alert" class="close" type="button">
+                        ×
+                      </button>
+                      <p>
+                        <strong style="font-size: 16px;">到期提醒- </strong>顾问单位"XXXXX公司"顾问期即将在2016年7月1日到期（还有3天）
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -99,9 +96,9 @@
             <!-- Row End -->
 
             <!-- Row Start -->
-            <div class="row">
+            <div class="row"  >
               <div class="col-lg-12 col-md-12">
-                <div class="widget">
+                <div class="widget"  >
                   <div class="widget-header">
                     <div class="title">
                      站内信 
@@ -144,8 +141,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="widget-body">
-                    <div class="mail table-responsive">
+                  <div class="widget-body" >
+                    <div class="mail table-responsive" style="height:200px;overflow:auto">
                       <table class="table table-condensed table-striped table-hover no-margin">
                         <thead>
                           <tr>
@@ -175,9 +172,9 @@
                              杨燕
                             </td>
                             <td class="hidden-phone">
-                              <strong>
-                                法律事务处理结果
-                              </strong>
+                              <a style="cursor:pointer;"><strong>
+                               法律事务处理结果
+                              </strong></a> 
                               <small class="info-fade">
                                 
                               </small>
@@ -238,7 +235,7 @@
                     </span>
                   </div>
                   <div class="widget-body">
-                    <div class="todo-container">
+                    <div class="todo-container" style="height:300px;overflow:auto">
                       <ul class="todo-list">
                         <li class="new">
                           <input type="checkbox" id="1" />
@@ -290,14 +287,6 @@
                           </label>
                         </li>
                       </ul>
-                      <form class="no-margin">
-                        <div class="input-group">
-                          <input type="text" class="form-control">
-                          <span class="input-group-btn">
-                            <button class="btn btn-info" type="button">增加</button>
-                          </span>
-                        </div>
-                      </form>
                     </div>
                   </div>
                 </div>
@@ -310,7 +299,7 @@
                     待办案件
                   </div>
                 </div>
-                <div class="widget-body">
+                <div class="widget-body" style="height:300px;overflow:auto">
                   <ul class="project-activity">
                     <li class="activity-list warning">
                       <div class="detail-info">
@@ -370,7 +359,7 @@
                         </p>
                       </div>
                     </li>
-                  </ul>
+                  </ul>				  
                 </div>
               </div>
             </div>
@@ -628,7 +617,7 @@
           <!-- Left Sidebar End -->
 
           <!-- Right Sidebar Start -->
-          <div class="right-sidebar">
+          <div class="right-sidebar" style="width:30%">
             
             
             
@@ -910,153 +899,112 @@
                       <h5 class="heading-blue">
                         通讯录
                       </h5>
-                      <div class="articles">
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Hosting Made For WordPress
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Reinvent cutting-edge
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          partnerships models 24/7
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Eyeballs frictionless
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Empower deliver innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Mashups experiences plug
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Need some interesting
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Mashups experiences plug
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          B2B plug and play
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Need some interesting
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Mashups experiences plug
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          B2B plug and play
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Need some interesting
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet-blue">
-                            &nbsp;
-                          </span>
-                          Mashups experiences plug
-                        </a>
-                      </div>
-                      
+
+                      <div class="widget-body"  align="center">
+									<table class="table table-bordered no-margin" style="margin-top:auto">
+										<thead>
+											<tr>
+												<th width="50%"  style="text-align:center;">邵钧</th>
+												<th ><div class="btn-group " >
+                              <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle">
+                                发送消息
+                                <span class="caret">
+                                </span>
+                              </button>
+                              <ul class="dropdown-menu pull-right">
+                                <li>
+                                  <a href="#">站内信</a>
+                                </li>
+                                <li>
+                                  <a href="#">即时消息</a>
+                                </li>
+                              </ul>
+                            </div></th>
+											</tr>
+											<tr>
+												<th  style="text-align:center;">徐博</th>
+												<th><div class="btn-group " >
+                              <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle">
+                                发送消息
+                                <span class="caret">
+                                </span>
+                              </button>
+                              <ul class="dropdown-menu pull-right">
+                                <li>
+                                  <a href="#">站内信</a>
+                                </li>
+                                <li>
+                                  <a href="#">即时消息</a>
+                                </li>
+                              </ul>
+                            </div></th>
+											</tr>
+											<tr>
+												<th  style="text-align:center;">叶攀</th>
+												<th><div class="btn-group " >
+                              <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle">
+                                发送消息
+                                <span class="caret">
+                                </span>
+                              </button>
+                              <ul class="dropdown-menu pull-right">
+                                <li>
+                                  <a href="#">站内信</a>
+                                </li>
+                                <li>
+                                  <a href="#">即时消息</a>
+                                </li>
+                              </ul>
+                            </div></th>
+											</tr>
+											<tr>
+												<th style="text-align:center;">张玮频</th>
+												<th><div class="btn-group " >
+                              <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle">
+                                发送消息
+                                <span class="caret">
+                                </span>
+                              </button>
+                              <ul class="dropdown-menu pull-right">
+                                <li>
+                                  <a href="#">站内信</a>
+                                </li>
+                                <li>
+                                  <a href="#">即时消息</a>
+                                </li>
+                              </ul>
+                            </div></th>
+											</tr>
+											<tr>
+												<th  style="text-align:center;">杨燕</th>
+												<th><div class="btn-group " >
+                              <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle">
+                                发送消息
+                                <span class="caret">
+                                </span>
+                              </button>
+                              <ul class="dropdown-menu pull-right">
+                                <li>
+                                  <a href="#">站内信</a>
+                                </li>
+                                <li>
+                                  <a href="#">即时消息</a>
+                                </li>
+                              </ul>
+                            </div></th>
+											</tr>
+											<tr>
+												<th  style="text-align:center;">审理法院</th>
+												<th>XX</th>
+											</tr>
+											<tr>
+												<th  style="text-align:center;">案由</th>
+												<th >XX</th>
+											</tr>
+
+										</thead>
+									</table>
+							</div>
                     </div>
                     
                   </div>

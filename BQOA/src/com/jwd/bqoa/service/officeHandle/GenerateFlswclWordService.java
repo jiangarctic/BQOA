@@ -74,7 +74,7 @@ public class GenerateFlswclWordService {
 		}catch(IOException e){
 			e.printStackTrace();
 		}
-		String genFolder = contextPath+"/flsw/"+creator;
+		String genFolder = contextPath+"flsw/"+creator;
 		File uploadDir = new File(genFolder);
 		if(!uploadDir.exists()){
 			uploadDir.mkdirs();
