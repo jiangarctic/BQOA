@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : root
 Source Server Version : 50535
-Source Host           : 127.0.0.1:3306
+Source Host           : localhost:3306
 Source Database       : bqoa
 
 Target Server Type    : MYSQL
 Target Server Version : 50535
 File Encoding         : 65001
 
-Date: 2016-06-29 23:42:38
+Date: 2016-06-30 18:24:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -155,6 +155,8 @@ INSERT INTO `sys_menu` VALUES ('8', '客户列表', 'CRM_ClientList.do', '7', '1
 INSERT INTO `sys_menu` VALUES ('9', '文件归档', '#', '1', '4', null);
 INSERT INTO `sys_menu` VALUES ('10', '法律事务报表', 'flswclReportList_me.do', '4', '2', null);
 INSERT INTO `sys_menu` VALUES ('11', '用户管理', 'userManage.do', '1', '5', null);
+INSERT INTO `sys_menu` VALUES ('12', '案件管理', '#', '0', '4', null);
+INSERT INTO `sys_menu` VALUES ('13', '诉讼管理', 'susongCaseList.do', '12', '1', null);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -176,7 +178,7 @@ CREATE TABLE `sys_role` (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1', '管理员', '4095', '0', '1', '4095', '1', '1', '1');
+INSERT INTO `sys_role` VALUES ('1', '管理员', '16383', '0', '1', '16383', '1', '1', '1');
 INSERT INTO `sys_role` VALUES ('2', '合伙人律师', '4095', '0', '1', '4095', '1', '1', '1');
 INSERT INTO `sys_role` VALUES ('3', '助理律师', '4095', '0', '1', '3071', '1', '1', '1');
 
