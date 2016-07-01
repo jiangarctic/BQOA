@@ -1,7 +1,10 @@
 package com.jwd.bqoa.controller.file;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -10,6 +13,8 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -126,5 +131,55 @@ public class FileController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	@RequestMapping(value="/exportZipFile")
+	public  boolean filetozip(String sourceFilePath , String zipFilePath , String fileName){
+		boolean flag = false;
+		File sourceFile = new File(sourceFilePath);
+		FileInputStream fis = null;
+		BufferedInputStream bis = null;
+		FileOutputStream fos =null;
+		ZipOutputStream zos = null;
+		if(!sourceFile.exists()){
+			System.out.println("待压缩文件目录不存在");
+		}else{
+			try{
+				File zipFile = new File(zipFilePath+"/"+fileName+".zip");
+				File[] sourceFiles = sourceFile.listFiles();
+				if(null==sourceFiles || sourceFiles.length<1){
+					System.out.println("待压缩文件夹中更不存在文件");
+				}else{
+					fos = new FileOutputStream(zipFile);
+					zos = new ZipOutputStream(new BufferedOutputStream(fos));
+					byte[] buffer = new byte[1024];
+					for(int i = 0 ; i < sourceFiles.length ; i++){
+						ZipEntry zipEntry = new ZipEntry(sourceFiles[i].getName());
+						zos.putNextEntry(zipEntry);
+						fis = new FileInputStream(sourceFiles[i]);
+						bis = new BufferedInputStream(fis , 1024);
+						int read =0;
+						while((read = bis.read())!=-1){
+							zos.write(buffer, 0, read);
+						}
+					}
+					flag = true;
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(null != bis){
+						bis.close();
+					}
+					if(null != zos){
+						zos.close();
+					}
+				}catch(IOException e){
+					e.printStackTrace();
+				}
+			}
+		}
+		return flag;
 	}
 }
