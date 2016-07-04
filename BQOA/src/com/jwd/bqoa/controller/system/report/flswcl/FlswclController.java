@@ -1,9 +1,8 @@
 package com.jwd.bqoa.controller.system.report.flswcl;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,6 +84,8 @@ public class FlswclController extends BaseController{
 			pd.put("genTime", DateUtil.getTime());
 			pd.put("nextApprover", pd.getString("approver"));
 			pd.put("status", "新建");
+			pd.put("finalStatus", "0");
+			pd.put("finalUpdateTime", new Date());
 			PageData pd2 = new PageData();
 			Integer obj = (Integer) flswclService.insertNewFlswReport(pd);
 			pd2.put("id", obj);
@@ -274,6 +275,8 @@ public class FlswclController extends BaseController{
 				pd.put("genFileName_status","");
 				pd.put("genFileUrl",finalUrl);
 				pd.put("genFileName",finalFileName);
+				pd.put("finalStatus", "1");
+				pd.put("finalUpdateTime", new Date());
 			}else{
 				finalUrl = pd.getString("suffixFileUrl");
 				String reportNum =pd2.getString("reportNum");
@@ -284,6 +287,8 @@ public class FlswclController extends BaseController{
 				pd.put("genFileName_status",finalFileName);
 				pd.put("genFileUrl", uploadDir+"/flsw/final/"+finalFileName);
 				pd.put("genFileName",finalFileName);
+				pd.put("finalStatus", "1");
+				pd.put("finalUpdateTime", new Date());
 			}				
 				FileUtil.transferFile(finalUrl, uploadDir+"/flsw/final/"+finalFileName, true);				
 				pd.put("nextApprover", "god");								

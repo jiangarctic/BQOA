@@ -191,31 +191,7 @@
 				<!-- Left Sidebar End -->
 
 				<!-- Right Sidebar Start -->
-				<div class="right-sidebar">
-					<div class="wrapper">
-						<div class="list-group no-margin">
-							<a href="javascript:;" class="list-group-item"> <span
-								class="pull-right"> <i class="fa fa-file fa-3x text-info"></i>
-							</span>
-								<h4 class="list-group-item-heading">239</h4>
-								<p class="list-group-item-text">Files</p>
-							</a> <a href="javascript:;" class="list-group-item"> <span
-								class="pull-right"> <i
-									class="fa fa-check-square-o fa-3x text-warning"></i>
-							</span>
-								<h4 class="list-group-item-heading">11689</h4>
-								<p class="list-group-item-text">Paid</p>
-							</a> <a href="javascript:;" class="list-group-item"> <span
-								class="pull-right"> <i
-									class="fa fa-users fa-3x text-success"></i>
-							</span>
-								<h4 class="list-group-item-heading">831</h4>
-								<p class="list-group-item-text">Friends</p>
-							</a>
-						</div>
-					</div>
-
-				</div>
+				<%@ include file="/WEB-INF/jsp/system/admin/rightSideBar.jsp" %>
 				<!-- Right Sidebar End -->
 
 			</div>

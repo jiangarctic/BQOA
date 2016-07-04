@@ -240,52 +240,25 @@
                         <li class="new">
                           <input type="checkbox" id="1" />
                           <label for="1">
-                            Send flowers to Sandy 
-                            <span class="date">Due Feb 14</span>
+                            全国律师协会培训 胜利堂
+                            <span class="date">2016 06 30 9：00</span>
                           </label>
                         </li>
                         <li class="process">
                           <input type="checkbox" id="2" checked/>
                           <label for="2">
-                            Coffee with Karan
-                            <span class="date">Done Jan 28</span>
+                            昆明市房协培训
+                            <span class="date">2016 06 28 14：00</span>
                           </label>
                         </li>
                         <li class="completed">
                           <input type="checkbox" id="3" checked />
                           <label for="3">
-                            Be creative
-                            <span class="date">Due Feb 2</span>
+                           欣都龙城递送材料
+                            <span class="date">2016 06 28 9：00</span>
                           </label>
                         </li>
-                        <li class="completed">
-                          <input type="checkbox" id="4" />
-                          <label for="4">
-                            Buy new iPad
-                            <span class="date">Due Feb 7</span>
-                          </label>
-                        </li>
-                        <li class="process">
-                          <input type="checkbox" id="5" checked/>
-                          <label for="5">
-                            Pay credit card bill
-                            <span class="date">Completed Jan 29</span>
-                          </label>
-                        </li>
-                        <li class="new">
-                          <input type="checkbox" id="6" />
-                          <label for="6">
-                            Take a photograph 
-                            <span class="date">Due Jan 30</span>
-                          </label>
-                        </li>
-                        <li class="process">
-                          <input type="checkbox" id="8">
-                          <label for="2">
-                            Have tea with the Queen
-                            <span class="date">Completed Jan 18</span>
-                          </label>
-                        </li>
+
                       </ul>
                     </div>
                   </div>
@@ -304,24 +277,20 @@
                     <li class="activity-list warning">
                       <div class="detail-info">
                         <small class="text-muted">
-                          9:30
+                          2016 05 24 
                         </small>
                         <p class="message">
-                          Meeting with Jason
+                         XX合同纠纷 
                         </p>
                       </div>
                     </li>
                     <li class="activity-list info">
                       <div class="detail-info">
                         <small class="text-muted">
-                          Mon, 9 Feb
+                         2016 05 15
                         </small>
                         <p class="message">
-                          Created
-                          <a class="text-info" href="" data-original-title="" title="">
-                            Task
-                          </a>
-                          for Willams.
+                          关于XXX劳动合同纠纷
                         </p>
                       </div>
                     </li>
@@ -429,176 +398,17 @@
                                 <span class="arrow">
                                 </span>
                                 <a href="#" class="name">
-                                  Kelly
+                                 邵钧
                                 </a>
                                 <span class="date-time">
-                                  at Feb 8, 2013 04:21
+                                  2016 05 23 16：32
                                 </span>
                                 <span class="body">
-                                  Beard stumptown, cardigans banh mi lomo thundercats. whatever keytar, scenester farm-to-table banksy Austin twitter handle freegan cred raw denim single-origin coffee viral.
+                                 明天早上我要开会，可能晚来一会
                                 </span>
                               </div>
                             </li>
-                            <li class="out">
-                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
-                              <div class="message">
-                                <span class="arrow">
-                                </span>
-                                <a href="#" class="name">
-                                  Hehe
-                                </a>
-                                <span class="date-time">
-                                  at Jan 29, 2013 08:10
-                                </span>
-                                <span class="body">
-                                  Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Reprehenderit butcher retro keffiyeh dreamcatcher synth terry richardsoAustin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.
-                                </span>
-                              </div>
-                            </li>
-                            <li class="in">
-                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
-                              <div class="message">
-                                <span class="arrow">
-                                </span>
-                                <a href="#" class="name">
-                                  Bulley
-                                </a>
-                                <span class="date-time">
-                                  at jan 14, 2013 06:43
-                                </span>
-                                <span class="body">
-                                  Tight pants next level keffiyeh you probably haven't heard of fixie sustainable quinoa 8-bit american apparel have a terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats.
-                                </span>
-                              </div>
-                            </li>
-                            <li class="out">
-                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
-                              <div class="message">
-                                <span class="arrow">
-                                </span>
-                                <a href="#" class="name">
-                                  Batman
-                                </a>
-                                <span class="date-time">
-                                  at Jan 09, 2013 01:19
-                                </span>
-                                <span class="body">
-                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
-                                </span>
-                              </div>
-                            </li>
-                            <li class="in">
-                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
-                              <div class="message">
-                                <span class="arrow">
-                                </span>
-                                <a href="#" class="name">
-                                  Ganggyy
-                                </a>
-                                <span class="date-time">
-                                  at Jan 03, 2013 09:09
-                                </span>
-                                <span class="body">
-                                  Enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
-                                </span>
-                              </div>
-                            </li>
-                            <li class="out">
-                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
-                              <div class="message">
-                                <span class="arrow">
-                                </span>
-                                <a href="#" class="name">
-                                  Cowboy
-                                </a>
-                                <span class="date-time">
-                                  at Jan 01, 2013 07:49
-                                </span>
-                                <span class="body">
-                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
-                                </span>
-                              </div>
-                            </li>
-                            <li class="in">
-                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
-                              <div class="message">
-                                <span class="arrow">
-                                </span>
-                                <a href="#" class="name">
-                                  Cockoo
-                                </a>
-                                <span class="date-time">
-                                  at Dec 28, 2012 02:39
-                                </span>
-                                <span class="body">
-                                  Dnim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit,  
-                                </span>
-                              </div>
-                            </li>
-                            <li class="out">
-                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
-                              <div class="message">
-                                <span class="arrow">
-                                </span>
-                                <a href="#" class="name">
-                                  Batman
-                                </a>
-                                <span class="date-time">
-                                  at Jan 09, 2013 01:19
-                                </span>
-                                <span class="body">
-                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
-                                </span>
-                              </div>
-                            </li>
-                            <li class="in">
-                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
-                              <div class="message">
-                                <span class="arrow">
-                                </span>
-                                <a href="#" class="name">
-                                  Ganggyy
-                                </a>
-                                <span class="date-time">
-                                  at Jan 03, 2013 09:09
-                                </span>
-                                <span class="body">
-                                  Enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
-                                </span>
-                              </div>
-                            </li>
-                            <li class="out">
-                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
-                              <div class="message">
-                                <span class="arrow">
-                                </span>
-                                <a href="#" class="name">
-                                  Cowboy
-                                </a>
-                                <span class="date-time">
-                                  at Jan 01, 2013 07:49
-                                </span>
-                                <span class="body">
-                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. 
-                                </span>
-                              </div>
-                            </li>
-                            <li class="in">
-                              <img class="avatar" alt="" src="static/bootStrapFiles/img/profile.jpg">
-                              <div class="message">
-                                <span class="arrow">
-                                </span>
-                                <a href="#" class="name">
-                                  Cockoo
-                                </a>
-                                <span class="date-time">
-                                  at Dec 28, 2012 02:39
-                                </span>
-                                <span class="body">
-                                  Dnim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.Enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit,  
-                                </span>
-                              </div>
-                            </li>
+                            
                           </ul>
                         </div>
                       </div>
@@ -617,401 +427,7 @@
           <!-- Left Sidebar End -->
 
           <!-- Right Sidebar Start -->
-          <div class="right-sidebar" style="width:30%">
-            
-            
-            
-            <div class="wrapper">
-              <div id="scrollbar">
-                <div class="scrollbar">
-                  <div class="track">
-                    <div class="thumb">
-                      <div class="end">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="viewport">
-                  <div class="overview">
-                    <div class="featured-articles-container">
-                      <h5 class="heading">
-                        团队公告
-                      </h5>
-                      <div class="articles">
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Hosting Made For WordPress
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Reinvent cutting-edge
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          partnerships models 24/7
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Eyeballs frictionless
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Empower deliver innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Mashups experiences plug
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Mashups experiences plug
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          B2B plug and play
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Need some interesting
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Mashups experiences plug
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          B2B plug and play
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Need some interesting
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Mashups experiences plug
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Need some interesting
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Mashups experiences plug
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          B2B plug and play
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Need some interesting
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Mashups experiences plug
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          B2B plug and play
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Need some interesting
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Portals technologies
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Collaborative innovate
-                        </a>
-                        <a href="#">
-                          <span class="label-bullet">
-                            &nbsp;
-                          </span>
-                          Mashups experiences plug
-                        </a>
-                      </div>
-                      
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <hr class="hr-stylish-1">
-            
-            <div class="wrapper">
-              <div id="scrollbar-two">
-                <div class="scrollbar">
-                  <div class="track">
-                    <div class="thumb">
-                      <div class="end">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="viewport">
-                  <div class="overview">
-                    <div class="featured-articles-container">
-                      <h5 class="heading-blue">
-                        通讯录
-                      </h5>
-
-                      <div class="widget-body"  align="center">
-									<table class="table table-bordered no-margin" style="margin-top:auto">
-										<thead>
-											<tr>
-												<th width="50%"  style="text-align:center;">邵钧</th>
-												<th ><div class="btn-group " >
-                              <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle">
-                                发送消息
-                                <span class="caret">
-                                </span>
-                              </button>
-                              <ul class="dropdown-menu pull-right">
-                                <li>
-                                  <a href="#">站内信</a>
-                                </li>
-                                <li>
-                                  <a href="#">即时消息</a>
-                                </li>
-                              </ul>
-                            </div></th>
-											</tr>
-											<tr>
-												<th  style="text-align:center;">徐博</th>
-												<th><div class="btn-group " >
-                              <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle">
-                                发送消息
-                                <span class="caret">
-                                </span>
-                              </button>
-                              <ul class="dropdown-menu pull-right">
-                                <li>
-                                  <a href="#">站内信</a>
-                                </li>
-                                <li>
-                                  <a href="#">即时消息</a>
-                                </li>
-                              </ul>
-                            </div></th>
-											</tr>
-											<tr>
-												<th  style="text-align:center;">叶攀</th>
-												<th><div class="btn-group " >
-                              <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle">
-                                发送消息
-                                <span class="caret">
-                                </span>
-                              </button>
-                              <ul class="dropdown-menu pull-right">
-                                <li>
-                                  <a href="#">站内信</a>
-                                </li>
-                                <li>
-                                  <a href="#">即时消息</a>
-                                </li>
-                              </ul>
-                            </div></th>
-											</tr>
-											<tr>
-												<th style="text-align:center;">张玮频</th>
-												<th><div class="btn-group " >
-                              <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle">
-                                发送消息
-                                <span class="caret">
-                                </span>
-                              </button>
-                              <ul class="dropdown-menu pull-right">
-                                <li>
-                                  <a href="#">站内信</a>
-                                </li>
-                                <li>
-                                  <a href="#">即时消息</a>
-                                </li>
-                              </ul>
-                            </div></th>
-											</tr>
-											<tr>
-												<th  style="text-align:center;">杨燕</th>
-												<th><div class="btn-group " >
-                              <button data-toggle="dropdown" class="btn btn-default btn-xs dropdown-toggle">
-                                发送消息
-                                <span class="caret">
-                                </span>
-                              </button>
-                              <ul class="dropdown-menu pull-right">
-                                <li>
-                                  <a href="#">站内信</a>
-                                </li>
-                                <li>
-                                  <a href="#">即时消息</a>
-                                </li>
-                              </ul>
-                            </div></th>
-											</tr>
-											<tr>
-												<th  style="text-align:center;">审理法院</th>
-												<th>XX</th>
-											</tr>
-											<tr>
-												<th  style="text-align:center;">案由</th>
-												<th >XX</th>
-											</tr>
-
-										</thead>
-									</table>
-							</div>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        	<%@ include file="rightSideBar.jsp" %>
           <!-- Right Sidebar End -->
         </div>
         <!-- Dashboard Wrapper End -->

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50535
 File Encoding         : 65001
 
-Date: 2016-07-01 17:06:18
+Date: 2016-07-04 17:47:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `flswcl_status` (
   `handler` varchar(50) DEFAULT NULL,
   `approver` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of flswcl_status
@@ -39,6 +39,10 @@ INSERT INTO `flswcl_status` VALUES ('42', '90', '邵钧已修改,最终', 'D:\\J
 INSERT INTO `flswcl_status` VALUES ('43', '91', '邵钧新建', 'D:\\JBoss\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload//flsw/邵钧/创佳160629H_邵钧_1467212500604.doc', '创佳160629H_邵钧_1467212500604.doc', '2016-06-29 23:01:40', '邵钧', null);
 INSERT INTO `flswcl_status` VALUES ('44', '92', '江万东新建', 'D:\\JBoss\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload//flsw/江万东/创佳160629H_江万东_1467212621883.doc', '创佳160629H_江万东_1467212621883.doc', '2016-06-29 23:03:41', '江万东', null);
 INSERT INTO `flswcl_status` VALUES ('45', '92', '邵钧已修改,最终', 'D:\\JBoss\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload//flsw/final/创佳160629H_江万东_邵钧_20160629230701.doc', '创佳160629H_江万东_邵钧_20160629230701.doc', '2016-06-29 23:07:01', '邵钧', '邵钧');
+INSERT INTO `flswcl_status` VALUES ('46', '91', '邵钧已通过,最终', '', '', '2016-07-04 11:08:40', '邵钧', '邵钧');
+INSERT INTO `flswcl_status` VALUES ('47', '93', '江万东新建', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload/flsw/江万东/创佳160704H_江万东_1467602920857.doc', '创佳160704H_江万东_1467602920857.doc', '2016-07-04 11:28:40', '江万东', null);
+INSERT INTO `flswcl_status` VALUES ('48', '94', '江万东新建', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload/flsw/江万东/创佳160704H_江万东_1467603057738.doc', '创佳160704H_江万东_1467603057738.doc', '2016-07-04 11:30:57', '江万东', null);
+INSERT INTO `flswcl_status` VALUES ('49', '95', '江万东新建', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload/flsw/江万东/创佳160704H_江万东_1467603422492.doc', '创佳160704H_江万东_1467603422492.doc', '2016-07-04 11:37:02', '江万东', null);
 
 -- ----------------------------
 -- Table structure for sys_client
@@ -96,15 +100,20 @@ CREATE TABLE `sys_flswcl` (
   `genTime` varchar(20) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
   `nextApprover` varchar(50) DEFAULT NULL,
+  `finalStatus` varchar(5) DEFAULT NULL,
+  `finalUpdateTime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_flswcl
 -- ----------------------------
-INSERT INTO `sys_flswcl` VALUES ('90', '安宁创佳房地产开发有限公司', '创佳160629H', '2016年06月29日  下午 10:51', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'wqeqweqww\r\nasd', 'eqewqe\r\nasda', 'qweqweqwsd', '杨燕', '2', '', '邵钧', 'ddwwqd\r\nad', '', '', 'D:\\JBoss\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload//flsw/final/创佳160629H_杨燕_邵钧_20160629225623.doc', '创佳160629H_杨燕_邵钧_20160629225623.doc', '2016-06-29 22:52:42', '邵钧已修改,最终', 'god');
-INSERT INTO `sys_flswcl` VALUES ('91', '安宁创佳房地产开发有限公司', '创佳160629H', '2016年06月29日  下午 11:01', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'asd', 'asd', 'asd', '邵钧', '3', '', '邵钧', 'dasdaw', '', '', 'D:\\JBoss\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload//flsw/邵钧/创佳160629H_邵钧_1467212500604.doc', '创佳160629H_邵钧_1467212500604.doc', '2016-06-29 23:01:40', '新建', '邵钧');
-INSERT INTO `sys_flswcl` VALUES ('92', '安宁创佳房地产开发有限公司', '创佳160629H', '2016年06月29日  下午 11:03', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'asd', 'asdd', 'sd', '江万东', '3', '18314496694', '邵钧', 'dwa', '', '', 'D:\\JBoss\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload//flsw/final/创佳160629H_江万东_邵钧_20160629230701.doc', '创佳160629H_江万东_邵钧_20160629230701.doc', '2016-06-29 23:03:41', '邵钧已修改,最终', 'god');
+INSERT INTO `sys_flswcl` VALUES ('90', '安宁创佳房地产开发有限公司', '创佳160629H', '2016年06月29日  下午 10:51', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'wqeqweqww\r\nasd', 'eqewqe\r\nasda', 'qweqweqwsd', '杨燕', '2', '', '邵钧', 'ddwwqd\r\nad', '', '', 'D:\\JBoss\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload//flsw/final/创佳160629H_杨燕_邵钧_20160629225623.doc', '创佳160629H_杨燕_邵钧_20160629225623.doc', '2016-06-29 22:52:42', '邵钧已修改,最终', 'god', '0', null);
+INSERT INTO `sys_flswcl` VALUES ('91', '安宁创佳房地产开发有限公司', '创佳160629H', '2016年06月29日  下午 11:01', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'asd', 'asd', 'asd', '邵钧', '3', '', '邵钧', 'dasdaw', '', '', 'D:\\JBoss\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload//flsw/邵钧/创佳160629H_邵钧_1467212500604.doc', '创佳160629H_邵钧_1467212500604.doc', '2016-06-29 23:01:40', '邵钧已通过,最终', 'god', '0', null);
+INSERT INTO `sys_flswcl` VALUES ('92', '安宁创佳房地产开发有限公司', '创佳160629H', '2016年06月29日  下午 11:03', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'asd', 'asdd', 'sd', '江万东', '3', '18314496694', '邵钧', 'dwa', '', '', 'D:\\JBoss\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload//flsw/final/创佳160629H_江万东_邵钧_20160629230701.doc', '创佳160629H_江万东_邵钧_20160629230701.doc', '2016-06-29 23:03:41', '邵钧已修改,最终', 'god', '0', null);
+INSERT INTO `sys_flswcl` VALUES ('93', '安宁创佳房地产开发有限公司', '创佳160704H', '2016年07月04日  上午 11:28', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'asc', 'cas', 'acc', '江万东', '2', '18314496694', '邵钧', 'dwa', 'wad', 'wad', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload/flsw/江万东/创佳160704H_江万东_1467602920857.doc', '创佳160704H_江万东_1467602920857.doc', '2016-07-04 11:28:40', '新建', '邵钧', '0', null);
+INSERT INTO `sys_flswcl` VALUES ('94', '安宁创佳房地产开发有限公司', '创佳160704H', '2016年07月04日  上午 11:30', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'awd', 'awd', 'dwa', '江万东', '3', '18314496694', '邵钧', 'adw', '', '', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload/flsw/江万东/创佳160704H_江万东_1467603057738.doc', '创佳160704H_江万东_1467603057738.doc', '2016-07-04 11:30:57', '新建', '邵钧', '1', '2016-07-04 00:00:00');
+INSERT INTO `sys_flswcl` VALUES ('95', '安宁创佳房地产开发有限公司', '创佳160704H', '2016年07月04日  上午 11:36', '面谈', '养眼  经理', '18314496694', 'chuangjia@163.com', 'awd', 'wad', 'wad', '江万东', '3', '18314496694', '邵钧', 'wda', '', '', 'E:\\Server\\wildfly-8.2.1.Final\\standalone\\deployments\\bqoa.war/upload/flsw/江万东/创佳160704H_江万东_1467603422492.doc', '创佳160704H_江万东_1467603422492.doc', '2016-07-04 11:37:02', '新建', '邵钧', '1', '2016-07-04 11:37:02');
 
 -- ----------------------------
 -- Table structure for sys_gl_qx
@@ -152,7 +161,7 @@ INSERT INTO `sys_menu` VALUES ('5', '生成报告13', 'reportSelectionList.do', 
 INSERT INTO `sys_menu` VALUES ('6', '企业年报', '#', '1', '3', null);
 INSERT INTO `sys_menu` VALUES ('7', '客户关系', 'CRM_ClientList.do', '0', '3', null);
 INSERT INTO `sys_menu` VALUES ('8', '客户列表', 'CRM_ClientList.do', '7', '1', null);
-INSERT INTO `sys_menu` VALUES ('9', '文件归档', '#', '1', '4', null);
+INSERT INTO `sys_menu` VALUES ('9', '文件归档', 'flswclFiling.do', '1', '4', null);
 INSERT INTO `sys_menu` VALUES ('10', '法律事务报表', 'flswclReportList_me.do', '4', '2', null);
 INSERT INTO `sys_menu` VALUES ('11', '用户管理', 'userManage.do', '1', '5', null);
 INSERT INTO `sys_menu` VALUES ('12', '案件管理', '#', '0', '4', null);

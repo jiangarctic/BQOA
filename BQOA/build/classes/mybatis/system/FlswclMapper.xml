@@ -6,10 +6,10 @@
 	<insert id="insertNewFlswcl" parameterType="pd" flushCache="false" keyProperty="id" useGeneratedKeys="true" >
 		insert into sys_flswcl (clientName,reportNum,inquireTime,inquireType,inquireer,
 		inquireerPhone,inquireerEmail,reportBrief,givenFiles,suggestions,worker,workTime,
-		workerPhone,approver,resultFileName,replyTime,replyType,genFileUrl , genFileName , genTime, status , nextApprover)
+		workerPhone,approver,resultFileName,replyTime,replyType,genFileUrl , genFileName , genTime, status , nextApprover , finalStatus,finalUpdateTime)
 		 values(#{clientName},#{reportNum},#{inquireTime},#{inquireType},#{inquireer},
 		#{inquireerPhone},#{inquireerEmail},#{reportBrief},#{givenFiles},#{suggestions},#{worker},#{workTime},
-		#{workerPhone},#{approver},#{resultFileName},#{replyTime},#{replyType},#{genFileUrl} , #{genFileName} , #{genTime},#{status},#{nextApprover});
+		#{workerPhone},#{approver},#{resultFileName},#{replyTime},#{replyType},#{genFileUrl} , #{genFileName} , #{genTime},#{status},#{nextApprover} , #{finalStatus} , #{finalUpdateTime});
 	</insert>
 	<insert id="insertNewFlswclStatus" parameterType="pd" flushCache="false">
 		insert into  flswcl_status (flswId , status , genFileUrl , genFileName , genTime , handler , approver) 
@@ -77,6 +77,6 @@
 		select * from flswcl_status where flswId =#{id} ORDER BY id asc
 	</select>
 	<update id="updateFlsw" parameterType="pd">
-		update sys_flswcl set genFileUrl=#{genFileUrl} , genFileName=#{genFileName} , status=#{status} , nextApprover=#{nextApprover} where id=#{id}
+		update sys_flswcl set genFileUrl=#{genFileUrl} , genFileName=#{genFileName} , status=#{status} , nextApprover=#{nextApprover} , finalStatus=#{finalStatus} , finalUpdateTime=#{finalUpdateTime} where id=#{id}
 	</update>
 </mapper>
