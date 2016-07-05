@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50535
 File Encoding         : 65001
 
-Date: 2016-07-04 17:47:57
+Date: 2016-07-05 17:04:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -154,18 +154,24 @@ CREATE TABLE `sys_menu` (
 -- Records of sys_menu
 -- ----------------------------
 INSERT INTO `sys_menu` VALUES ('1', '首页', 'to_home.do', '0', '1', 'sidebar.nav.element.ELEMENTS');
-INSERT INTO `sys_menu` VALUES ('2', '工作台', '#', '1', '1', 'sidebar.nav.element.BUTTON');
-INSERT INTO `sys_menu` VALUES ('3', '日程', '#', '1', '2', 'sidebar.nav.element.NOTIFICATION');
-INSERT INTO `sys_menu` VALUES ('4', '办公', 'reportSelectionList.do', '0', '2', null);
-INSERT INTO `sys_menu` VALUES ('5', '生成报告13', 'reportSelectionList.do', '4', '1', null);
-INSERT INTO `sys_menu` VALUES ('6', '企业年报', '#', '1', '3', null);
-INSERT INTO `sys_menu` VALUES ('7', '客户关系', 'CRM_ClientList.do', '0', '3', null);
-INSERT INTO `sys_menu` VALUES ('8', '客户列表', 'CRM_ClientList.do', '7', '1', null);
-INSERT INTO `sys_menu` VALUES ('9', '文件归档', 'flswclFiling.do', '1', '4', null);
-INSERT INTO `sys_menu` VALUES ('10', '法律事务报表', 'flswclReportList_me.do', '4', '2', null);
-INSERT INTO `sys_menu` VALUES ('11', '用户管理', 'userManage.do', '1', '5', null);
-INSERT INTO `sys_menu` VALUES ('12', '案件管理', '#', '0', '4', null);
-INSERT INTO `sys_menu` VALUES ('13', '诉讼管理', 'susongCaseList.do', '12', '1', null);
+INSERT INTO `sys_menu` VALUES ('2', '日程', '#', '1', '1', 'sidebar.nav.element.NOTIFICATION');
+INSERT INTO `sys_menu` VALUES ('3', '办公', 'reportSelectionList.do', '0', '2', null);
+INSERT INTO `sys_menu` VALUES ('4', '生成报告', 'reportSelectionList.do', '3', '1', null);
+INSERT INTO `sys_menu` VALUES ('5', '客户关系', 'CRM_ClientList.do', '0', '3', null);
+INSERT INTO `sys_menu` VALUES ('6', '客户列表', 'CRM_ClientList.do', '5', '1', null);
+INSERT INTO `sys_menu` VALUES ('7', '法律事务报表', 'flswclReportList_me.do', '3', '2', null);
+INSERT INTO `sys_menu` VALUES ('8', '用户管理', 'userManage.do', '1', '2', null);
+INSERT INTO `sys_menu` VALUES ('9', '案件管理', '#', '0', '4', null);
+INSERT INTO `sys_menu` VALUES ('10', '诉讼案件管理', 'susongCaseList.do', '9', '1', null);
+INSERT INTO `sys_menu` VALUES ('11', '归档管理', 'flswclFiling.do', '0', '5', null);
+INSERT INTO `sys_menu` VALUES ('12', '卷宗管理', '#', '11', '1', null);
+INSERT INTO `sys_menu` VALUES ('13', '法律事务文件归档', 'flswclFiling.do', '11', '2', null);
+INSERT INTO `sys_menu` VALUES ('14', '工作统计', '#', '0', '6', null);
+INSERT INTO `sys_menu` VALUES ('15', '团队日常', '#', '14', '1', null);
+INSERT INTO `sys_menu` VALUES ('16', '团队报账记录', '#', '14', '2', null);
+INSERT INTO `sys_menu` VALUES ('17', '会议记录', '#', '14', '3', null);
+INSERT INTO `sys_menu` VALUES ('18', '团队年报', '#', '0', '7', null);
+INSERT INTO `sys_menu` VALUES ('19', '非诉案件管理', '#', '9', '2', null);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -187,9 +193,9 @@ CREATE TABLE `sys_role` (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1', '管理员', '16383', '0', '1', '16383', '1', '1', '1');
-INSERT INTO `sys_role` VALUES ('2', '合伙人律师', '4095', '0', '1', '4095', '1', '1', '1');
-INSERT INTO `sys_role` VALUES ('3', '助理律师', '4095', '0', '1', '3071', '1', '1', '1');
+INSERT INTO `sys_role` VALUES ('1', '管理员', '1048575', '0', '1', '1048575', '1', '1', '1');
+INSERT INTO `sys_role` VALUES ('2', '合伙人律师', '1048575', '0', '1', '1048575', '1', '1', '1');
+INSERT INTO `sys_role` VALUES ('3', '助理律师', '14495', '0', '1', '14495', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -214,19 +220,6 @@ CREATE TABLE `sys_user` (
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES ('1', 'admin', '4da2f9956f7daffb72444c5f4dd16eec563d4b20', '江万东', '1', null, null, '0', null, '373701119@qq.com', null, '18314496694');
-INSERT INTO `sys_user` VALUES ('2', 'admin1', 'sdajkdaksjdewuf', '江万东2', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('3', 'admin2', 'aklfjqieojf', '江万东3', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('4', 'admin3', 'adcwevwev', '江万东4', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('5', 'admin4', 'dasfqcqsd', '江万东5', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('6', 'admin5', 'ewfwf', 'jwd6', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('7', 'admin6', 'eafeqf', 'jwd7', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('8', 'admin7', 'kldfh qe', 'jwd8', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('9', 'admin8', 'akfj', 'jwd9', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('10', 'admin9', 'sdfkh', 'jwd10', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('11', 'admin10', 'kdfj', 'jwd11', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('12', 'admin12', 'sadfjk', 'jwd12', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('13', 'admin13', 'aflkjq', 'jwd13', '1', null, null, '0', null, null, null, null);
-INSERT INTO `sys_user` VALUES ('6bf2bcea20174dafb7f839d1261c2345', 'yangyan', 'b10c4cadc9eab4585b66972b476a95e41648f4c9', '杨燕', '1', null, null, '0', null, null, null, null);
 INSERT INTO `sys_user` VALUES ('56d52224772c46dfa52c149f86b8d074', 'xubo', '538a610be7c3a1bdd16be1e29fd7b5db86be00a5', '徐博', '1', null, null, '0', null, null, null, null);
 INSERT INTO `sys_user` VALUES ('c3aeb6fa85c64cab99f7f68af8f4ec2b', 'shaojun', '954a101e20a18aebebaa1b0cb4169bada5301966', '邵钧', '1', null, null, '0', null, null, null, null);
 INSERT INTO `sys_user` VALUES ('96797ba3ee104d6aa828f815b854944c', 'yangyan', '332c32befcedc5d80b3003466b5ffb8b28b7d65d', '杨燕', '3', null, null, '0', null, null, null, null);
