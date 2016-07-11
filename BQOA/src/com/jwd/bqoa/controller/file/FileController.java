@@ -19,6 +19,7 @@ import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.jwd.bqoa.util.Const;
+import com.jwd.bqoa.util.DateUtil;
 @Controller
 public class FileController {
 	@RequestMapping("/uploadFile")
@@ -43,7 +45,7 @@ public class FileController {
 				uploadDir.mkdirs();
 			}
 			String fileName = file.getOriginalFilename().subSequence(0, file.getOriginalFilename().lastIndexOf("."))
-					+"_"+System.currentTimeMillis() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+					+"_"+DateUtil.getTime1() + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 			//String localPath = session.getServletContext().getRealPath("")+"/upload/"+fileName;
 			String localPath = uploadDirAddr+"/upload/"+fileName;
 			resp.setContentType("text/html;charset=UTF-8");

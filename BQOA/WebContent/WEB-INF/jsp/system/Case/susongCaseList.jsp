@@ -70,25 +70,7 @@
 							<div class="widget">
 								<div class="widget-header">
 									<div class="title">我的法律事务处理意见表</div>
-									<span class="tools">
-										<button class="btn btn-primary btn-sm" type="button"
-											disabled="disabled">
-											我的报表 <span class="fa fa-user"></span>
-										</button>
-										<button class="btn btn-primary btn-sm" type="button"
-											onclick="javascript:toWaitMe();">
-											待我审批 <span class="fa fa-check"></span>
-										</button>
-										<button class="btn btn-primary btn-sm" type="button"
-											onclick="javascript:toHasApproved();"
-											onclick="javascript:toWaitMe();">
-											我已审批 <span class="fa fa-flag"></span>
-										</button>
-										<button class="btn btn-primary btn-sm" type="button"
-											onclick="toAll();">
-											查看全部 <span class="fa fa-eye"></span>
-										</button>
-									</span>
+
 								</div>
 								<div class="widget-body">
 									<table class="table table-bordered no-margin">

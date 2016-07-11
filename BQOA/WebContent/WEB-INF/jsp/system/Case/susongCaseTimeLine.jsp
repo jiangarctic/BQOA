@@ -33,8 +33,6 @@
 <body>
 	<c:set var="currentMain_Menu" value="案件管理" />
 	<c:set var="currentSub_Menu" value="诉讼管理" />
-	<input id="currentPage" style="display: none" value="${currentPage }" />
-	<input id="maxPage" style="display: none" value="${maxPage }" />
 	<!-- Header Start -->
 	<%@ include file="/WEB-INF/jsp/system/admin/homeHeader.jsp"%>
 	<!-- Header End -->
@@ -62,7 +60,7 @@
                 <div class="widget">
                   <div class="widget-header">
                     <div class="title">
-                      案件进展情况
+                      案件进展情况 : XX合同纠纷
                     </div>
                   </div>
                   <div class="widget-body">
@@ -242,6 +240,7 @@
 
 	</div>
 	</div>
+</div>
 	<!-- Main Container end -->
 
 	<script src="static/bootStrapFiles/js/jquery.js"></script>
@@ -252,54 +251,6 @@
 	<!-- Custom JS -->
 	<script src="static/bootStrapFiles/js/menu.js"></script>
 
-	<script type="text/javascript">
-		//ScrollUp
-		$(function() {
-			$.scrollUp({
-				scrollName : 'scrollUp', // Element ID
-				topDistance : '300', // Distance from top before showing element (px)
-				topSpeed : 300, // Speed back to top (ms)
-				animation : 'fade', // Fade, slide, none
-				animationInSpeed : 400, // Animation in speed (ms)
-				animationOutSpeed : 400, // Animation out speed (ms)
-				scrollText : 'Top', // Text for element
-				activeOverlay : false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-			});
-		});
-
-		//Tooltip
-		$('a').tooltip('hide');
-
-		//Popover
-		$('.popover-pop').popover('hide');
-
-		//Dropdown
-		$('.dropdown-toggle').dropdown();
-
-		//Data Tables
-		$(document).ready(function() {
-			$('#data-table').dataTable({
-				"sPaginationType" : "full_numbers"
-			});
-		});
-		function changePage(page) {
-			location.href = "flswclReportList_me.do?currentPage=" + page;
-		}
-
-		function prevPage() {
-			var currentPage = $("#currentPage").val() * 1;
-			location.href = "flswclReportList_me?currentPage="
-					+ (currentPage - 1);
-		}
-		function nextPage() {
-			var currentPage = $("#currentPage").val() * 1;
-			location.href = "flswclReportList_me?currentPage="
-					+ (currentPage + 1);
-		}
-
-
-
-	</script>
 
 </body>
 </html>

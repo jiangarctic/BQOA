@@ -114,7 +114,7 @@
                           </div>
                         </div>
 						<button class="btn btn-primary btn-sm" type="button" >
-                       查询<span class="fa fa-user"></span>
+                       查询&nbsp;&nbsp;<span class="fa fa-search"></span>
                       </button>
                       </div>
 					  
@@ -135,7 +135,7 @@
 
                     <span class="tools">
 						<span>当前显示：最近一个月</span>&nbsp;&nbsp;<button class="btn btn-primary btn-sm" type="button" >
-                       导出<span class="fa fa-user"></span>
+                       导出&nbsp;&nbsp;<span class="fa fa-briefcase"></span>
                       </button>
                     </span>
 
@@ -228,6 +228,16 @@
 			document.getElementById("uploadProcess").innerHTML = 'sd';
 			$("#processBar").attr("style", "width:90%");
 		}
+		$('.form_date').datetimepicker({
+	        language:  'fr',
+	        weekStart: 1,
+	        todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			minView: 2,
+			forceParse: 0
+	    });
 		//ScrollUp
 		$(function() {
 			$.scrollUp({

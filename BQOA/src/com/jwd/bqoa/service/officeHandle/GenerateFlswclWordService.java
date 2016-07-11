@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import com.jacob.activeX.ActiveXComponent;
 import com.jacob.com.Dispatch;
 import com.jacob.com.Variant;
+import com.jwd.bqoa.util.DateUtil;
 import com.jwd.bqoa.util.PageData;
 
 import freemarker.template.Configuration;
@@ -79,7 +80,7 @@ public class GenerateFlswclWordService {
 		if(!uploadDir.exists()){
 			uploadDir.mkdirs();
 		}
-		long timeStamp = System.currentTimeMillis();
+		String timeStamp = DateUtil.getTime1();
 		File outFile = new File(genFolder+"/"+reportNum+"_"+creator+"_"+timeStamp+".doc");
 		
 		res.add(genFolder+"/"+reportNum+"_"+creator+"_"+timeStamp+".doc");

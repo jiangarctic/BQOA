@@ -294,40 +294,6 @@
                         </p>
                       </div>
                     </li>
-                    <li class="activity-list success">
-                      <div class="detail-info">
-                        <small class="text-muted">
-                          Fri, 13 Feb
-                        </small>
-                        <p class="message">
-                          Show demo to team
-                        </p>
-                      </div>
-                    </li>
-                    <li class="activity-list">
-                      <div class="detail-info">
-                        <small class="text-muted">
-                          Sun, 21 Feb
-                        </small>
-                        <p class="message">
-                          Watch football
-                          <a class="text-info" href="" data-original-title="" title="">
-                            Match
-                          </a>
-                          with Xoimi.
-                        </p>
-                      </div>
-                    </li>
-                    <li class="activity-list warning">
-                      <div class="detail-info">
-                        <small class="text-muted">
-                          Wed, 25 Feb
-                        </small>
-                        <p class="message">
-                          Launch new mobile <a class="text-warning" href="" data-original-title="" title="">App</a>.
-                        </p>
-                      </div>
-                    </li>
                   </ul>				  
                 </div>
               </div>
